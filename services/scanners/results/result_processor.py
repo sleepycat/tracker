@@ -10,12 +10,14 @@ import sqlalchemy
 import random
 import databases
 import asyncio
+import redis
 import datetime
 import sqlalchemy
 from sqlalchemy.sql import select
 from sqlalchemy.dialects.postgresql import ARRAY
 from starlette.applications import Starlette
 from starlette.routing import Route, Mount, WebSocketRoute
+from starlette.background import BackgroundTask
 from starlette.responses import PlainTextResponse, JSONResponse
 from asyncpg.exceptions import (
     ConnectionDoesNotExistError,
@@ -30,6 +32,8 @@ DB_PASS = os.getenv("DB_PASS")
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 DB_HOST = os.getenv("DB_HOST")
+
+REDIS_HOST = os.getenv("REDIS_HOST")
 
 DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
@@ -751,9 +755,16 @@ DEFAULT_FUNCTIONS = {
 }
 
 
-def Server(database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS):
+def Server(
+    redis_uri=REDIS_HOST, database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS
+):
 
-    async_db = databases.Database(database_uri)
+    app.state.async_db = databases.Database(database_uri)
+    app.state.redis = redis.Redis(host=redis_uri, port=6379, db=0)
+
+    async def publish_results(scan_type, results):
+        publisher = app.state.redis.pubsub()
+        publisher.publish(scan_type, json.dumps(results))
 
     async def process(result_request):
         logging.info(f"Results received.")
@@ -774,10 +785,17 @@ def Server(database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS):
 
             tags = functions["process"][scan_type](results)
 
-            await functions["insert"][scan_type](results, tags, scan_id, async_db)
+            await functions["insert"][scan_type](
+                results, tags, scan_id, app.state.async_db
+            )
+
+            publish = BackgroundTask(
+                publish_results, scan_type=scan_type, results=results
+            )
 
             return PlainTextResponse(
-                f"{scan_type} results processed and inserted successfully (ID={scan_id}, TIME={datetime.datetime.utcnow()})."
+                f"{scan_type} results processed and inserted successfully (ID={scan_id}, TIME={datetime.datetime.utcnow()}).",
+                background=publish,
             )
 
         except Exception as e:

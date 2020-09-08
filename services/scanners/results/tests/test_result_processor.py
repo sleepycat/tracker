@@ -1,5 +1,6 @@
 import pytest
 import datetime
+from fakeredis import FakeStrictRedis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from starlette.testclient import TestClient
@@ -8,7 +9,10 @@ from test_data import *
 
 TEST_DATABASE_URI = "postgresql://track_dmarc:postgres@testdb/track_dmarc"
 engine = create_engine(TEST_DATABASE_URI)
+
+test_redis_server = FakeStrictRedis()
 test_app = Server(database_uri=TEST_DATABASE_URI)
+test_app.state.redis = test_redis_server
 
 session = sessionmaker(bind=engine, autocommit=True)
 test_session = session()
