@@ -9,4 +9,3 @@ SQLAlchemy
 databases[postgresql]
 pretend
 redis
-fakeredis

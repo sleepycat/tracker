@@ -8,6 +8,15 @@ steps:
     id: wait_testdb
     args: ['testdb:5432']
 
+  - name: 'gcr.io/cloud-builders/docker'
+      id: start_testredis
+      entrypoint: /bin/sh
+      args: ["-c", "docker run --net cloudbuild --name testredis -d --rm -p 127.0.0.1:6379:6379 redis:latest"]
+
+  - name: mikewilliamson/wait-for
+    id: wait_testredis
+    args: ['testredis:6379']
+
   - name: 'gcr.io/track-compliance/services/db-migration'
     id: start_dbmigrate
     entrypoint: /bin/sh

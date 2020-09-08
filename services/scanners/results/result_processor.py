@@ -8,9 +8,7 @@ import traceback
 import emoji
 import sqlalchemy
 import random
-import databases
 import asyncio
-import redis
 import datetime
 import sqlalchemy
 from sqlalchemy.sql import select
@@ -25,6 +23,8 @@ from asyncpg.exceptions import (
     UniqueViolationError,
     CannotConnectNowError,
 )
+from databases import Database
+from redis import Redis
 from utils import formatted_dictionary
 
 DB_USER = os.getenv("DB_USER")
@@ -756,14 +756,14 @@ DEFAULT_FUNCTIONS = {
 
 
 def Server(
-    redis_uri=REDIS_HOST, database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS
+    redis_host=REDIS_HOST, database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS
 ):
 
-    async_db = databases.Database(database_uri)
-    redis_server = redis.Redis(host=redis_uri, port=6379, db=0)
+    async_db = Database(database_uri)
+    redis_server = Redis(host=redis_host, port=6379, db=0)
 
     async def publish_results(scan_type, results):
-        publisher = app.state.redis.pubsub()
+        publisher = redis_server.pubsub()
         publisher.publish(scan_type, json.dumps(results))
 
     async def process(result_request):
@@ -785,9 +785,7 @@ def Server(
 
             tags = functions["process"][scan_type](results)
 
-            await functions["insert"][scan_type](
-                results, tags, scan_id, app.state.db
-            )
+            await functions["insert"][scan_type](results, tags, scan_id, app.state.db)
 
             publish = BackgroundTask(
                 publish_results, scan_type=scan_type, results=results
