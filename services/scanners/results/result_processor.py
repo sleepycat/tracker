@@ -759,8 +759,8 @@ def Server(
     redis_uri=REDIS_HOST, database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS
 ):
 
-    app.state.async_db = databases.Database(database_uri)
-    app.state.redis = redis.Redis(host=redis_uri, port=6379, db=0)
+    async_db = databases.Database(database_uri)
+    redis_server = redis.Redis(host=redis_uri, port=6379, db=0)
 
     async def publish_results(scan_type, results):
         publisher = app.state.redis.pubsub()
@@ -786,7 +786,7 @@ def Server(
             tags = functions["process"][scan_type](results)
 
             await functions["insert"][scan_type](
-                results, tags, scan_id, app.state.async_db
+                results, tags, scan_id, app.state.db
             )
 
             publish = BackgroundTask(
@@ -816,6 +816,9 @@ def Server(
     starlette_app = Starlette(
         debug=True, routes=routes, on_startup=[startup], on_shutdown=[shutdown]
     )
+
+    starlette_app.state.db = async_db
+    starlette_app.state.redis = redis_server
 
     return starlette_app
 
