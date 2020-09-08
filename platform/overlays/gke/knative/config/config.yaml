@@ -105,6 +105,11 @@ spec:
                 secretKeyRef:
                   name: scanners
                   key: DB_NAME
+            - name: REDIS_HOST
+                valueFrom:
+                  secretKeyRef:
+                    name: scanners
+                    key: REDIS_HOST
 
 ---
 
