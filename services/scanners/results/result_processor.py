@@ -815,9 +815,6 @@ def Server(
         debug=True, routes=routes, on_startup=[startup], on_shutdown=[shutdown]
     )
 
-    starlette_app.state.db = async_db
-    starlette_app.state.redis = redis_server
-
     return starlette_app
 
 
