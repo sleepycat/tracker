@@ -6,13 +6,10 @@ import json
 import logging
 import traceback
 import emoji
-import sqlalchemy
 import random
 import asyncio
 import datetime
-import sqlalchemy
-from sqlalchemy.sql import select
-from sqlalchemy.dialects.postgresql import ARRAY
+from arango import ArangoClient
 from starlette.applications import Starlette
 from starlette.routing import Route, Mount, WebSocketRoute
 from starlette.background import BackgroundTask
@@ -23,7 +20,6 @@ from asyncpg.exceptions import (
     UniqueViolationError,
     CannotConnectNowError,
 )
-from databases import Database
 from redis import Redis
 from utils import formatted_dictionary
 
@@ -34,206 +30,6 @@ DB_NAME = os.getenv("DB_NAME")
 DB_HOST = os.getenv("DB_HOST")
 
 REDIS_HOST = os.getenv("REDIS_HOST")
-
-DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-
-metadata = sqlalchemy.MetaData()
-
-Domains = sqlalchemy.Table(
-    "domains",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("domain", sqlalchemy.String),
-    sqlalchemy.Column("last_run", sqlalchemy.DateTime),
-    sqlalchemy.Column("selectors", ARRAY(sqlalchemy.String)),
-    sqlalchemy.Column(
-        "organization_id", sqlalchemy.Integer, sqlalchemy.ForeignKey("organizations.id")
-    ),
-)
-
-Dmarc_Reports = sqlalchemy.Table(
-    "dmarc_reports",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True),
-    sqlalchemy.Column(
-        "domain_id", sqlalchemy.Integer, sqlalchemy.ForeignKey("domains.id")
-    ),
-    sqlalchemy.Column("start_date", sqlalchemy.DateTime),
-    sqlalchemy.Column("end_date", sqlalchemy.DateTime),
-    sqlalchemy.Column("report", sqlalchemy.JSON),
-    sqlalchemy.Column(
-        "organization_id", sqlalchemy.Integer, sqlalchemy.ForeignKey("organizations.id")
-    ),
-)
-
-Organizations = sqlalchemy.Table(
-    "organizations",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("name", sqlalchemy.String),
-    sqlalchemy.Column("slug", sqlalchemy.String, index=True),
-    sqlalchemy.Column("acronym", sqlalchemy.String),
-    sqlalchemy.Column("org_tags", sqlalchemy.JSON),
-)
-
-Users = sqlalchemy.Table(
-    "users",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True),
-    sqlalchemy.Column("user_name", sqlalchemy.String),
-    sqlalchemy.Column("display_name", sqlalchemy.String),
-    sqlalchemy.Column("user_password", sqlalchemy.String),
-    sqlalchemy.Column("preferred_lang", sqlalchemy.String),
-    sqlalchemy.Column("failed_login_attempts", sqlalchemy.Integer, default=0),
-    sqlalchemy.Column(
-        "failed_login_attempt_time", sqlalchemy.Float, default=0, nullable=True
-    ),
-    sqlalchemy.Column("tfa_validated", sqlalchemy.Boolean, default=False),
-)
-
-User_affiliations = sqlalchemy.Table(
-    "user_affiliations",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True),
-    sqlalchemy.Column(
-        "user_id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey(
-            "users.id",
-            onupdate="CASCADE",
-            ondelete="CASCADE",
-            name="user_affiliations_users_id_fkey",
-        ),
-        primary_key=True,
-    ),
-    sqlalchemy.Column(
-        "organization_id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey(
-            "organizations.id",
-            onupdate="CASCADE",
-            ondelete="CASCADE",
-            name="user_affiliations_organization_id_fkey",
-        ),
-    ),
-    sqlalchemy.Column("permission", sqlalchemy.String),
-)
-
-Web_scans = sqlalchemy.Table(
-    "web_scans",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column(
-        "domain_id", sqlalchemy.Integer, sqlalchemy.ForeignKey("domains.id")
-    ),
-    sqlalchemy.Column("scan_date", sqlalchemy.DateTime),
-    sqlalchemy.Column(
-        "initiated_by", sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id")
-    ),
-)
-
-Mail_scans = sqlalchemy.Table(
-    "mail_scans",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column(
-        "domain_id", sqlalchemy.Integer, sqlalchemy.ForeignKey("domains.id")
-    ),
-    sqlalchemy.Column("scan_date", sqlalchemy.DateTime),
-    sqlalchemy.Column("selectors", ARRAY(sqlalchemy.String)),
-    sqlalchemy.Column("dmarc_phase", sqlalchemy.Integer),
-    sqlalchemy.Column(
-        "initiated_by", sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id")
-    ),
-)
-
-Dmarc_scans = sqlalchemy.Table(
-    "dmarc_scans",
-    metadata,
-    sqlalchemy.Column(
-        "id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey("mail_scans.id"),
-        primary_key=True,
-    ),
-    sqlalchemy.Column("dmarc_scan", sqlalchemy.JSON),
-)
-
-Dkim_scans = sqlalchemy.Table(
-    "dkim_scans",
-    metadata,
-    sqlalchemy.Column(
-        "id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey("mail_scans.id"),
-        primary_key=True,
-    ),
-    sqlalchemy.Column("dkim_scan", sqlalchemy.JSON),
-)
-
-Mx_scans = sqlalchemy.Table(
-    "mx_scans",
-    metadata,
-    sqlalchemy.Column(
-        "id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey("mail_scans.id"),
-        primary_key=True,
-    ),
-    sqlalchemy.Column("mx_scan", sqlalchemy.JSON),
-)
-
-Spf_scans = sqlalchemy.Table(
-    "spf_scans",
-    metadata,
-    sqlalchemy.Column(
-        "id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey("mail_scans.id"),
-        primary_key=True,
-    ),
-    sqlalchemy.Column("spf_scan", sqlalchemy.JSON),
-)
-
-Https_scans = sqlalchemy.Table(
-    "https_scans",
-    metadata,
-    sqlalchemy.Column(
-        "id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey("web_scans.id"),
-        primary_key=True,
-    ),
-    sqlalchemy.Column("https_scan", sqlalchemy.JSON),
-)
-
-Ssl_scans = sqlalchemy.Table(
-    "ssl_scans",
-    metadata,
-    sqlalchemy.Column(
-        "id",
-        sqlalchemy.Integer,
-        sqlalchemy.ForeignKey("web_scans.id"),
-        primary_key=True,
-    ),
-    sqlalchemy.Column("ssl_scan", sqlalchemy.JSON),
-)
-
-Ciphers = sqlalchemy.Table(
-    "ciphers",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("cipher_type", sqlalchemy.String),
-)
-
-Guidance = sqlalchemy.Table(
-    "guidance",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("tag_name", sqlalchemy.String),
-    sqlalchemy.Column("guidance", sqlalchemy.String),
-    sqlalchemy.Column("ref_links", sqlalchemy.String),
-)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -627,21 +423,22 @@ def process_dns(results):
 async def insert_https(report, tags, scan_id, db):
 
     try:
-        await db.connect()
-        scan_query = select([Web_scans]).where(Web_scans.c.id == scan_id)
-        scan = await db.fetch_one(scan_query)
-        logging.info(f"Retrieved corresponding scan from database: {str(scan)}")
-
-        insert_query = Https_scans.insert().values(
-            https_scan={"https": report, "tags": tags}, id=scan.get("id")
+        async_db = database.begin_async_execution(return_result=True)
+        scan_query = async_db.collection("web_scans").get({"_id": scan_id})
+        while scan_query.status() != "done":
+            time.sleep(0.1)
+        scan = scan_query.result()
+        logging.info(
+            f"Retrieved corresponding scan from database: _id={scan.get('_id')}"
         )
-        await db.execute(insert_query)
-        await db.disconnect()
+
+        insert_query = async_db.collection("https_scans").insert(
+            {"https": report, "tags": tags, "scan_id": scan.get("_id")}
+        )
+        while insert_query.status() != "done":
+            time.sleep(0.1)
+
     except Exception as e:
-        try:
-            await db.disconnect()
-        except:
-            pass
         logging.error(
             f"(HTTPS SCAN, ID={scan_id}, TIME={datetime.datetime.utcnow()}) - An unknown exception occurred while attempting database insertion(s): {str(e)}"
         )
@@ -655,21 +452,22 @@ async def insert_https(report, tags, scan_id, db):
 async def insert_ssl(report, tags, scan_id, db):
 
     try:
-        await db.connect()
-        scan_query = select([Web_scans]).where(Web_scans.c.id == scan_id)
-        scan = await db.fetch_one(scan_query)
-        logging.info(f"Retrieved corresponding scan from database: {str(scan)}")
-
-        insert_query = Ssl_scans.insert().values(
-            ssl_scan={"ssl": report, "tags": tags}, id=scan.get("id")
+        async_db = database.begin_async_execution(return_result=True)
+        scan_query = async_db.collection("web_scans").get({"_id": scan_id})
+        while scan_query.status() != "done":
+            time.sleep(0.1)
+        scan = scan_query.result()
+        logging.info(
+            f"Retrieved corresponding scan from database: _id={scan.get('_id')}"
         )
-        await db.execute(insert_query)
-        await db.disconnect()
+
+        insert_query = async_db.collection("ssl_scans").insert(
+            {"ssl": report, "tags": tags, "scan_id": scan.get("_id")}
+        )
+        while insert_query.status() != "done":
+            time.sleep(0.1)
+
     except Exception as e:
-        try:
-            await db.disconnect()
-        except:
-            pass
         logging.error(
             f"(SSL SCAN, ID={scan_id}, TIME={datetime.datetime.utcnow()}) - An unknown exception occurred while attempting database insertion(s): {str(e)}"
         )
@@ -683,31 +481,38 @@ async def insert_ssl(report, tags, scan_id, db):
 async def insert_dns(report, tags, scan_id, db):
 
     try:
-        await db.connect()
-        scan_query = select([Mail_scans]).where(Mail_scans.c.id == scan_id)
-        scan = await db.fetch_one(scan_query)
-        logging.info(f"Retrieved corresponding scan from database: {str(scan)}")
+        async_db = database.begin_async_execution(return_result=True)
+        scan_query = async_db.collection("mail_scans").get({"_id": scan_id})
+        while scan_query.status() != "done":
+            time.sleep(0.1)
+        scan = scan_query.result()
+        logging.info(
+            f"Retrieved corresponding scan from database: _id={scan.get('_id')}"
+        )
 
         if report["dkim"].get("missing", False) is not True:
             # Check for previous dkim scans on this domain
-            previous_scan_query = select([Mail_scans]).where(
-                Mail_scans.c.domain_id == scan.get("domain_id")
+            previous_scan_query = async_db.collection("mail_scans").find(
+                {"domain_id": scan.get("domain_id")}
             )
-
-            previous_scans = await db.fetch_all(previous_scan_query)
+            while previous_scan_query.status() != "done":
+                time.sleep(0.1)
+            previous_scans = scan_query.result().batch()
 
             historical_dkim = None
             # If public key has been in use for a year or more, recommend update
             for previous_scan in previous_scans:
                 if (scan.get("scan_date") - previous_scan.get("scan_date")).days >= 365:
-                    historical_dkim_query = select([Dkim_scans]).where(
-                        Dkim_scans.c.id == previous_scan.get("id")
+                    historical_dkim_query = async_db.collection("dkim_scans").get(
+                        {"_id": previous_scan.get("_id")}
                     )
-                    historical_dkim = await db.fetch_one(historical_dkim_query)
+                    while historical_dkim_query.status() != "done":
+                        time.sleep(0.1)
+                    historical_dkim = historical_dkim_query.result()
 
             if historical_dkim is not None:
                 for selector in report["dkim"]:
-                    for historical_selector in historical_dkim.get("dkim_scan")["dkim"]:
+                    for historical_selector in historical_dkim.get("dkim"):
                         if selector == historical_selector:
                             if (
                                 report["dkim"]["selector"]["public_key_modulus"]
@@ -715,30 +520,37 @@ async def insert_dns(report, tags, scan_id, db):
                             ):
                                 report["dkim"]["selector"]["update-recommended"] = True
 
-        dmarc_insert_query = Dmarc_scans.insert().values(
-            dmarc_scan={"dmarc": report["dmarc"], "tags": tags["dmarc"]},
-            id=scan.get("id"),
-        )
-        mx_insert_query = Mx_scans.insert().values(
-            mx_scan={"mx": report["mx"]}, id=scan.get("id")
-        )
-        spf_insert_query = Spf_scans.insert().values(
-            spf_scan={"spf": report["spf"], "tags": tags["spf"]}, id=scan.get("id")
-        )
-        dkim_insert_query = Dkim_scans.insert().values(
-            dkim_scan={"dkim": report["dkim"], "tags": tags["dkim"]}, id=scan.get("id")
-        )
+        insertion_queries = []
 
-        await db.execute(dmarc_insert_query)
-        await db.execute(mx_insert_query)
-        await db.execute(spf_insert_query)
-        await db.execute(dkim_insert_query)
-        await db.disconnect()
+        dmarc_insert_query = async_db.collection("dmarc_scans").insert(
+            {
+                "dmarc": report["dmarc"],
+                "tags": tags["dmarc"],
+                "scan_id": scan.get("_id"),
+            }
+        )
+        insertion_queries.append(dmarc_insert_query)
+
+        mx_insert_query = async_db.collection("mx_scans").insert(
+            {"mx": report["mx"], "scan_id": scan.get("_id")}
+        )
+        insertion_queries.append(mx_insert_query)
+
+        spf_insert_query = async_db.collection("spf_scans").insert(
+            {"spf": report["spf"], "tags": tags["spf"], "scan_id": scan.get("_id")}
+        )
+        insertion_queries.append(spf_insert_query)
+
+        dkim_insert_query = async_db.collection("dkim_scans").insert(
+            {"dkim": report["dkim"], "tags": tags["dkim"], "scan_id": scan.get("_id")}
+        )
+        insertion_queries.append(dkim_insert_query)
+
+        for insertion_query in insertion_queries:
+            while insertion_query.status() != "done":
+                time.sleep(0.1)
+
     except Exception as e:
-        try:
-            await db.disconnect()
-        except:
-            pass
         logging.error(
             f"(DNS SCAN, ID={scan_id}, TIME={datetime.datetime.utcnow()}) - An unknown exception occurred while attempting database insertion(s): {str(e)}"
         )
@@ -756,10 +568,18 @@ DEFAULT_FUNCTIONS = {
 
 
 def Server(
-    redis_host=REDIS_HOST, database_uri=DATABASE_URI, functions=DEFAULT_FUNCTIONS
+    redis_host=REDIS_HOST,
+    db_user=DB_USER,
+    db_pass=DB_PASS,
+    db_host=DB_HOST,
+    db_name=DB_NAME,
+    db_port=DB_PORT,
+    functions=DEFAULT_FUNCTIONS,
 ):
 
-    async_db = Database(database_uri)
+    client = ArangoClient(hosts=database_uri)
+
+    db = client.db(db_name, username=db_user, password=db_pass)
     redis_server = Redis(host=redis_host, port=6379, db=0)
 
     async def publish_results(scan_type, results):
@@ -785,7 +605,7 @@ def Server(
 
             tags = functions["process"][scan_type](results)
 
-            await functions["insert"][scan_type](results, tags, scan_id, app.state.db)
+            await functions["insert"][scan_type](results, tags, scan_id, db)
 
             publish = BackgroundTask(
                 publish_results, scan_type=scan_type, results=results
