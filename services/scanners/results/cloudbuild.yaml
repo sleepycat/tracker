@@ -22,7 +22,7 @@ steps:
     id: test-results
     dir: services/scanners/results
     entrypoint: /bin/sh
-    args: ["-c", "pip3 install -r requirements.txt && python3 -m pytest"]
+    args: ["-c", "apk add libpq && pip3 install -r requirements.txt && python3 -m pytest"]
 
   - name: 'gcr.io/cloud-builders/docker'
     id: build-results-if-master

@@ -22,7 +22,7 @@ steps:
     id: test-auto-scan
     dir: services/auto-scan
     entrypoint: /bin/sh
-    args: ["-c", "pip3 install -r requirements.txt && python3 -m pytest"]
+    args: ["-c", "apk add libpq && pip3 install -r requirements.txt && python3 -m pytest"]
 
   - name: 'gcr.io/cloud-builders/docker'
     id: build-auto-scan-if-master
@@ -50,4 +50,3 @@ steps:
        else
          exit 0
        fi
-
