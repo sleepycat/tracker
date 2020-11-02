@@ -7,6 +7,7 @@ const { DB_PASS: rootPass, DB_URL: url } = process.env
 const { ArangoTools, dbNameFromFile } = require('arango-tools')
 const { toGlobalId } = require('graphql-relay')
 const { graphql, GraphQLSchema } = require('graphql')
+const { setupI18n } = require('@lingui/core')
 
 const { createQuerySchema } = require('../queries')
 const { createMutationSchema } = require('../mutations')
@@ -20,6 +21,8 @@ const {
   domainLoaderByKey,
   userLoaderByKey,
 } = require('../loaders')
+const englishMessages = require('../locale/en/messages')
+const frenchMessages = require('../locale/fr/messages') 
 
 describe('given the dkimType object', () => {
   let query,
@@ -54,9 +57,20 @@ describe('given the dkimType object', () => {
 
   beforeEach(async () => {
     await truncate()
+    const schemaI18n = setupI18n({
+      language: 'en',
+      locales: ['en', 'fr'],
+      missing: 'Traduction manquante',
+      catalogs: {
+        en: englishMessages,
+        fr: frenchMessages,
+      },
+    })
+
+    // Create GQL Schema
     schema = new GraphQLSchema({
-      query: createQuerySchema(),
-      mutation: createMutationSchema(),
+      query: createQuerySchema(schemaI18n),
+      mutation: createMutationSchema(schemaI18n),
     })
 
     consoleWarnOutput.length = 0

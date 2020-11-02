@@ -29,9 +29,20 @@ describe('create an organization', () => {
 
   beforeAll(async () => {
     // Create GQL Schema
+    const schemaI18n = setupI18n({
+      language: 'en',
+      locales: ['en', 'fr'],
+      missing: 'Traduction manquante',
+      catalogs: {
+        en: englishMessages,
+        fr: frenchMessages,
+      },
+    })
+
+    // Create GQL Schema
     schema = new GraphQLSchema({
-      query: createQuerySchema(),
-      mutation: createMutationSchema(),
+      query: createQuerySchema(schemaI18n),
+      mutation: createMutationSchema(schemaI18n),
     })
   })
 

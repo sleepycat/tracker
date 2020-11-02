@@ -2,12 +2,13 @@ const dotenv = require('dotenv-safe')
 dotenv.config()
 
 const { ArangoTools, dbNameFromFile } = require('arango-tools')
+const bcrypt = require('bcrypt')
 const { graphql, GraphQLSchema } = require('graphql')
+const { setupI18n } = require('@lingui/core')
+
 const { makeMigrations } = require('../../migrations')
 const { createQuerySchema } = require('../queries')
 const { createMutationSchema } = require('../mutations')
-const bcrypt = require('bcrypt')
-
 const { cleanseInput } = require('../validators')
 const {
   checkDomainPermission,
@@ -20,6 +21,9 @@ const {
   userLoaderByUserName,
   userLoaderByKey,
 } = require('../loaders')
+const englishMessages = require('../locale/en/messages')
+const frenchMessages = require('../locale/fr/messages')
+
 const { DB_PASS: rootPass, DB_URL: url } = process.env
 
 describe('given findDomainByDomain query', () => {
@@ -27,9 +31,20 @@ describe('given findDomainByDomain query', () => {
 
   beforeAll(async () => {
     // Create GQL Schema
+    const schemaI18n = setupI18n({
+      language: 'en',
+      locales: ['en', 'fr'],
+      missing: 'Traduction manquante',
+      catalogs: {
+        en: englishMessages,
+        fr: frenchMessages,
+      },
+    })
+
+    // Create GQL Schema
     schema = new GraphQLSchema({
-      query: createQuerySchema(),
-      mutation: createMutationSchema(),
+      query: createQuerySchema(schemaI18n),
+      mutation: createMutationSchema(schemaI18n),
     })
   })
 

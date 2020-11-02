@@ -21,13 +21,23 @@ const { userLoaderByKey } = require('../loaders')
 const { DB_PASS: rootPass, DB_URL: url } = process.env
 
 describe('authenticate user account', () => {
-  let query, drop, truncate, migrate, schema, collections
+  let query, drop, truncate, migrate, schema, collections, i18n
 
   beforeAll(async () => {
+    i18n = setupI18n({
+      language: 'en',
+      locales: ['en', 'fr'],
+      missing: 'Traduction manquante',
+      catalogs: {
+        en: englishMessages,
+        fr: frenchMessages,
+      },
+    })
+
     // Create GQL Schema
     schema = new GraphQLSchema({
-      query: createQuerySchema(),
-      mutation: createMutationSchema(),
+      query: createQuerySchema(i18n),
+      mutation: createMutationSchema(i18n),
     })
   })
 
@@ -149,7 +159,6 @@ describe('authenticate user account', () => {
     })
   })
   describe('given unsuccessful authentication', () => {
-    let i18n
     describe('users language is set to english', () => {
       beforeAll(() => {
         i18n = setupI18n({
