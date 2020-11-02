@@ -4,28 +4,28 @@ const { t } = require('@lingui/macro')
 const { Domain, Selectors } = require('../../scalars')
 const { domainType } = require('../../types')
 
-const updateDomain = new mutationWithClientMutationId({
+const updateDomain = (i18n) => new mutationWithClientMutationId({
   name: 'UpdateDomain',
   description:
-    'Mutation allows the modification of domains if domain is updated through out its life-cycle',
+    i18n._(t`Mutation allows the modification of domains if domain is updated through out its life-cycle`),
   inputFields: () => ({
     domainId: {
       type: GraphQLNonNull(GraphQLID),
-      description: 'The global id of the domain that is being updated.',
+      description: i18n._(t`The global id of the domain that is being updated.`),
     },
     orgId: {
       type: GraphQLNonNull(GraphQLID),
       description:
-        'The global ID of the organization used for permission checks.',
+        i18n._(t`The global ID of the organization used for permission checks.`),
     },
     domain: {
       type: Domain,
-      description: 'The new url of the of the old domain.',
+      description: i18n._(t`The new url of the of the old domain.`),
     },
     selectors: {
       type: new GraphQLList(Selectors),
       description:
-        'The updated DKIM selector strings corresponding to this domain.',
+        i18n._(t`The updated DKIM selector strings corresponding to this domain.`),
     },
   }),
   outputFields: () => ({

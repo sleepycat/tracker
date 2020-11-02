@@ -4,28 +4,28 @@ const { t } = require('@lingui/macro')
 const { Domain, Selectors } = require('../../scalars')
 const { domainType } = require('../../types')
 
-const createDomain = new mutationWithClientMutationId({
+const createDomain = (i18n) => new mutationWithClientMutationId({
   name: 'CreateDomain',
-  description: 'Mutation used to create a new domain for an organization.',
+  description: i18n._(t`Mutation used to create a new domain for an organization.`),
   inputFields: () => ({
     orgId: {
       type: GraphQLNonNull(GraphQLID),
       description:
-        'The global id of the organization you wish to assign this domain to.',
+        i18n._(t`The global id of the organization you wish to assign this domain to.`),
     },
     domain: {
       type: GraphQLNonNull(Domain),
-      description: 'Url that you would like to be added to the database.',
+      description: i18n._(t`Url that you would like to be added to the database.`),
     },
     selectors: {
       type: new GraphQLList(Selectors),
-      description: 'DKIM selector strings corresponding to this domain.',
+      description: i18n._(t`DKIM selector strings corresponding to this domain.`),
     },
   }),
   outputFields: () => ({
     domain: {
       type: domainType,
-      description: 'The newly created domain.',
+      description: i18n._(t`The newly created domain.`),
       resolve: async (payload) => {
         return payload.domain
       },
