@@ -1,30 +1,37 @@
+const { t } = require('@lingui/macro')
 const { GraphQLScalarType, Kind, GraphQLError } = require('graphql')
 
-const validate = (value) => {
+const validate = (i18n) => (value) => {
   const YEAR_REGEX = /^\d{4}$/
 
   if (typeof value !== 'string') {
-    throw new TypeError(`Value is not string: ${typeof value}`)
+    throw new TypeError(i18n._(t`Value is not string: ${typeof value}`))
   }
 
   if (!YEAR_REGEX.test(value)) {
-    throw new TypeError(`Value is not a valid year: ${value}`)
+    throw new TypeError(i18n._(t`Value is not a valid year: ${value}`))
   }
   return value
 }
 
-module.exports.Year = new GraphQLScalarType({
-  name: 'Year',
-  description: 'A field that conforms to a 4 digit integer.',
-  serialize: validate,
-  parseValue: validate,
+const parseLiteral = (i18n) => (ast) => {
+  if (ast.kind !== Kind.STRING) {
+    throw new GraphQLError(
+      i18n._(t`Can only validate strings as year but got a: ${ast.kind}`),
+    )
+  }
+  return validate(i18n)(ast.value)
+}
 
-  parseLiteral(ast) {
-    if (ast.kind !== Kind.STRING) {
-      throw new GraphQLError(
-        `Can only validate strings as year but got a: ${ast.kind}`,
-      )
-    }
-    return validate(ast.value)
-  },
-})
+const Year = (i18n) =>
+  new GraphQLScalarType({
+    name: 'Year',
+    description: i18n._(t`A field that conforms to a 4 digit integer.`),
+    serialize: validate(i18n),
+    parseValue: validate(i18n),
+    parseLiteral: parseLiteral(i18n),
+  })
+
+module.exports = {
+  Year,
+}
