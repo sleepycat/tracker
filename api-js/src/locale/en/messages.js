@@ -32,6 +32,9 @@
       'Authentication error. Please sign in again.',
     'Authentication error. Please sign in.':
       'Authentication error. Please sign in.',
+    'Boolean cannot represent a non boolean value: {0}': function (a) {
+      return ['Boolean cannot represent a non boolean value: ', a('0')]
+    },
     'Could not retrieve specified domain.':
       'Could not retrieve specified domain.',
     'Could not retrieve specified organization.':
@@ -42,6 +45,20 @@
       'Email address that the user will use to authenticate with.',
     'Error when retrieving dmarc report information. Please try again.':
       'Error when retrieving dmarc report information. Please try again.',
+    'Float cannot represent non numeric value: {0}': function (a) {
+      return ['Float cannot represent non numeric value: ', a('0')]
+    },
+    'ID cannot represent a non string value: {0}': function (a) {
+      return ['ID cannot represent a non string value: ', a('0')]
+    },
+    'ID cannot represent a non-string and non-integer value:  {0}': function (
+      a,
+    ) {
+      return [
+        'ID cannot represent a non-string and non-integer value:  ',
+        a('0'),
+      ]
+    },
     'If an account with this username is found, a password reset link will be found in your inbox.':
       'If an account with this username is found, a password reset link will be found in your inbox.',
     'If an account with this username is found, an email verification link will be found in your inbox.':
@@ -62,6 +79,17 @@
       'Informs the user if the user role update was successful.',
     'Informs user if account was successfully verified.':
       'Informs user if account was successfully verified.',
+    'Int cannot represent non 32-bit signed integer value: {value}': function (
+      a,
+    ) {
+      return [
+        'Int cannot represent non 32-bit signed integer value: ',
+        a('value'),
+      ]
+    },
+    'Int cannot represent non-integer value: {0}': function (a) {
+      return ['Int cannot represent non-integer value: ', a('0')]
+    },
     'Invalid token, please request a new one.':
       'Invalid token, please request a new one.',
     'Mutation allows the modification of domains if domain is updated through out its life-cycle':
@@ -207,6 +235,9 @@
       'Status string to inform the user if the domain was successfully removed.',
     'Status string to inform the user if the organization was successfully removed.':
       'Status string to inform the user if the organization was successfully removed.',
+    'String cannot represent a non string value: {0}': function (a) {
+      return ['String cannot represent a non string value: ', a('0')]
+    },
     'Successfully invited user to organization, and sent notification email.':
       'Successfully invited user to organization, and sent notification email.',
     'Successfully removed domain: {0} from {1}.': function (a) {
@@ -250,6 +281,16 @@
       'The JWT found in the url, redirected from the email they received.',
     'The JWT that is retrieved from the sign in mutation.':
       'The JWT that is retrieved from the sign in mutation.',
+    'The `Boolean` scalar type represents `true` or `false`.':
+      'The `Boolean` scalar type represents `true` or `false`.',
+    'The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).':
+      'The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).',
+    'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.':
+      'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.',
+    'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.':
+      'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.',
+    'The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.':
+      'The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.',
     'The authenticated users information, and JWT.':
       'The authenticated users information, and JWT.',
     'The domain that the scan will be ran on.':

@@ -15,11 +15,15 @@
     'Authentication error, please sign in again.': 'todo',
     'Authentication error. Please sign in again.': 'todo',
     'Authentication error. Please sign in.': 'todo',
+    'Boolean cannot represent a non boolean value: {0}': 'todo',
     'Could not retrieve specified domain.': 'todo',
     'Could not retrieve specified organization.': 'todo',
     'DKIM selector strings corresponding to this domain.': 'todo',
     'Email address that the user will use to authenticate with.': 'todo',
     'Error when retrieving dmarc report information. Please try again.': 'todo',
+    'Float cannot represent non numeric value: {0}': 'todo',
+    'ID cannot represent a non string value: {0}': 'todo',
+    'ID cannot represent a non-string and non-integer value:  {0}': 'todo',
     'If an account with this username is found, a password reset link will be found in your inbox.':
       'todo',
     'If an account with this username is found, an email verification link will be found in your inbox.':
@@ -35,6 +39,8 @@
     'Informs the user if the text message was successfully sent.': 'todo',
     'Informs the user if the user role update was successful.': 'todo',
     'Informs user if account was successfully verified.': 'todo',
+    'Int cannot represent non 32-bit signed integer value: {value}': 'todo',
+    'Int cannot represent non-integer value: {0}': 'todo',
     'Invalid token, please request a new one.': 'todo',
     'Mutation allows the modification of domains if domain is updated through out its life-cycle':
       'todo',
@@ -92,6 +98,7 @@
       'todo',
     'Status string to inform the user if the organization was successfully removed.':
       'todo',
+    'String cannot represent a non string value: {0}': 'todo',
     'Successfully invited user to organization, and sent notification email.':
       'todo',
     'Successfully removed domain: {0} from {1}.': 'todo',
@@ -120,6 +127,15 @@
     'The JWT found in the url, redirected from the email they received.':
       'todo',
     'The JWT that is retrieved from the sign in mutation.': 'todo',
+    'The `Boolean` scalar type represents `true` or `false`.': 'todo',
+    'The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).':
+      'todo',
+    'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.':
+      'todo',
+    'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.':
+      'todo',
+    'The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.':
+      'todo',
     'The authenticated users information, and JWT.': 'todo',
     'The domain that the scan will be ran on.': 'todo',
     'The email the user signed up with.': 'todo',
