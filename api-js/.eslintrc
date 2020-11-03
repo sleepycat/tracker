@@ -43,7 +43,12 @@
           "Server",
           "GraphQLNonNull",
           "GraphQLList",
-          "ArangoTools"
+          "ArangoTools",
+          "TranslatedBoolean",
+          "TranslatedFloat",
+          "TranslatedID",
+          "TranslatedInt",
+          "TranslatedString"
         ]
       }
     ]
