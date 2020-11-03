@@ -26,7 +26,7 @@ const parseLiteral = (i18n) => (ast) => {
 }
 
 const TranslatedInt = (i18n) => new GraphQLScalarType({
-  name: 'Int',
+  name: 'TranslatedInt',
   description: i18n._(t`The \`Int\` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.`),
   serialize: validate(i18n),
   parseValue: validate(i18n),
