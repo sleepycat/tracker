@@ -1,4 +1,4 @@
-const { Acronym } = require('./organization-acronym.js')
+const { Acronym } = require('./acronym.js')
 const { Domain } = require('./domain')
 const { Selectors } = require('./selector.js')
 const { Slug } = require('./slug.js')
