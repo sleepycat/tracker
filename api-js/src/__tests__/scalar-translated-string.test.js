@@ -6,7 +6,7 @@ const englishMessages = require('../locale/en/messages')
 const frenchMessages = require('../locale/fr/messages')
 const { TranslatedString } = require('../scalars')
 
-describe('given the TranslatedInt scalar', () => {
+describe('given the TranslatedString scalar', () => {
   let i18n
   describe('language is set to english', () => {
     beforeEach(() => {
