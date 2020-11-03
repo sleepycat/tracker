@@ -1,6 +1,7 @@
-const { GraphQLNonNull, GraphQLID, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedID, TranslatedString } = require('../../scalars')
 
 const removeOrganization = (i18n) =>
   new mutationWithClientMutationId({
@@ -10,7 +11,7 @@ const removeOrganization = (i18n) =>
     ),
     inputFields: () => ({
       orgId: {
-        type: GraphQLNonNull(GraphQLID),
+        type: GraphQLNonNull(TranslatedID(i18n)),
         description: i18n._(
           t`The global id of the organization you wish you remove.`,
         ),
@@ -18,7 +19,7 @@ const removeOrganization = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Status string to inform the user if the organization was successfully removed.`,
         ),

@@ -1,7 +1,7 @@
-const { GraphQLID, GraphQLNonNull, GraphQLList } = require('graphql')
+const { GraphQLNonNull, GraphQLList } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
-const { Domain, Selectors } = require('../../scalars')
+const { Domain, Selectors, TranslatedID } = require('../../scalars')
 const { domainType } = require('../../types')
 
 const updateDomain = (i18n) => new mutationWithClientMutationId({
@@ -10,20 +10,20 @@ const updateDomain = (i18n) => new mutationWithClientMutationId({
     i18n._(t`Mutation allows the modification of domains if domain is updated through out its life-cycle`),
   inputFields: () => ({
     domainId: {
-      type: GraphQLNonNull(GraphQLID),
+      type: GraphQLNonNull(TranslatedID(i18n)),
       description: i18n._(t`The global id of the domain that is being updated.`),
     },
     orgId: {
-      type: GraphQLNonNull(GraphQLID),
+      type: GraphQLNonNull(TranslatedID(i18n)),
       description:
         i18n._(t`The global ID of the organization used for permission checks.`),
     },
     domain: {
-      type: Domain,
+      type: Domain(i18n),
       description: i18n._(t`The new url of the of the old domain.`),
     },
     selectors: {
-      type: new GraphQLList(Selectors),
+      type: new GraphQLList(Selectors(i18n)),
       description:
         i18n._(t`The updated DKIM selector strings corresponding to this domain.`),
     },

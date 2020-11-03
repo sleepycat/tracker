@@ -34,6 +34,18 @@
       'A secondary password field used to confirm the user entered the correct password.',
     'A token sent by email, that will assign a user to an organization with a pre-determined role.':
       'A token sent by email, that will assign a user to an organization with a pre-determined role.',
+    'A user who has been given access to view an organization.':
+      'A user who has been given access to view an organization.',
+    'A user who has the same access as a user write account, but can define new user read/write accounts.':
+      'A user who has the same access as a user write account, but can define new user read/write accounts.',
+    'A user who has the same access as an admin, but can define new admins.':
+      'A user who has the same access as an admin, but can define new admins.',
+    'An enum used to assign, and test users roles.':
+      'An enum used to assign, and test users roles.',
+    "An enum used to define user's language.":
+      "An enum used to define user's language.",
+    'An enum used to select information from the dmarc-report-api.':
+      'An enum used to select information from the dmarc-report-api.',
     'Authentication error, please sign in again.':
       'Authentication error, please sign in again.',
     'Authentication error. Please sign in again.':
@@ -66,6 +78,8 @@
       'DKIM selector strings corresponding to this domain.',
     'Email address that the user will use to authenticate with.':
       'Email address that the user will use to authenticate with.',
+    'Enum used when requesting a manual scan to determine what type of scan is to be ran.':
+      'Enum used when requesting a manual scan to determine what type of scan is to be ran.',
     'Error when retrieving dmarc report information. Please try again.':
       'Error when retrieving dmarc report information. Please try again.',
     'Float cannot represent non numeric value: {0}': function (a) {
@@ -335,6 +349,19 @@
       'The global id of the organization you wish you remove.',
     'The language in which the email will be sent in.':
       'The language in which the email will be sent in.',
+    'The last 30 days.': 'The last 30 days.',
+    'The month of April.': 'The month of April.',
+    'The month of August.': 'The month of August.',
+    'The month of December.': 'The month of December.',
+    'The month of February.': 'The month of February.',
+    'The month of January.': 'The month of January.',
+    'The month of July.': 'The month of July.',
+    'The month of June.': 'The month of June.',
+    'The month of March.': 'The month of March.',
+    'The month of May.': 'The month of May.',
+    'The month of November.': 'The month of November.',
+    'The month of October.': 'The month of October.',
+    'The month of September.': 'The month of September.',
     'The name that will be displayed to other users.':
       'The name that will be displayed to other users.',
     'The new password the user wishes to change to.':
@@ -534,6 +561,14 @@
       'Unable to verify if user is an admin, please try again.',
     'Url that you would like to be added to the database.':
       'Url that you would like to be added to the database.',
+    'Used for defining if DMARC and DKIM scans should be preformed.':
+      'Used for defining if DMARC and DKIM scans should be preformed.',
+    'Used for defining if English is the preferred language.':
+      'Used for defining if English is the preferred language.',
+    'Used for defining if French is the preferred language.':
+      'Used for defining if French is the preferred language.',
+    'Used for defining if HTTPS and SSL scans should be preformed.':
+      'Used for defining if HTTPS and SSL scans should be preformed.',
     'User name for the account you would like to receive a password reset link for.':
       'User name for the account you would like to receive a password reset link for.',
     'User role was updated successfully.':

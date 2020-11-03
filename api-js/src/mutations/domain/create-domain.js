@@ -1,7 +1,7 @@
-const { GraphQLNonNull, GraphQLList, GraphQLID } = require('graphql')
+const { GraphQLNonNull, GraphQLList } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
-const { Domain, Selectors } = require('../../scalars')
+const { Domain, Selectors, TranslatedID } = require('../../scalars')
 const { domainType } = require('../../types')
 
 const createDomain = (i18n) => new mutationWithClientMutationId({
@@ -9,16 +9,16 @@ const createDomain = (i18n) => new mutationWithClientMutationId({
   description: i18n._(t`Mutation used to create a new domain for an organization.`),
   inputFields: () => ({
     orgId: {
-      type: GraphQLNonNull(GraphQLID),
+      type: GraphQLNonNull(TranslatedID(i18n)),
       description:
         i18n._(t`The global id of the organization you wish to assign this domain to.`),
     },
     domain: {
-      type: GraphQLNonNull(Domain),
+      type: GraphQLNonNull(Domain(i18n)),
       description: i18n._(t`Url that you would like to be added to the database.`),
     },
     selectors: {
-      type: new GraphQLList(Selectors),
+      type: new GraphQLList(Selectors(i18n)),
       description: i18n._(t`DKIM selector strings corresponding to this domain.`),
     },
   }),

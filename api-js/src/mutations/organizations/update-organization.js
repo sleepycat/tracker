@@ -1,7 +1,7 @@
-const { GraphQLString, GraphQLNonNull, GraphQLID } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
-const { Acronym } = require('../../scalars')
+const { Acronym, TranslatedID, TranslatedString } = require('../../scalars')
 const { organizationType } = require('../../types')
 
 const updateOrganization = (i18n) => new mutationWithClientMutationId({
@@ -10,81 +10,81 @@ const updateOrganization = (i18n) => new mutationWithClientMutationId({
     i18n._(t`Mutation allows the modification of organizations if any changes to the organization may occur.`),
   inputFields: () => ({
     id: {
-      type: GraphQLNonNull(GraphQLID),
+      type: GraphQLNonNull(TranslatedID(i18n)),
       description: i18n._(t`The global id of the organization to be updated.`),
     },
     acronymEN: {
-      type: Acronym,
+      type: Acronym(i18n),
       description: i18n._(t`The English acronym of the organization.`),
     },
     acronymFR: {
-      type: Acronym,
+      type: Acronym(i18n),
       description: i18n._(t`The French acronym of the organization.`),
     },
     nameEN: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(t`The English name of the organization.`),
     },
     nameFR: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(t`The French name of the organization.`),
     },
     zoneEN: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The English translation of the zone the organization belongs to.`,
       ),
     },
     zoneFR: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The English translation of the zone the organization belongs to.`,
       ),
     },
     sectorEN: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The English translation of the sector the organization belongs to.`,
       ),
     },
     sectorFR: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The French translation of the sector the organization belongs to.`,
       ),
     },
     countryEN: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The English translation of the country the organization resides in.`,
       ),
     },
     countryFR: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The French translation of the country the organization resides in.`,
       ),
     },
     provinceEN: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The English translation of the province the organization resides in.`,
       ),
     },
     provinceFR: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The French translation of the province the organization resides in.`,
       ),
     },
     cityEN: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The English translation of the city the organization resides in.`,
       ),
     },
     cityFR: {
-      type: GraphQLString,
+      type: TranslatedString(i18n),
       description: i18n._(
         t`The French translation of the city the organization resides in.`,
       ),

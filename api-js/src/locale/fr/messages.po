@@ -27,7 +27,7 @@ msgstr "todo"
 msgid "A field who's values contain numbers, letters, dashes, and underscores."
 msgstr "todo"
 
-#: src/scalars/organization-acronym.js:30
+#: src/scalars/acronym.js:30
 msgid "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
 msgstr "todo"
 
@@ -41,6 +41,30 @@ msgstr "todo"
 
 #: src/mutations/user/sign-up.js:42
 msgid "A token sent by email, that will assign a user to an organization with a pre-determined role."
+msgstr "todo"
+
+#: src/enums/roles.js:11
+msgid "A user who has been given access to view an organization."
+msgstr "todo"
+
+#: src/enums/roles.js:17
+msgid "A user who has the same access as a user write account, but can define new user read/write accounts."
+msgstr "todo"
+
+#: src/enums/roles.js:23
+msgid "A user who has the same access as an admin, but can define new admins."
+msgstr "todo"
+
+#: src/enums/roles.js:27
+msgid "An enum used to assign, and test users roles."
+msgstr "todo"
+
+#: src/enums/languages.js:21
+msgid "An enum used to define user's language."
+msgstr "todo"
+
+#: src/enums/period.js:62
+msgid "An enum used to select information from the dmarc-report-api."
 msgstr "todo"
 
 #: src/mutations/user/send-phone-code.js:50
@@ -67,7 +91,7 @@ msgstr "todo"
 msgid "Boolean cannot represent a non boolean value: {0}"
 msgstr "todo"
 
-#: src/scalars/organization-acronym.js:20
+#: src/scalars/acronym.js:20
 msgid "Can only validate strings as acronyms but got a: {0}"
 msgstr "todo"
 
@@ -101,6 +125,10 @@ msgstr "todo"
 
 #: src/mutations/user/sign-up.js:22
 msgid "Email address that the user will use to authenticate with."
+msgstr "todo"
+
+#: src/enums/scan-types.js:22
+msgid "Enum used when requesting a manual scan to determine what type of scan is to be ran."
 msgstr "todo"
 
 #: src/auth/check-domain-ownership.js:22
@@ -145,7 +173,7 @@ msgstr "todo"
 msgid "Informs the user if the password reset was successful, and to redirect to sign in page."
 msgstr "todo"
 
-#: src/mutations/scans/request-scan.js:25
+#: src/mutations/scans/request-scan.js:28
 msgid "Informs the user if the scan was dispatched successfully."
 msgstr "todo"
 
@@ -309,11 +337,11 @@ msgstr "todo"
 msgid "Security code found in text msg, or email inbox."
 msgstr "todo"
 
-#: src/mutations/domain/remove-domain.js:25
+#: src/mutations/domain/remove-domain.js:26
 msgid "Status string to inform the user if the domain was successfully removed."
 msgstr "todo"
 
-#: src/mutations/organizations/remove-organization.js:23
+#: src/mutations/organizations/remove-organization.js:24
 msgid "Status string to inform the user if the organization was successfully removed."
 msgstr "todo"
 
@@ -330,11 +358,11 @@ msgstr "todo"
 msgid "Successfully invited user to organization, and sent notification email."
 msgstr "todo"
 
-#: src/mutations/domain/remove-domain.js:234
+#: src/mutations/domain/remove-domain.js:235
 msgid "Successfully removed domain: {0} from {1}."
 msgstr "todo"
 
-#: src/mutations/organizations/remove-organization.js:206
+#: src/mutations/organizations/remove-organization.js:207
 msgid "Successfully removed organization: {0}."
 msgstr "todo"
 
@@ -450,7 +478,7 @@ msgstr "todo"
 msgid "The authenticated users information, and JWT."
 msgstr "todo"
 
-#: src/mutations/scans/request-scan.js:14
+#: src/mutations/scans/request-scan.js:15
 msgid "The domain that the scan will be ran on."
 msgstr "todo"
 
@@ -466,7 +494,7 @@ msgstr "todo"
 msgid "The global id of the domain that is being updated."
 msgstr "todo"
 
-#: src/mutations/domain/remove-domain.js:12
+#: src/mutations/domain/remove-domain.js:13
 msgid "The global id of the domain you wish to remove."
 msgstr "todo"
 
@@ -478,12 +506,64 @@ msgstr "todo"
 msgid "The global id of the organization you wish to assign this domain to."
 msgstr "todo"
 
-#: src/mutations/organizations/remove-organization.js:15
+#: src/mutations/organizations/remove-organization.js:16
 msgid "The global id of the organization you wish you remove."
 msgstr "todo"
 
 #: src/mutations/user-affiliations/invite-user-to-org.js:35
 msgid "The language in which the email will be sent in."
+msgstr "todo"
+
+#: src/enums/period.js:58
+msgid "The last 30 days."
+msgstr "todo"
+
+#: src/enums/period.js:22
+msgid "The month of April."
+msgstr "todo"
+
+#: src/enums/period.js:38
+msgid "The month of August."
+msgstr "todo"
+
+#: src/enums/period.js:54
+msgid "The month of December."
+msgstr "todo"
+
+#: src/enums/period.js:14
+msgid "The month of February."
+msgstr "todo"
+
+#: src/enums/period.js:10
+msgid "The month of January."
+msgstr "todo"
+
+#: src/enums/period.js:34
+msgid "The month of July."
+msgstr "todo"
+
+#: src/enums/period.js:30
+msgid "The month of June."
+msgstr "todo"
+
+#: src/enums/period.js:18
+msgid "The month of March."
+msgstr "todo"
+
+#: src/enums/period.js:26
+msgid "The month of May."
+msgstr "todo"
+
+#: src/enums/period.js:50
+msgid "The month of November."
+msgstr "todo"
+
+#: src/enums/period.js:46
+msgid "The month of October."
+msgstr "todo"
+
+#: src/enums/period.js:42
+msgid "The month of September."
 msgstr "todo"
 
 #: src/mutations/user/sign-up.js:17
@@ -514,7 +594,7 @@ msgstr "todo"
 msgid "The organization you wish to invite the user to."
 msgstr "todo"
 
-#: src/mutations/domain/remove-domain.js:17
+#: src/mutations/domain/remove-domain.js:18
 msgid "The organization you wish to remove the domain from."
 msgstr "todo"
 
@@ -607,11 +687,11 @@ msgstr "todo"
 msgid "This mutation allows the creation of an organization inside the database."
 msgstr "todo"
 
-#: src/mutations/domain/remove-domain.js:8
+#: src/mutations/domain/remove-domain.js:9
 msgid "This mutation allows the removal of unused domains."
 msgstr "todo"
 
-#: src/mutations/organizations/remove-organization.js:9
+#: src/mutations/organizations/remove-organization.js:10
 msgid "This mutation allows the removal of unused organizations."
 msgstr "todo"
 
@@ -671,7 +751,7 @@ msgstr "todo"
 msgid "Two factor code has been successfully sent, you will receive a text message shortly."
 msgstr "todo"
 
-#: src/mutations/scans/request-scan.js:19
+#: src/mutations/scans/request-scan.js:20
 msgid "Type of scan to preform on the requested domain ('WEB' or 'MAIL')."
 msgstr "todo"
 
@@ -834,24 +914,24 @@ msgstr "todo"
 msgid "Unable to query organizations. Please try again."
 msgstr "todo"
 
-#: src/mutations/domain/remove-domain.js:64
-#: src/mutations/domain/remove-domain.js:75
-#: src/mutations/domain/remove-domain.js:86
-#: src/mutations/domain/remove-domain.js:93
-#: src/mutations/domain/remove-domain.js:106
-#: src/mutations/domain/remove-domain.js:177
-#: src/mutations/domain/remove-domain.js:194
-#: src/mutations/domain/remove-domain.js:215
-#: src/mutations/domain/remove-domain.js:226
+#: src/mutations/domain/remove-domain.js:65
+#: src/mutations/domain/remove-domain.js:76
+#: src/mutations/domain/remove-domain.js:87
+#: src/mutations/domain/remove-domain.js:94
+#: src/mutations/domain/remove-domain.js:107
+#: src/mutations/domain/remove-domain.js:178
+#: src/mutations/domain/remove-domain.js:195
+#: src/mutations/domain/remove-domain.js:216
+#: src/mutations/domain/remove-domain.js:227
 msgid "Unable to remove domain. Please try again."
 msgstr "todo"
 
-#: src/mutations/organizations/remove-organization.js:60
-#: src/mutations/organizations/remove-organization.js:73
-#: src/mutations/organizations/remove-organization.js:82
-#: src/mutations/organizations/remove-organization.js:153
-#: src/mutations/organizations/remove-organization.js:185
-#: src/mutations/organizations/remove-organization.js:196
+#: src/mutations/organizations/remove-organization.js:61
+#: src/mutations/organizations/remove-organization.js:74
+#: src/mutations/organizations/remove-organization.js:83
+#: src/mutations/organizations/remove-organization.js:154
+#: src/mutations/organizations/remove-organization.js:186
+#: src/mutations/organizations/remove-organization.js:197
 msgid "Unable to remove organization. Please try again."
 msgstr "todo"
 
@@ -988,6 +1068,22 @@ msgstr "todo"
 msgid "Url that you would like to be added to the database."
 msgstr "todo"
 
+#: src/enums/scan-types.js:11
+msgid "Used for defining if DMARC and DKIM scans should be preformed."
+msgstr "todo"
+
+#: src/enums/languages.js:11
+msgid "Used for defining if English is the preferred language."
+msgstr "todo"
+
+#: src/enums/languages.js:17
+msgid "Used for defining if French is the preferred language."
+msgstr "todo"
+
+#: src/enums/scan-types.js:17
+msgid "Used for defining if HTTPS and SSL scans should be preformed."
+msgstr "todo"
+
 #: src/mutations/user/send-password-reset.js:16
 msgid "User name for the account you would like to receive a password reset link for."
 msgstr "todo"
@@ -1009,7 +1105,7 @@ msgstr "todo"
 msgid "Value is not a string: {0}"
 msgstr "todo"
 
-#: src/scalars/organization-acronym.js:12
+#: src/scalars/acronym.js:12
 msgid "Value is not a valid acronym: {value}"
 msgstr "todo"
 
@@ -1029,7 +1125,7 @@ msgstr "todo"
 msgid "Value is not a valid year: {value}"
 msgstr "todo"
 
-#: src/scalars/organization-acronym.js:8
+#: src/scalars/acronym.js:8
 #: src/scalars/slug.js:8
 #: src/scalars/year.js:8
 msgid "Value is not string: {0}"

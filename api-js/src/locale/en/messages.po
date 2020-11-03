@@ -27,7 +27,7 @@ msgstr "A field that conforms to a string, with strings ending in ._domainkey."
 msgid "A field who's values contain numbers, letters, dashes, and underscores."
 msgstr "A field who's values contain numbers, letters, dashes, and underscores."
 
-#: src/scalars/organization-acronym.js:30
+#: src/scalars/acronym.js:30
 msgid "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
 msgstr "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
 
@@ -42,6 +42,30 @@ msgstr "A secondary password field used to confirm the user entered the correct 
 #: src/mutations/user/sign-up.js:42
 msgid "A token sent by email, that will assign a user to an organization with a pre-determined role."
 msgstr "A token sent by email, that will assign a user to an organization with a pre-determined role."
+
+#: src/enums/roles.js:11
+msgid "A user who has been given access to view an organization."
+msgstr "A user who has been given access to view an organization."
+
+#: src/enums/roles.js:17
+msgid "A user who has the same access as a user write account, but can define new user read/write accounts."
+msgstr "A user who has the same access as a user write account, but can define new user read/write accounts."
+
+#: src/enums/roles.js:23
+msgid "A user who has the same access as an admin, but can define new admins."
+msgstr "A user who has the same access as an admin, but can define new admins."
+
+#: src/enums/roles.js:27
+msgid "An enum used to assign, and test users roles."
+msgstr "An enum used to assign, and test users roles."
+
+#: src/enums/languages.js:21
+msgid "An enum used to define user's language."
+msgstr "An enum used to define user's language."
+
+#: src/enums/period.js:62
+msgid "An enum used to select information from the dmarc-report-api."
+msgstr "An enum used to select information from the dmarc-report-api."
 
 #: src/mutations/user/send-phone-code.js:50
 #: src/mutations/user/update-user-password.js:59
@@ -67,7 +91,7 @@ msgstr "Authentication error. Please sign in."
 msgid "Boolean cannot represent a non boolean value: {0}"
 msgstr "Boolean cannot represent a non boolean value: {0}"
 
-#: src/scalars/organization-acronym.js:20
+#: src/scalars/acronym.js:20
 msgid "Can only validate strings as acronyms but got a: {0}"
 msgstr "Can only validate strings as acronyms but got a: {0}"
 
@@ -102,6 +126,10 @@ msgstr "DKIM selector strings corresponding to this domain."
 #: src/mutations/user/sign-up.js:22
 msgid "Email address that the user will use to authenticate with."
 msgstr "Email address that the user will use to authenticate with."
+
+#: src/enums/scan-types.js:22
+msgid "Enum used when requesting a manual scan to determine what type of scan is to be ran."
+msgstr "Enum used when requesting a manual scan to determine what type of scan is to be ran."
 
 #: src/auth/check-domain-ownership.js:22
 #: src/auth/check-domain-ownership.js:35
@@ -145,7 +173,7 @@ msgstr "Informs the user if the password reset email was sent successfully."
 msgid "Informs the user if the password reset was successful, and to redirect to sign in page."
 msgstr "Informs the user if the password reset was successful, and to redirect to sign in page."
 
-#: src/mutations/scans/request-scan.js:25
+#: src/mutations/scans/request-scan.js:28
 msgid "Informs the user if the scan was dispatched successfully."
 msgstr "Informs the user if the scan was dispatched successfully."
 
@@ -309,11 +337,11 @@ msgstr "Root Mutation Object"
 msgid "Security code found in text msg, or email inbox."
 msgstr "Security code found in text msg, or email inbox."
 
-#: src/mutations/domain/remove-domain.js:25
+#: src/mutations/domain/remove-domain.js:26
 msgid "Status string to inform the user if the domain was successfully removed."
 msgstr "Status string to inform the user if the domain was successfully removed."
 
-#: src/mutations/organizations/remove-organization.js:23
+#: src/mutations/organizations/remove-organization.js:24
 msgid "Status string to inform the user if the organization was successfully removed."
 msgstr "Status string to inform the user if the organization was successfully removed."
 
@@ -330,11 +358,11 @@ msgstr "String that conforms to a domain structure."
 msgid "Successfully invited user to organization, and sent notification email."
 msgstr "Successfully invited user to organization, and sent notification email."
 
-#: src/mutations/domain/remove-domain.js:234
+#: src/mutations/domain/remove-domain.js:235
 msgid "Successfully removed domain: {0} from {1}."
 msgstr "Successfully removed domain: {0} from {1}."
 
-#: src/mutations/organizations/remove-organization.js:206
+#: src/mutations/organizations/remove-organization.js:207
 msgid "Successfully removed organization: {0}."
 msgstr "Successfully removed organization: {0}."
 
@@ -450,7 +478,7 @@ msgstr "The `String` scalar type represents textual data, represented as UTF-8 c
 msgid "The authenticated users information, and JWT."
 msgstr "The authenticated users information, and JWT."
 
-#: src/mutations/scans/request-scan.js:14
+#: src/mutations/scans/request-scan.js:15
 msgid "The domain that the scan will be ran on."
 msgstr "The domain that the scan will be ran on."
 
@@ -466,7 +494,7 @@ msgstr "The global ID of the organization used for permission checks."
 msgid "The global id of the domain that is being updated."
 msgstr "The global id of the domain that is being updated."
 
-#: src/mutations/domain/remove-domain.js:12
+#: src/mutations/domain/remove-domain.js:13
 msgid "The global id of the domain you wish to remove."
 msgstr "The global id of the domain you wish to remove."
 
@@ -478,13 +506,65 @@ msgstr "The global id of the organization to be updated."
 msgid "The global id of the organization you wish to assign this domain to."
 msgstr "The global id of the organization you wish to assign this domain to."
 
-#: src/mutations/organizations/remove-organization.js:15
+#: src/mutations/organizations/remove-organization.js:16
 msgid "The global id of the organization you wish you remove."
 msgstr "The global id of the organization you wish you remove."
 
 #: src/mutations/user-affiliations/invite-user-to-org.js:35
 msgid "The language in which the email will be sent in."
 msgstr "The language in which the email will be sent in."
+
+#: src/enums/period.js:58
+msgid "The last 30 days."
+msgstr "The last 30 days."
+
+#: src/enums/period.js:22
+msgid "The month of April."
+msgstr "The month of April."
+
+#: src/enums/period.js:38
+msgid "The month of August."
+msgstr "The month of August."
+
+#: src/enums/period.js:54
+msgid "The month of December."
+msgstr "The month of December."
+
+#: src/enums/period.js:14
+msgid "The month of February."
+msgstr "The month of February."
+
+#: src/enums/period.js:10
+msgid "The month of January."
+msgstr "The month of January."
+
+#: src/enums/period.js:34
+msgid "The month of July."
+msgstr "The month of July."
+
+#: src/enums/period.js:30
+msgid "The month of June."
+msgstr "The month of June."
+
+#: src/enums/period.js:18
+msgid "The month of March."
+msgstr "The month of March."
+
+#: src/enums/period.js:26
+msgid "The month of May."
+msgstr "The month of May."
+
+#: src/enums/period.js:50
+msgid "The month of November."
+msgstr "The month of November."
+
+#: src/enums/period.js:46
+msgid "The month of October."
+msgstr "The month of October."
+
+#: src/enums/period.js:42
+msgid "The month of September."
+msgstr "The month of September."
 
 #: src/mutations/user/sign-up.js:17
 msgid "The name that will be displayed to other users."
@@ -514,7 +594,7 @@ msgstr "The organization that the admin, and the user both belong to."
 msgid "The organization you wish to invite the user to."
 msgstr "The organization you wish to invite the user to."
 
-#: src/mutations/domain/remove-domain.js:17
+#: src/mutations/domain/remove-domain.js:18
 msgid "The organization you wish to remove the domain from."
 msgstr "The organization you wish to remove the domain from."
 
@@ -607,11 +687,11 @@ msgstr "This mutation allows super admins, and admins of the given organization 
 msgid "This mutation allows the creation of an organization inside the database."
 msgstr "This mutation allows the creation of an organization inside the database."
 
-#: src/mutations/domain/remove-domain.js:8
+#: src/mutations/domain/remove-domain.js:9
 msgid "This mutation allows the removal of unused domains."
 msgstr "This mutation allows the removal of unused domains."
 
-#: src/mutations/organizations/remove-organization.js:9
+#: src/mutations/organizations/remove-organization.js:10
 msgid "This mutation allows the removal of unused organizations."
 msgstr "This mutation allows the removal of unused organizations."
 
@@ -671,7 +751,7 @@ msgstr "Too many failed login attempts, please reset your password, and try agai
 msgid "Two factor code has been successfully sent, you will receive a text message shortly."
 msgstr "Two factor code has been successfully sent, you will receive a text message shortly."
 
-#: src/mutations/scans/request-scan.js:19
+#: src/mutations/scans/request-scan.js:20
 msgid "Type of scan to preform on the requested domain ('WEB' or 'MAIL')."
 msgstr "Type of scan to preform on the requested domain ('WEB' or 'MAIL')."
 
@@ -834,24 +914,24 @@ msgstr "Unable to query domains. Please try again."
 msgid "Unable to query organizations. Please try again."
 msgstr "Unable to query organizations. Please try again."
 
-#: src/mutations/domain/remove-domain.js:64
-#: src/mutations/domain/remove-domain.js:75
-#: src/mutations/domain/remove-domain.js:86
-#: src/mutations/domain/remove-domain.js:93
-#: src/mutations/domain/remove-domain.js:106
-#: src/mutations/domain/remove-domain.js:177
-#: src/mutations/domain/remove-domain.js:194
-#: src/mutations/domain/remove-domain.js:215
-#: src/mutations/domain/remove-domain.js:226
+#: src/mutations/domain/remove-domain.js:65
+#: src/mutations/domain/remove-domain.js:76
+#: src/mutations/domain/remove-domain.js:87
+#: src/mutations/domain/remove-domain.js:94
+#: src/mutations/domain/remove-domain.js:107
+#: src/mutations/domain/remove-domain.js:178
+#: src/mutations/domain/remove-domain.js:195
+#: src/mutations/domain/remove-domain.js:216
+#: src/mutations/domain/remove-domain.js:227
 msgid "Unable to remove domain. Please try again."
 msgstr "Unable to remove domain. Please try again."
 
-#: src/mutations/organizations/remove-organization.js:60
-#: src/mutations/organizations/remove-organization.js:73
-#: src/mutations/organizations/remove-organization.js:82
-#: src/mutations/organizations/remove-organization.js:153
-#: src/mutations/organizations/remove-organization.js:185
-#: src/mutations/organizations/remove-organization.js:196
+#: src/mutations/organizations/remove-organization.js:61
+#: src/mutations/organizations/remove-organization.js:74
+#: src/mutations/organizations/remove-organization.js:83
+#: src/mutations/organizations/remove-organization.js:154
+#: src/mutations/organizations/remove-organization.js:186
+#: src/mutations/organizations/remove-organization.js:197
 msgid "Unable to remove organization. Please try again."
 msgstr "Unable to remove organization. Please try again."
 
@@ -988,6 +1068,22 @@ msgstr "Unable to verify if user is an admin, please try again."
 msgid "Url that you would like to be added to the database."
 msgstr "Url that you would like to be added to the database."
 
+#: src/enums/scan-types.js:11
+msgid "Used for defining if DMARC and DKIM scans should be preformed."
+msgstr "Used for defining if DMARC and DKIM scans should be preformed."
+
+#: src/enums/languages.js:11
+msgid "Used for defining if English is the preferred language."
+msgstr "Used for defining if English is the preferred language."
+
+#: src/enums/languages.js:17
+msgid "Used for defining if French is the preferred language."
+msgstr "Used for defining if French is the preferred language."
+
+#: src/enums/scan-types.js:17
+msgid "Used for defining if HTTPS and SSL scans should be preformed."
+msgstr "Used for defining if HTTPS and SSL scans should be preformed."
+
 #: src/mutations/user/send-password-reset.js:16
 msgid "User name for the account you would like to receive a password reset link for."
 msgstr "User name for the account you would like to receive a password reset link for."
@@ -1009,7 +1105,7 @@ msgstr "Users email that you would like to invite to your org."
 msgid "Value is not a string: {0}"
 msgstr "Value is not a string: {0}"
 
-#: src/scalars/organization-acronym.js:12
+#: src/scalars/acronym.js:12
 msgid "Value is not a valid acronym: {value}"
 msgstr "Value is not a valid acronym: {value}"
 
@@ -1029,7 +1125,7 @@ msgstr "Value is not a valid slug: {value}"
 msgid "Value is not a valid year: {value}"
 msgstr "Value is not a valid year: {value}"
 
-#: src/scalars/organization-acronym.js:8
+#: src/scalars/acronym.js:8
 #: src/scalars/slug.js:8
 #: src/scalars/year.js:8
 msgid "Value is not string: {0}"

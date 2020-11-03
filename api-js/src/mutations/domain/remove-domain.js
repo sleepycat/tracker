@@ -1,6 +1,7 @@
-const { GraphQLNonNull, GraphQLID, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedID, TranslatedString } = require('../../scalars')
 
 const removeDomain = (i18n) =>
   new mutationWithClientMutationId({
@@ -8,11 +9,11 @@ const removeDomain = (i18n) =>
     description: i18n._(t`This mutation allows the removal of unused domains.`),
     inputFields: () => ({
       domainId: {
-        type: GraphQLNonNull(GraphQLID),
+        type: GraphQLNonNull(TranslatedID(i18n)),
         description: i18n._(t`The global id of the domain you wish to remove.`),
       },
       orgId: {
-        type: GraphQLNonNull(GraphQLID),
+        type: GraphQLNonNull(TranslatedID(i18n)),
         description: i18n._(
           t`The organization you wish to remove the domain from.`,
         ),
@@ -20,7 +21,7 @@ const removeDomain = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(
           t`Status string to inform the user if the domain was successfully removed.`,
         ),
