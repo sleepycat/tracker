@@ -48,7 +48,7 @@ describe('given the TranslatedInt scalar', () => {
       describe('value parsing', () => {
         describe('given valid inputs', () => {
           describe('given a valid int', () => {
-            it('returns test year', () => {
+            it('returns test int', () => {
               const testInt = 1
               expect(TranslatedInt(i18n).parseValue(testInt)).toEqual(testInt)
             })
