@@ -14,7 +14,7 @@ const updateOrganization = (i18n) => new mutationWithClientMutationId({
       description: i18n._(t`The global id of the organization to be updated.`),
     },
     acronymEN: {
-      type: GraphQLNonNull(Acronym),
+      type: Acronym,
       description: i18n._(t`The English acronym of the organization.`),
     },
     acronymFR: {
