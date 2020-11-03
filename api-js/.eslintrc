@@ -48,7 +48,12 @@
           "TranslatedFloat",
           "TranslatedID",
           "TranslatedInt",
-          "TranslatedString"
+          "TranslatedString",
+          "Domain",
+          "Acronym",
+          "Selectors",
+          "Slug",
+          "Year"
         ]
       }
     ]
