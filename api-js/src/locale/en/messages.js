@@ -20,6 +20,14 @@
   messages: {
     'A confirmation password to confirm the new password.':
       'A confirmation password to confirm the new password.',
+    'A field that conforms to a 4 digit integer.':
+      'A field that conforms to a 4 digit integer.',
+    'A field that conforms to a string, with strings ending in ._domainkey.':
+      'A field that conforms to a string, with strings ending in ._domainkey.',
+    "A field who's values contain numbers, letters, dashes, and underscores.":
+      "A field who's values contain numbers, letters, dashes, and underscores.",
+    'A field whose value is an upper case letter or an under score that has a length between 1 and 50.':
+      'A field whose value is an upper case letter or an under score that has a length between 1 and 50.',
     'A password confirmation of their new password.':
       'A password confirmation of their new password.',
     'A secondary password field used to confirm the user entered the correct password.':
@@ -34,6 +42,21 @@
       'Authentication error. Please sign in.',
     'Boolean cannot represent a non boolean value: {0}': function (a) {
       return ['Boolean cannot represent a non boolean value: ', a('0')]
+    },
+    'Can only validate strings as acronyms but got a: {0}': function (a) {
+      return ['Can only validate strings as acronyms but got a: ', a('0')]
+    },
+    'Can only validate strings as domains but got a: {0}': function (a) {
+      return ['Can only validate strings as domains but got a: ', a('0')]
+    },
+    'Can only validate strings as selectors but got a: {0}': function (a) {
+      return ['Can only validate strings as selectors but got a: ', a('0')]
+    },
+    'Can only validate strings as slug but got a: {0}': function (a) {
+      return ['Can only validate strings as slug but got a: ', a('0')]
+    },
+    'Can only validate strings as year but got a: {0}': function (a) {
+      return ['Can only validate strings as year but got a: ', a('0')]
     },
     'Could not retrieve specified domain.':
       'Could not retrieve specified domain.',
@@ -238,6 +261,8 @@
     'String cannot represent a non string value: {0}': function (a) {
       return ['String cannot represent a non string value: ', a('0')]
     },
+    'String that conforms to a domain structure.':
+      'String that conforms to a domain structure.',
     'Successfully invited user to organization, and sent notification email.':
       'Successfully invited user to organization, and sent notification email.',
     'Successfully removed domain: {0} from {1}.': function (a) {
@@ -516,6 +541,27 @@
     'Username already in use.': 'Username already in use.',
     'Users email that you would like to invite to your org.':
       'Users email that you would like to invite to your org.',
+    'Value is not a string: {0}': function (a) {
+      return ['Value is not a string: ', a('0')]
+    },
+    'Value is not a valid acronym: {value}': function (a) {
+      return ['Value is not a valid acronym: ', a('value')]
+    },
+    'Value is not a valid domain: {value}': function (a) {
+      return ['Value is not a valid domain: ', a('value')]
+    },
+    'Value is not a valid selector: {value}': function (a) {
+      return ['Value is not a valid selector: ', a('value')]
+    },
+    'Value is not a valid slug: {value}': function (a) {
+      return ['Value is not a valid slug: ', a('value')]
+    },
+    'Value is not a valid year: {value}': function (a) {
+      return ['Value is not a valid year: ', a('value')]
+    },
+    'Value is not string: {0}': function (a) {
+      return ['Value is not string: ', a('0')]
+    },
     "We've sent you a text message with an authentication code to sign into Pulse.":
       "We've sent you a text message with an authentication code to sign into Pulse.",
     "We've sent you an email with an authentication code to sign into Pulse.":

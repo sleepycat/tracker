@@ -15,6 +15,22 @@ msgstr ""
 msgid "A confirmation password to confirm the new password."
 msgstr "A confirmation password to confirm the new password."
 
+#: src/scalars/year.js:29
+msgid "A field that conforms to a 4 digit integer."
+msgstr "A field that conforms to a 4 digit integer."
+
+#: src/scalars/selector.js:29
+msgid "A field that conforms to a string, with strings ending in ._domainkey."
+msgstr "A field that conforms to a string, with strings ending in ._domainkey."
+
+#: src/scalars/slug.js:30
+msgid "A field who's values contain numbers, letters, dashes, and underscores."
+msgstr "A field who's values contain numbers, letters, dashes, and underscores."
+
+#: src/scalars/organization-acronym.js:30
+msgid "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
+msgstr "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
+
 #: src/mutations/user/update-user-password.js:24
 msgid "A password confirmation of their new password."
 msgstr "A password confirmation of their new password."
@@ -50,6 +66,26 @@ msgstr "Authentication error. Please sign in."
 #: src/scalars/translated-boolean.js:17
 msgid "Boolean cannot represent a non boolean value: {0}"
 msgstr "Boolean cannot represent a non boolean value: {0}"
+
+#: src/scalars/organization-acronym.js:20
+msgid "Can only validate strings as acronyms but got a: {0}"
+msgstr "Can only validate strings as acronyms but got a: {0}"
+
+#: src/scalars/domain.js:19
+msgid "Can only validate strings as domains but got a: {0}"
+msgstr "Can only validate strings as domains but got a: {0}"
+
+#: src/scalars/selector.js:19
+msgid "Can only validate strings as selectors but got a: {0}"
+msgstr "Can only validate strings as selectors but got a: {0}"
+
+#: src/scalars/slug.js:20
+msgid "Can only validate strings as slug but got a: {0}"
+msgstr "Can only validate strings as slug but got a: {0}"
+
+#: src/scalars/year.js:20
+msgid "Can only validate strings as year but got a: {0}"
+msgstr "Can only validate strings as year but got a: {0}"
 
 #: src/queries/domains/find-domain-by-domain.js:46
 msgid "Could not retrieve specified domain."
@@ -285,6 +321,10 @@ msgstr "Status string to inform the user if the organization was successfully re
 #: src/scalars/translated-string.js:17
 msgid "String cannot represent a non string value: {0}"
 msgstr "String cannot represent a non string value: {0}"
+
+#: src/scalars/domain.js:27
+msgid "String that conforms to a domain structure."
+msgstr "String that conforms to a domain structure."
 
 #: src/mutations/user-affiliations/invite-user-to-org.js:196
 msgid "Successfully invited user to organization, and sent notification email."
@@ -963,6 +1003,37 @@ msgstr "Username already in use."
 #: src/mutations/user-affiliations/invite-user-to-org.js:17
 msgid "Users email that you would like to invite to your org."
 msgstr "Users email that you would like to invite to your org."
+
+#: src/scalars/domain.js:7
+#: src/scalars/selector.js:7
+msgid "Value is not a string: {0}"
+msgstr "Value is not a string: {0}"
+
+#: src/scalars/organization-acronym.js:12
+msgid "Value is not a valid acronym: {value}"
+msgstr "Value is not a valid acronym: {value}"
+
+#: src/scalars/domain.js:10
+msgid "Value is not a valid domain: {value}"
+msgstr "Value is not a valid domain: {value}"
+
+#: src/scalars/selector.js:10
+msgid "Value is not a valid selector: {value}"
+msgstr "Value is not a valid selector: {value}"
+
+#: src/scalars/slug.js:12
+msgid "Value is not a valid slug: {value}"
+msgstr "Value is not a valid slug: {value}"
+
+#: src/scalars/year.js:12
+msgid "Value is not a valid year: {value}"
+msgstr "Value is not a valid year: {value}"
+
+#: src/scalars/organization-acronym.js:8
+#: src/scalars/slug.js:8
+#: src/scalars/year.js:8
+msgid "Value is not string: {0}"
+msgstr "Value is not string: {0}"
 
 #: src/mutations/user/sign-in.js:125
 msgid "We've sent you a text message with an authentication code to sign into Pulse."

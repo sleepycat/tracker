@@ -7,6 +7,13 @@
   },
   messages: {
     'A confirmation password to confirm the new password.': 'todo',
+    'A field that conforms to a 4 digit integer.': 'todo',
+    'A field that conforms to a string, with strings ending in ._domainkey.':
+      'todo',
+    "A field who's values contain numbers, letters, dashes, and underscores.":
+      'todo',
+    'A field whose value is an upper case letter or an under score that has a length between 1 and 50.':
+      'todo',
     'A password confirmation of their new password.': 'todo',
     'A secondary password field used to confirm the user entered the correct password.':
       'todo',
@@ -16,6 +23,11 @@
     'Authentication error. Please sign in again.': 'todo',
     'Authentication error. Please sign in.': 'todo',
     'Boolean cannot represent a non boolean value: {0}': 'todo',
+    'Can only validate strings as acronyms but got a: {0}': 'todo',
+    'Can only validate strings as domains but got a: {0}': 'todo',
+    'Can only validate strings as selectors but got a: {0}': 'todo',
+    'Can only validate strings as slug but got a: {0}': 'todo',
+    'Can only validate strings as year but got a: {0}': 'todo',
     'Could not retrieve specified domain.': 'todo',
     'Could not retrieve specified organization.': 'todo',
     'DKIM selector strings corresponding to this domain.': 'todo',
@@ -99,6 +111,7 @@
     'Status string to inform the user if the organization was successfully removed.':
       'todo',
     'String cannot represent a non string value: {0}': 'todo',
+    'String that conforms to a domain structure.': 'todo',
     'Successfully invited user to organization, and sent notification email.':
       'todo',
     'Successfully removed domain: {0} from {1}.': 'todo',
@@ -273,6 +286,13 @@
     'User role was updated successfully.': 'todo',
     'Username already in use.': 'todo',
     'Users email that you would like to invite to your org.': 'todo',
+    'Value is not a string: {0}': 'todo',
+    'Value is not a valid acronym: {value}': 'todo',
+    'Value is not a valid domain: {value}': 'todo',
+    'Value is not a valid selector: {value}': 'todo',
+    'Value is not a valid slug: {value}': 'todo',
+    'Value is not a valid year: {value}': 'todo',
+    'Value is not string: {0}': 'todo',
     "We've sent you a text message with an authentication code to sign into Pulse.":
       'todo',
     "We've sent you an email with an authentication code to sign into Pulse.":
