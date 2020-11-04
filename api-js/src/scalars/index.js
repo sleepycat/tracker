@@ -1,6 +1,7 @@
 const { Acronym } = require('./acronym.js')
 const { Domain } = require('./domain')
 const { EmailAddress } = require('./email')
+const { PhoneNumber } = require('./phone-number')
 const { Selectors } = require('./selector.js')
 const { Slug } = require('./slug.js')
 const { Year } = require('./year.js')
@@ -14,6 +15,7 @@ module.exports = {
   Acronym,
   Domain,
   EmailAddress,
+  PhoneNumber,
   Selectors,
   Slug,
   Year,
