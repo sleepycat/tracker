@@ -53,7 +53,13 @@
           "Acronym",
           "Selectors",
           "Slug",
-          "Year"
+          "Year",
+          "EmailAddress",
+          "PhoneNumber",
+          "ScanTypeEnums",
+          "LanguageEnums",
+          "RoleEnums",
+          "PeriodEnums"
         ]
       }
     ]
