@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/mutations/user/reset-password.js:19
+#: src/mutations/user/reset-password.js:20
 msgid "A confirmation password to confirm the new password."
 msgstr "A confirmation password to confirm the new password."
 
@@ -27,11 +27,19 @@ msgstr "A field that conforms to a string, with strings ending in ._domainkey."
 msgid "A field who's values contain numbers, letters, dashes, and underscores."
 msgstr "A field who's values contain numbers, letters, dashes, and underscores."
 
+#: src/scalars/phone-number.js:37
+msgid "A field whose value conforms to the standard E.164 format as specified in: https://en.wikipedia.org/wiki/E.164. Basically this is +17895551234."
+msgstr "A field whose value conforms to the standard E.164 format as specified in: https://en.wikipedia.org/wiki/E.164. Basically this is +17895551234."
+
+#: src/scalars/email.js:34
+msgid "A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/."
+msgstr "A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/."
+
 #: src/scalars/acronym.js:30
 msgid "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
 msgstr "A field whose value is an upper case letter or an under score that has a length between 1 and 50."
 
-#: src/mutations/user/update-user-password.js:24
+#: src/mutations/user/update-user-password.js:25
 msgid "A password confirmation of their new password."
 msgstr "A password confirmation of their new password."
 
@@ -67,10 +75,14 @@ msgstr "An enum used to define user's language."
 msgid "An enum used to select information from the dmarc-report-api."
 msgstr "An enum used to select information from the dmarc-report-api."
 
+#: src/types/auth-result.js:8
+msgid "An object used to return information when users sign up or authenticate."
+msgstr "An object used to return information when users sign up or authenticate."
+
 #: src/mutations/user/send-phone-code.js:50
-#: src/mutations/user/update-user-password.js:59
-#: src/mutations/user/update-user-profile.js:64
-#: src/mutations/user/verify-phone-number.js:41
+#: src/mutations/user/update-user-password.js:60
+#: src/mutations/user/update-user-profile.js:63
+#: src/mutations/user/verify-phone-number.js:42
 msgid "Authentication error, please sign in again."
 msgstr "Authentication error, please sign in again."
 
@@ -99,6 +111,14 @@ msgstr "Can only validate strings as acronyms but got a: {0}"
 msgid "Can only validate strings as domains but got a: {0}"
 msgstr "Can only validate strings as domains but got a: {0}"
 
+#: src/scalars/email.js:22
+msgid "Can only validate strings as email address but got a: {0}"
+msgstr "Can only validate strings as email address but got a: {0}"
+
+#: src/scalars/phone-number.js:25
+msgid "Can only validate strings as phone numbers but got a: {0}"
+msgstr "Can only validate strings as phone numbers but got a: {0}"
+
 #: src/scalars/selector.js:19
 msgid "Can only validate strings as selectors but got a: {0}"
 msgstr "Can only validate strings as selectors but got a: {0}"
@@ -111,11 +131,15 @@ msgstr "Can only validate strings as slug but got a: {0}"
 msgid "Can only validate strings as year but got a: {0}"
 msgstr "Can only validate strings as year but got a: {0}"
 
+#: src/types/categorized-summary/summary-category.js:17
+msgid "Category of computed summary which the other fields relate to."
+msgstr "Category of computed summary which the other fields relate to."
+
 #: src/queries/domains/find-domain-by-domain.js:46
 msgid "Could not retrieve specified domain."
 msgstr "Could not retrieve specified domain."
 
-#: src/queries/organizations/find-organization-by-slug.js:48
+#: src/queries/organizations/find-organization-by-slug.js:50
 msgid "Could not retrieve specified organization."
 msgstr "Could not retrieve specified organization."
 
@@ -126,6 +150,10 @@ msgstr "DKIM selector strings corresponding to this domain."
 #: src/mutations/user/sign-up.js:22
 msgid "Email address that the user will use to authenticate with."
 msgstr "Email address that the user will use to authenticate with."
+
+#: src/queries/summaries/email-summary.js:7
+msgid "Email summary computed values, used to build summary cards."
+msgstr "Email summary computed values, used to build summary cards."
 
 #: src/enums/scan-types.js:22
 msgid "Enum used when requesting a manual scan to determine what type of scan is to be ran."
@@ -169,7 +197,7 @@ msgstr "Informs the user if the invite or invite email was successfully sent."
 msgid "Informs the user if the password reset email was sent successfully."
 msgstr "Informs the user if the password reset email was sent successfully."
 
-#: src/mutations/user/reset-password.js:33
+#: src/mutations/user/reset-password.js:34
 msgid "Informs the user if the password reset was successful, and to redirect to sign in page."
 msgstr "Informs the user if the password reset was successful, and to redirect to sign in page."
 
@@ -181,11 +209,11 @@ msgstr "Informs the user if the scan was dispatched successfully."
 msgid "Informs the user if the text message was successfully sent."
 msgstr "Informs the user if the text message was successfully sent."
 
-#: src/mutations/user-affiliations/update-user-role.js:37
+#: src/mutations/user-affiliations/update-user-role.js:41
 msgid "Informs the user if the user role update was successful."
 msgstr "Informs the user if the user role update was successful."
 
-#: src/mutations/user/verify-account.js:21
+#: src/mutations/user/verify-account.js:22
 msgid "Informs user if account was successfully verified."
 msgstr "Informs user if account was successfully verified."
 
@@ -202,6 +230,14 @@ msgstr "Int cannot represent non-integer value: {0}"
 msgid "Invalid token, please request a new one."
 msgstr "Invalid token, please request a new one."
 
+#: src/types/auth-result.js:12
+msgid "JWT used for accessing controlled content."
+msgstr "JWT used for accessing controlled content."
+
+#: src/types/categorized-summary/index.js:11
+msgid "List of SummaryCategory objects with data for different computed categories."
+msgstr "List of SummaryCategory objects with data for different computed categories."
+
 #: src/mutations/domain/update-domain.js:10
 msgid "Mutation allows the modification of domains if domain is updated through out its life-cycle"
 msgstr "Mutation allows the modification of domains if domain is updated through out its life-cycle"
@@ -214,7 +250,7 @@ msgstr "Mutation allows the modification of organizations if any changes to the 
 msgid "Mutation used to create a new domain for an organization."
 msgstr "Mutation used to create a new domain for an organization."
 
-#: src/mutations/user/reset-password.js:93
+#: src/mutations/user/reset-password.js:94
 msgid "New passwords do not match. Please try again."
 msgstr "New passwords do not match. Please try again."
 
@@ -222,7 +258,7 @@ msgstr "New passwords do not match. Please try again."
 msgid "No domain with the provided domain could be found."
 msgstr "No domain with the provided domain could be found."
 
-#: src/queries/organizations/find-organization-by-slug.js:39
+#: src/queries/organizations/find-organization-by-slug.js:41
 msgid "No organization with the provided slug could be found."
 msgstr "No organization with the provided slug could be found."
 
@@ -266,7 +302,7 @@ msgstr "Passing both `first` and `last` to paginate the `spf` connection is not 
 msgid "Passing both `first` and `last` to paginate the `ssl` connection is not supported."
 msgstr "Passing both `first` and `last` to paginate the `ssl` connection is not supported."
 
-#: src/mutations/user/reset-password.js:103
+#: src/mutations/user/reset-password.js:104
 msgid "Password is not strong enough. Please try again."
 msgstr "Password is not strong enough. Please try again."
 
@@ -274,11 +310,11 @@ msgstr "Password is not strong enough. Please try again."
 msgid "Password is too short."
 msgstr "Password is too short."
 
-#: src/mutations/user/reset-password.js:125
+#: src/mutations/user/reset-password.js:126
 msgid "Password was successfully reset."
 msgstr "Password was successfully reset."
 
-#: src/mutations/user/update-user-password.js:125
+#: src/mutations/user/update-user-password.js:126
 msgid "Password was successfully updated."
 msgstr "Password was successfully updated."
 
@@ -286,14 +322,17 @@ msgstr "Password was successfully updated."
 msgid "Passwords do not match."
 msgstr "Passwords do not match."
 
-#: src/mutations/user/update-user-profile.js:100
+#: src/types/categorized-summary/summary-category.js:30
+msgid "Percentage compared to other categories."
+msgstr "Percentage compared to other categories."
+
+#: src/mutations/user/update-user-profile.js:99
 msgid "Profile successfully updated."
 msgstr "Profile successfully updated."
 
-#: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:68
-#: src/loaders/user-affiliations/load-user-affiliations-by-user-id.js:67
-msgid "Requesting `{amount}` records on the `affiliations` exceeds the `{argSet}` limit of 100 records."
-msgstr "Requesting `{amount}` records on the `affiliations` exceeds the `{argSet}` limit of 100 records."
+#: src/queries/user/is-user-admin.js:6
+msgid "Query used to check if the user has an admin role."
+msgstr "Query used to check if the user has an admin role."
 
 #: src/loaders/domains/load-domain-connections-by-organizations-id.js:67
 #: src/loaders/domains/load-domain-connections-by-user-id.js:65
@@ -329,13 +368,29 @@ msgstr "Requesting {amount} records on the `spf` connection exceeds the `{argSet
 msgid "Requesting {amount} records on the `ssl` connection exceeds the `{argSet}` limit of 100 records."
 msgstr "Requesting {amount} records on the `ssl` connection exceeds the `{argSet}` limit of 100 records."
 
+#: src/queries/domains/find-domain-by-domain.js:8
+msgid "Retrieve a specific domain by providing a domain."
+msgstr "Retrieve a specific domain by providing a domain."
+
 #: src/mutations/index.js:28
 msgid "Root Mutation Object"
 msgstr "Root Mutation Object"
 
-#: src/mutations/user/authenticate.js:18
+#: src/mutations/user/authenticate.js:19
 msgid "Security code found in text msg, or email inbox."
 msgstr "Security code found in text msg, or email inbox."
+
+#: src/queries/organizations/find-organization-by-slug.js:9
+msgid "Select all information on a selected organization that a user has access to."
+msgstr "Select all information on a selected organization that a user has access to."
+
+#: src/queries/domains/find-my-domains.js:7
+msgid "Select domains a user has access to."
+msgstr "Select domains a user has access to."
+
+#: src/queries/organizations/find-my-organizations.js:7
+msgid "Select organizations a user has access to."
+msgstr "Select organizations a user has access to."
 
 #: src/mutations/domain/remove-domain.js:26
 msgid "Status string to inform the user if the domain was successfully removed."
@@ -370,11 +425,11 @@ msgstr "Successfully removed organization: {0}."
 msgid "Successfully sent invitation to service, and organization email."
 msgstr "Successfully sent invitation to service, and organization email."
 
-#: src/mutations/user/verify-phone-number.js:97
+#: src/mutations/user/verify-phone-number.js:98
 msgid "Successfully two factor authenticated."
 msgstr "Successfully two factor authenticated."
 
-#: src/mutations/user/verify-account.js:105
+#: src/mutations/user/verify-account.js:106
 msgid "Successfully verified account."
 msgstr "Successfully verified account."
 
@@ -445,11 +500,11 @@ msgstr "The French translation of the province the organization resides in."
 msgid "The French translation of the sector the organization belongs to."
 msgstr "The French translation of the sector the organization belongs to."
 
-#: src/mutations/user/reset-password.js:25
+#: src/mutations/user/reset-password.js:26
 msgid "The JWT found in the url, redirected from the email they received."
 msgstr "The JWT found in the url, redirected from the email they received."
 
-#: src/mutations/user/authenticate.js:24
+#: src/mutations/user/authenticate.js:25
 msgid "The JWT that is retrieved from the sign in mutation."
 msgstr "The JWT that is retrieved from the sign in mutation."
 
@@ -473,7 +528,7 @@ msgstr "The `Int` scalar type represents non-fractional signed whole numeric val
 msgid "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
 msgstr "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
 
-#: src/mutations/user/authenticate.js:31
+#: src/mutations/user/authenticate.js:32
 #: src/mutations/user/sign-up.js:49
 msgid "The authenticated users information, and JWT."
 msgstr "The authenticated users information, and JWT."
@@ -481,6 +536,10 @@ msgstr "The authenticated users information, and JWT."
 #: src/mutations/scans/request-scan.js:15
 msgid "The domain that the scan will be ran on."
 msgstr "The domain that the scan will be ran on."
+
+#: src/queries/domains/find-domain-by-domain.js:12
+msgid "The domain you wish to retrieve information for."
+msgstr "The domain you wish to retrieve information for."
 
 #: src/mutations/user/sign-in.js:17
 msgid "The email the user signed up with."
@@ -570,7 +629,7 @@ msgstr "The month of September."
 msgid "The name that will be displayed to other users."
 msgstr "The name that will be displayed to other users."
 
-#: src/mutations/user/update-user-password.js:20
+#: src/mutations/user/update-user-password.js:21
 msgid "The new password the user wishes to change to."
 msgstr "The new password the user wishes to change to."
 
@@ -586,7 +645,7 @@ msgstr "The newly created domain."
 msgid "The newly created organization."
 msgstr "The newly created organization."
 
-#: src/mutations/user-affiliations/update-user-role.js:23
+#: src/mutations/user-affiliations/update-user-role.js:27
 msgid "The organization that the admin, and the user both belong to."
 msgstr "The organization that the admin, and the user both belong to."
 
@@ -610,7 +669,7 @@ msgstr "The password the user will authenticate with."
 msgid "The phone number that the text message will be sent to."
 msgstr "The phone number that the text message will be sent to."
 
-#: src/mutations/user-affiliations/update-user-role.js:29
+#: src/mutations/user-affiliations/update-user-role.js:33
 msgid "The role that the admin wants to give to the selected user."
 msgstr "The role that the admin wants to give to the selected user."
 
@@ -618,16 +677,20 @@ msgstr "The role that the admin wants to give to the selected user."
 msgid "The role which you would like this user to have."
 msgstr "The role which you would like this user to have."
 
-#: src/mutations/user/update-user-password.js:31
-#: src/mutations/user/update-user-profile.js:37
+#: src/queries/organizations/find-organization-by-slug.js:15
+msgid "The slugified organization name you want to retrieve data for."
+msgstr "The slugified organization name you want to retrieve data for."
+
+#: src/mutations/user/update-user-password.js:32
+#: src/mutations/user/update-user-profile.js:36
 msgid "The status if the user profile update was successful."
 msgstr "The status if the user profile update was successful."
 
-#: src/mutations/user/verify-phone-number.js:23
+#: src/mutations/user/verify-phone-number.js:24
 msgid "The status of verifying the two factor authentication."
 msgstr "The status of verifying the two factor authentication."
 
-#: src/mutations/user/verify-phone-number.js:15
+#: src/mutations/user/verify-phone-number.js:16
 msgid "The two factor code that was received via text message."
 msgstr "The two factor code that was received via text message."
 
@@ -635,23 +698,23 @@ msgstr "The two factor code that was received via text message."
 msgid "The updated DKIM selector strings corresponding to this domain."
 msgstr "The updated DKIM selector strings corresponding to this domain."
 
-#: src/mutations/user/update-user-profile.js:17
+#: src/mutations/user/update-user-profile.js:16
 msgid "The updated display name the user wishes to change to."
 msgstr "The updated display name the user wishes to change to."
 
-#: src/mutations/user/update-user-profile.js:29
+#: src/mutations/user/update-user-profile.js:28
 msgid "The updated preferred language the user wishes to change to."
 msgstr "The updated preferred language the user wishes to change to."
 
-#: src/mutations/user/update-user-profile.js:23
+#: src/mutations/user/update-user-profile.js:22
 msgid "The updated user name the user wishes to change to."
 msgstr "The updated user name the user wishes to change to."
 
-#: src/mutations/user-affiliations/update-user-role.js:17
+#: src/mutations/user-affiliations/update-user-role.js:21
 msgid "The username of the user you wish to update their role to."
 msgstr "The username of the user you wish to update their role to."
 
-#: src/mutations/user/update-user-password.js:15
+#: src/mutations/user/update-user-password.js:16
 msgid "The users current password to verify it is the current user."
 msgstr "The users current password to verify it is the current user."
 
@@ -659,7 +722,7 @@ msgstr "The users current password to verify it is the current user."
 msgid "The users email address used for sending the verification email."
 msgstr "The users email address used for sending the verification email."
 
-#: src/mutations/user/reset-password.js:14
+#: src/mutations/user/reset-password.js:15
 msgid "The users new password."
 msgstr "The users new password."
 
@@ -679,7 +742,7 @@ msgstr "This mutation allows admins and higher to invite users to any of their o
 msgid "This mutation allows for new users to sign up for our sites services."
 msgstr "This mutation allows for new users to sign up for our sites services."
 
-#: src/mutations/user-affiliations/update-user-role.js:10
+#: src/mutations/user-affiliations/update-user-role.js:14
 msgid "This mutation allows super admins, and admins of the given organization to update the permission level of a given user that already belongs to the given organization."
 msgstr "This mutation allows super admins, and admins of the given organization to update the permission level of a given user that already belongs to the given organization."
 
@@ -695,23 +758,23 @@ msgstr "This mutation allows the removal of unused domains."
 msgid "This mutation allows the removal of unused organizations."
 msgstr "This mutation allows the removal of unused organizations."
 
-#: src/mutations/user/reset-password.js:9
+#: src/mutations/user/reset-password.js:10
 msgid "This mutation allows the user to take the token they received in their email to reset their password."
 msgstr "This mutation allows the user to take the token they received in their email to reset their password."
 
-#: src/mutations/user/verify-phone-number.js:9
+#: src/mutations/user/verify-phone-number.js:10
 msgid "This mutation allows the user to two factor authenticate."
 msgstr "This mutation allows the user to two factor authenticate."
 
-#: src/mutations/user/update-user-password.js:9
+#: src/mutations/user/update-user-password.js:10
 msgid "This mutation allows the user to update their account password."
 msgstr "This mutation allows the user to update their account password."
 
-#: src/mutations/user/update-user-profile.js:11
+#: src/mutations/user/update-user-profile.js:10
 msgid "This mutation allows the user to update their user profile to change various details of their current profile."
 msgstr "This mutation allows the user to update their user profile to change various details of their current profile."
 
-#: src/mutations/user/verify-account.js:9
+#: src/mutations/user/verify-account.js:10
 msgid "This mutation allows the user to verify their account through a token sent in an email."
 msgstr "This mutation allows the user to verify their account through a token sent in an email."
 
@@ -719,7 +782,7 @@ msgstr "This mutation allows the user to verify their account through a token se
 msgid "This mutation allows users to give their credentials and be taken to the authentication page to verify their account"
 msgstr "This mutation allows users to give their credentials and be taken to the authentication page to verify their account"
 
-#: src/mutations/user/authenticate.js:12
+#: src/mutations/user/authenticate.js:13
 msgid "This mutation allows users to give their credentials and retrieve a token that gives them access to restricted content."
 msgstr "This mutation allows users to give their credentials and retrieve a token that gives them access to restricted content."
 
@@ -735,7 +798,15 @@ msgstr "This mutation is used for sending a text message with a random six digit
 msgid "This mutation is used to run a manual scan on a requested domain."
 msgstr "This mutation is used to run a manual scan on a requested domain."
 
-#: src/mutations/user/verify-account.js:14
+#: src/types/categorized-summary/summary-category.js:35
+msgid "This object contains the information for each type of summary that has been pre-computed"
+msgstr "This object contains the information for each type of summary that has been pre-computed"
+
+#: src/types/categorized-summary/index.js:20
+msgid "This object contains the list of different categories for pre-computed summary data with the computed total for how many domains in total are being compared."
+msgstr "This object contains the list of different categories for pre-computed summary data with the computed total for how many domains in total are being compared."
+
+#: src/mutations/user/verify-account.js:15
 msgid "Token sent via email, and located in url."
 msgstr "Token sent via email, and located in url."
 
@@ -747,6 +818,14 @@ msgstr "Token used to verify during authentication."
 msgid "Too many failed login attempts, please reset your password, and try again."
 msgstr "Too many failed login attempts, please reset your password, and try again."
 
+#: src/types/categorized-summary/summary-category.js:24
+msgid "Total count of domains that fall into this category."
+msgstr "Total count of domains that fall into this category."
+
+#: src/types/categorized-summary/index.js:16
+msgid "Total domains that were check under this summary."
+msgstr "Total domains that were check under this summary."
+
 #: src/mutations/user/send-phone-code.js:111
 msgid "Two factor code has been successfully sent, you will receive a text message shortly."
 msgstr "Two factor code has been successfully sent, you will receive a text message shortly."
@@ -755,10 +834,10 @@ msgstr "Two factor code has been successfully sent, you will receive a text mess
 msgid "Type of scan to preform on the requested domain ('WEB' or 'MAIL')."
 msgstr "Type of scan to preform on the requested domain ('WEB' or 'MAIL')."
 
-#: src/mutations/user/authenticate.js:62
-#: src/mutations/user/authenticate.js:72
-#: src/mutations/user/authenticate.js:89
-#: src/mutations/user/authenticate.js:107
+#: src/mutations/user/authenticate.js:63
+#: src/mutations/user/authenticate.js:73
+#: src/mutations/user/authenticate.js:90
+#: src/mutations/user/authenticate.js:108
 #: src/notify/notify-send-authenticate-email.js:20
 #: src/notify/notify-send-authenticate-text-msg.js:21
 msgid "Unable to authenticate. Please try again."
@@ -935,10 +1014,10 @@ msgstr "Unable to remove domain. Please try again."
 msgid "Unable to remove organization. Please try again."
 msgstr "Unable to remove organization. Please try again."
 
-#: src/mutations/user/reset-password.js:66
-#: src/mutations/user/reset-password.js:76
-#: src/mutations/user/reset-password.js:84
-#: src/mutations/user/reset-password.js:119
+#: src/mutations/user/reset-password.js:67
+#: src/mutations/user/reset-password.js:77
+#: src/mutations/user/reset-password.js:85
+#: src/mutations/user/reset-password.js:120
 msgid "Unable to reset password. Please try again."
 msgstr "Unable to reset password. Please try again."
 
@@ -982,10 +1061,10 @@ msgstr "Unable to sign in, please try again."
 msgid "Unable to sign up. Please try again."
 msgstr "Unable to sign up. Please try again."
 
-#: src/mutations/user/verify-phone-number.js:52
-#: src/mutations/user/verify-phone-number.js:61
-#: src/mutations/user/verify-phone-number.js:71
-#: src/mutations/user/verify-phone-number.js:88
+#: src/mutations/user/verify-phone-number.js:53
+#: src/mutations/user/verify-phone-number.js:62
+#: src/mutations/user/verify-phone-number.js:72
+#: src/mutations/user/verify-phone-number.js:89
 msgid "Unable to two factor authenticate. Please try again."
 msgstr "Unable to two factor authenticate. Please try again."
 
@@ -1007,56 +1086,56 @@ msgstr "Unable to update domain. Please try again."
 msgid "Unable to update organization. Please try again."
 msgstr "Unable to update organization. Please try again."
 
-#: src/mutations/user/update-user-password.js:79
+#: src/mutations/user/update-user-password.js:80
 msgid "Unable to update password, current password does not match. Please try again."
 msgstr "Unable to update password, current password does not match. Please try again."
 
-#: src/mutations/user/update-user-password.js:91
+#: src/mutations/user/update-user-password.js:92
 msgid "Unable to update password, new passwords do not match. Please try again."
 msgstr "Unable to update password, new passwords do not match. Please try again."
 
-#: src/mutations/user/update-user-password.js:103
+#: src/mutations/user/update-user-password.js:104
 msgid "Unable to update password, passwords are required to be 12 characters or longer. Please try again."
 msgstr "Unable to update password, passwords are required to be 12 characters or longer. Please try again."
 
-#: src/mutations/user/update-user-password.js:69
-#: src/mutations/user/update-user-password.js:120
+#: src/mutations/user/update-user-password.js:70
+#: src/mutations/user/update-user-password.js:121
 msgid "Unable to update password. Please try again."
 msgstr "Unable to update password. Please try again."
 
-#: src/mutations/user/update-user-profile.js:74
-#: src/mutations/user/update-user-profile.js:95
+#: src/mutations/user/update-user-profile.js:73
+#: src/mutations/user/update-user-profile.js:94
 msgid "Unable to update profile. Please try again."
 msgstr "Unable to update profile. Please try again."
 
-#: src/mutations/user-affiliations/update-user-role.js:134
+#: src/mutations/user-affiliations/update-user-role.js:138
 msgid "Unable to update users role. Please invite user to the organization."
 msgstr "Unable to update users role. Please invite user to the organization."
 
-#: src/mutations/user-affiliations/update-user-role.js:83
-#: src/mutations/user-affiliations/update-user-role.js:95
-#: src/mutations/user-affiliations/update-user-role.js:107
-#: src/mutations/user-affiliations/update-user-role.js:124
-#: src/mutations/user-affiliations/update-user-role.js:168
-#: src/mutations/user-affiliations/update-user-role.js:187
-#: src/mutations/user-affiliations/update-user-role.js:201
-#: src/mutations/user-affiliations/update-user-role.js:219
-#: src/mutations/user-affiliations/update-user-role.js:230
+#: src/mutations/user-affiliations/update-user-role.js:87
+#: src/mutations/user-affiliations/update-user-role.js:99
+#: src/mutations/user-affiliations/update-user-role.js:111
+#: src/mutations/user-affiliations/update-user-role.js:128
+#: src/mutations/user-affiliations/update-user-role.js:172
+#: src/mutations/user-affiliations/update-user-role.js:191
+#: src/mutations/user-affiliations/update-user-role.js:205
+#: src/mutations/user-affiliations/update-user-role.js:223
+#: src/mutations/user-affiliations/update-user-role.js:234
 msgid "Unable to update users role. Please try again."
 msgstr "Unable to update users role. Please try again."
 
-#: src/mutations/user-affiliations/update-user-role.js:71
+#: src/mutations/user-affiliations/update-user-role.js:75
 msgid "Unable to update your own role. Please try again."
 msgstr "Unable to update your own role. Please try again."
 
-#: src/mutations/user/verify-account.js:71
-#: src/mutations/user/verify-account.js:81
+#: src/mutations/user/verify-account.js:72
+#: src/mutations/user/verify-account.js:82
 msgid "Unable to verify account. Please request a new email."
 msgstr "Unable to verify account. Please request a new email."
 
-#: src/mutations/user/verify-account.js:46
-#: src/mutations/user/verify-account.js:56
-#: src/mutations/user/verify-account.js:97
+#: src/mutations/user/verify-account.js:47
+#: src/mutations/user/verify-account.js:57
+#: src/mutations/user/verify-account.js:98
 msgid "Unable to verify account. Please try again."
 msgstr "Unable to verify account. Please try again."
 
@@ -1088,9 +1167,13 @@ msgstr "Used for defining if HTTPS and SSL scans should be preformed."
 msgid "User name for the account you would like to receive a password reset link for."
 msgstr "User name for the account you would like to receive a password reset link for."
 
-#: src/mutations/user-affiliations/update-user-role.js:239
+#: src/mutations/user-affiliations/update-user-role.js:243
 msgid "User role was updated successfully."
 msgstr "User role was updated successfully."
+
+#: src/types/auth-result.js:19
+msgid "User that has just been created or signed in."
+msgstr "User that has just been created or signed in."
 
 #: src/mutations/user/sign-up.js:95
 msgid "Username already in use."
@@ -1113,6 +1196,14 @@ msgstr "Value is not a valid acronym: {value}"
 msgid "Value is not a valid domain: {value}"
 msgstr "Value is not a valid domain: {value}"
 
+#: src/scalars/email.js:12
+msgid "Value is not a valid email address: {value}"
+msgstr "Value is not a valid email address: {value}"
+
+#: src/scalars/phone-number.js:13
+msgid "Value is not a valid phone number of the form +17895551234 (10-15 digits): {value}"
+msgstr "Value is not a valid phone number of the form +17895551234 (10-15 digits): {value}"
+
 #: src/scalars/selector.js:10
 msgid "Value is not a valid selector: {value}"
 msgstr "Value is not a valid selector: {value}"
@@ -1124,6 +1215,11 @@ msgstr "Value is not a valid slug: {value}"
 #: src/scalars/year.js:12
 msgid "Value is not a valid year: {value}"
 msgstr "Value is not a valid year: {value}"
+
+#: src/scalars/email.js:8
+#: src/scalars/phone-number.js:7
+msgid "Value is not of type string: {0}"
+msgstr "Value is not of type string: {0}"
 
 #: src/scalars/acronym.js:8
 #: src/scalars/slug.js:8
@@ -1138,6 +1234,10 @@ msgstr "We've sent you a text message with an authentication code to sign into P
 #: src/mutations/user/sign-in.js:130
 msgid "We've sent you an email with an authentication code to sign into Pulse."
 msgstr "We've sent you an email with an authentication code to sign into Pulse."
+
+#: src/queries/summaries/web-summary.js:7
+msgid "Web summary computed values, used to build summary cards."
+msgstr "Web summary computed values, used to build summary cards."
 
 #: src/mutations/user/sign-in.js:35
 msgid "Wether the authentication code was sent through text, or email."
