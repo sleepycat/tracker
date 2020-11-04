@@ -1,6 +1,7 @@
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedString } = require('../../scalars')
 
 const resetPassword = (i18n) =>
   new mutationWithClientMutationId({
@@ -10,17 +11,17 @@ const resetPassword = (i18n) =>
     ),
     inputFields: () => ({
       password: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`The users new password.`),
       },
       confirmPassword: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(
           t`A confirmation password to confirm the new password.`,
         ),
       },
       resetToken: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(
           t`The JWT found in the url, redirected from the email they received.`,
         ),
@@ -28,7 +29,7 @@ const resetPassword = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Informs the user if the password reset was successful, and to redirect to sign in page.`,
         ),

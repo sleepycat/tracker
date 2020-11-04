@@ -1,6 +1,7 @@
-const { GraphQLNonNull, GraphQLInt, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedString, TranslatedInt } = require('../../scalars')
 
 const verifyPhoneNumber = (i18n) =>
   new mutationWithClientMutationId({
@@ -10,7 +11,7 @@ const verifyPhoneNumber = (i18n) =>
     ),
     inputFields: () => ({
       twoFactorCode: {
-        type: GraphQLNonNull(GraphQLInt),
+        type: GraphQLNonNull(TranslatedInt(i18n)),
         description: i18n._(
           t`The two factor code that was received via text message.`,
         ),
@@ -18,7 +19,7 @@ const verifyPhoneNumber = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`The status of verifying the two factor authentication.`,
         ),

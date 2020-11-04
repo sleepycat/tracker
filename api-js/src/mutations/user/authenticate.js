@@ -1,6 +1,7 @@
-const { GraphQLNonNull, GraphQLString, GraphQLInt } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedInt, TranslatedString } = require('../../scalars')
 const { authResultType } = require('../../types')
 
 const { SIGN_IN_KEY } = process.env
@@ -13,13 +14,13 @@ const authenticate = (i18n) =>
     ),
     inputFields: () => ({
       authenticationCode: {
-        type: GraphQLNonNull(GraphQLInt),
+        type: GraphQLNonNull(TranslatedInt(i18n)),
         description: i18n._(
           t`Security code found in text msg, or email inbox.`,
         ),
       },
       authenticateToken: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(
           t`The JWT that is retrieved from the sign in mutation.`,
         ),

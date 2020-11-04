@@ -1,7 +1,7 @@
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
-const { GraphQLPhoneNumber } = require('graphql-scalars')
 const { t } = require('@lingui/macro')
+const { PhoneNumber, TranslatedString } = require('../../scalars')
 
 const sendPhoneCode = (i18n) =>
   new mutationWithClientMutationId({
@@ -11,7 +11,7 @@ const sendPhoneCode = (i18n) =>
     ),
     inputFields: () => ({
       phoneNumber: {
-        type: GraphQLNonNull(GraphQLPhoneNumber),
+        type: GraphQLNonNull(PhoneNumber(i18n)),
         description: i18n._(
           t`The phone number that the text message will be sent to.`,
         ),
@@ -19,7 +19,7 @@ const sendPhoneCode = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Informs the user if the text message was successfully sent.`,
         ),

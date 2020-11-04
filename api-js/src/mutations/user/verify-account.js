@@ -1,6 +1,7 @@
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedString } = require('../../scalars')
 
 const verifyAccount = (i18n) =>
   new mutationWithClientMutationId({
@@ -10,13 +11,13 @@ const verifyAccount = (i18n) =>
     ),
     inputFields: () => ({
       verifyTokenString: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`Token sent via email, and located in url.`),
       },
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Informs user if account was successfully verified.`,
         ),

@@ -1,8 +1,7 @@
-const { GraphQLString } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
-const { GraphQLEmailAddress } = require('graphql-scalars')
 const { t } = require('@lingui/macro')
 const { LanguageEnums } = require('../../enums')
+const { EmailAddress, TranslatedString } = require('../../scalars')
 
 const updateUserProfile = (i18n) =>
   new mutationWithClientMutationId({
@@ -12,19 +11,19 @@ const updateUserProfile = (i18n) =>
     ),
     inputFields: () => ({
       displayName: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`The updated display name the user wishes to change to.`,
         ),
       },
       userName: {
-        type: GraphQLEmailAddress,
+        type: EmailAddress(i18n),
         description: i18n._(
           t`The updated user name the user wishes to change to.`,
         ),
       },
       preferredLang: {
-        type: LanguageEnums,
+        type: LanguageEnums(i18n),
         description: i18n._(
           t`The updated preferred language the user wishes to change to.`,
         ),
@@ -32,7 +31,7 @@ const updateUserProfile = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`The status if the user profile update was successful.`,
         ),

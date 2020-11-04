@@ -1,9 +1,9 @@
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
 const { LanguageEnums } = require('../../enums')
-const { GraphQLEmailAddress } = require('graphql-scalars')
 const { authResultType } = require('../../types')
+const { TranslatedString, EmailAddress } = require('../../scalars')
 
 const signUp = (i18n) =>
   new mutationWithClientMutationId({
@@ -13,31 +13,31 @@ const signUp = (i18n) =>
     ),
     inputFields: () => ({
       displayName: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`The name that will be displayed to other users.`),
       },
       userName: {
-        type: GraphQLNonNull(GraphQLEmailAddress),
+        type: GraphQLNonNull(EmailAddress(i18n)),
         description: i18n._(
           t`Email address that the user will use to authenticate with.`,
         ),
       },
       password: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`The password the user will authenticate with.`),
       },
       confirmPassword: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(
           t`A secondary password field used to confirm the user entered the correct password.`,
         ),
       },
       preferredLang: {
-        type: GraphQLNonNull(LanguageEnums),
+        type: GraphQLNonNull(LanguageEnums(i18n)),
         description: i18n._(t`The users preferred language.`),
       },
       signUpToken: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`A token sent by email, that will assign a user to an organization with a pre-determined role.`,
         ),

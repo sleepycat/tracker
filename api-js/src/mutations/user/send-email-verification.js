@@ -1,7 +1,7 @@
-const { GraphQLString, GraphQLNonNull } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
-const { GraphQLEmailAddress } = require('graphql-scalars')
 const { t } = require('@lingui/macro')
+const { EmailAddress, TranslatedString } = require('../../scalars')
 
 const sendEmailVerification = (i18n) =>
   new mutationWithClientMutationId({
@@ -11,7 +11,7 @@ const sendEmailVerification = (i18n) =>
     ),
     inputFields: () => ({
       userName: {
-        type: GraphQLNonNull(GraphQLEmailAddress),
+        type: GraphQLNonNull(EmailAddress(i18n)),
         description: i18n._(
           t`The users email address used for sending the verification email.`,
         ),
@@ -19,7 +19,7 @@ const sendEmailVerification = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Informs the user if the email was sent successfully.`,
         ),

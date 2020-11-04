@@ -1,6 +1,7 @@
-const { GraphQLString, GraphQLNonNull } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
 const { t } = require('@lingui/macro')
+const { TranslatedString } = require('../../scalars')
 
 const updateUserPassword = (i18n) =>
   new mutationWithClientMutationId({
@@ -10,23 +11,23 @@ const updateUserPassword = (i18n) =>
     ),
     inputFields: () => ({
       currentPassword: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(
           t`The users current password to verify it is the current user.`,
         ),
       },
       updatedPassword: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`The new password the user wishes to change to.`),
       },
       updatedPasswordConfirm: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`A password confirmation of their new password.`),
       },
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`The status if the user profile update was successful.`,
         ),

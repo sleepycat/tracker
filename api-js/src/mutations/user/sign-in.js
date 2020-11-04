@@ -1,7 +1,7 @@
-const { GraphQLNonNull, GraphQLString } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId } = require('graphql-relay')
-const { GraphQLEmailAddress } = require('graphql-scalars')
 const { t } = require('@lingui/macro')
+const { EmailAddress, TranslatedString } = require('../../scalars')
 
 const { SIGN_IN_KEY } = process.env
 
@@ -13,24 +13,24 @@ const signIn = (i18n) =>
     ),
     inputFields: () => ({
       userName: {
-        type: GraphQLNonNull(GraphQLEmailAddress),
+        type: GraphQLNonNull(EmailAddress(i18n)),
         description: i18n._(t`The email the user signed up with.`),
       },
       password: {
-        type: GraphQLNonNull(GraphQLString),
+        type: GraphQLNonNull(TranslatedString(i18n)),
         description: i18n._(t`The password the user signed up with`),
       },
     }),
     outputFields: () => ({
       authenticateToken: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(t`Token used to verify during authentication.`),
         resolve: async (payload) => {
           return payload.authenticateToken
         },
       },
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Wether the authentication code was sent through text, or email.`,
         ),
