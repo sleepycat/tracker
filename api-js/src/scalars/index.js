@@ -1,5 +1,6 @@
 const { Acronym } = require('./acronym.js')
 const { Domain } = require('./domain')
+const { EmailAddress } = require('./email')
 const { Selectors } = require('./selector.js')
 const { Slug } = require('./slug.js')
 const { Year } = require('./year.js')
@@ -12,6 +13,7 @@ const { TranslatedString } = require('./translated-string')
 module.exports = {
   Acronym,
   Domain,
+  EmailAddress,
   Selectors,
   Slug,
   Year,
