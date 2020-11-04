@@ -63,6 +63,26 @@ msgstr "A user who has the same access as a user write account, but can define n
 msgid "A user who has the same access as an admin, but can define new admins."
 msgstr "A user who has the same access as an admin, but can define new admins."
 
+#: src/types/base/index.js:897
+msgid "Affiliated user's ID"
+msgstr "Affiliated user's ID"
+
+#: src/types/base/dmarc-report/category-totals.js:22
+msgid "Amount of messages that are passing DKIM, but failing SPF."
+msgstr "Amount of messages that are passing DKIM, but failing SPF."
+
+#: src/types/base/dmarc-report/category-totals.js:29
+msgid "Amount of messages that are passing SPF and DKIM."
+msgstr "Amount of messages that are passing SPF and DKIM."
+
+#: src/types/base/dmarc-report/category-totals.js:15
+msgid "Amount of messages that are passing SPF, but failing DKIM."
+msgstr "Amount of messages that are passing SPF, but failing DKIM."
+
+#: src/types/base/dmarc-report/category-totals.js:35
+msgid "Amount of messages that fail both SPF and DKIM."
+msgstr "Amount of messages that fail both SPF and DKIM."
+
 #: src/enums/roles.js:27
 msgid "An enum used to assign, and test users roles."
 msgstr "An enum used to assign, and test users roles."
@@ -135,6 +155,14 @@ msgstr "Can only validate strings as year but got a: {0}"
 msgid "Category of computed summary which the other fields relate to."
 msgstr "Category of computed summary which the other fields relate to."
 
+#: src/types/base/dmarc-report/period.js:27
+msgid "Category percentages based on the category totals."
+msgstr "Category percentages based on the category totals."
+
+#: src/types/base/dmarc-report/period.js:32
+msgid "Category totals for quick viewing."
+msgstr "Category totals for quick viewing."
+
 #: src/queries/domains/find-domain-by-domain.js:46
 msgid "Could not retrieve specified domain."
 msgstr "Could not retrieve specified domain."
@@ -143,17 +171,108 @@ msgstr "Could not retrieve specified domain."
 msgid "Could not retrieve specified organization."
 msgstr "Could not retrieve specified organization."
 
+#: src/types/base/index.js:369
+msgid "DKIM record retrieved during the scan of the domain."
+msgstr "DKIM record retrieved during the scan of the domain."
+
 #: src/mutations/domain/create-domain.js:22
 msgid "DKIM selector strings corresponding to this domain."
 msgstr "DKIM selector strings corresponding to this domain."
+
+#: src/types/base/index.js:75
+msgid "DKIM, DMARC, and SPF scan results."
+msgstr "DKIM, DMARC, and SPF scan results."
+
+#: src/types/base/index.js:422
+msgid "DMARC phase found during scan."
+msgstr "DMARC phase found during scan."
+
+#: src/types/base/index.js:427
+msgid "DMARC record retrieved during scan."
+msgstr "DMARC record retrieved during scan."
+
+#: src/types/base/index.js:640
+msgid "Degree to which HTTPS is enforced on the server based on behaviour."
+msgstr "Degree to which HTTPS is enforced on the server based on behaviour."
+
+#: src/types/base/index.js:654
+msgid "Denotes how long the domain should only be accessed using HTTPS"
+msgstr "Denotes how long the domain should only be accessed using HTTPS"
+
+#: src/types/base/index.js:661
+msgid "Denotes whether the domain has been submitted and included within HSTS preload list."
+msgstr "Denotes whether the domain has been submitted and included within HSTS preload list."
+
+#: src/types/base/index.js:53
+msgid "Domain Keys Identified Mail (DKIM) selector strings associated with domain."
+msgstr "Domain Keys Identified Mail (DKIM) selector strings associated with domain."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:53
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:47
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:40
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:30
+msgid "Domain from SMTP banner message."
+msgstr "Domain from SMTP banner message."
+
+#: src/types/base/index.js:174
+msgid "Domain object containing information for a given domain."
+msgstr "Domain object containing information for a given domain."
+
+#: src/types/base/index.js:40
+msgid "Domain that scans will be ran on."
+msgstr "Domain that scans will be ran on."
+
+#: src/types/base/index.js:456
+msgid "Domain-based Message Authentication, Reporting, and Conformance (DMARC) is a scalable mechanism by which a mail-originating organization can express domain-level policies and preferences for message validation, disposition, and reporting, that a mail-receiving organization can use to improve mail handling."
+msgstr "Domain-based Message Authentication, Reporting, and Conformance (DMARC) is a scalable mechanism by which a mail-originating organization can express domain-level policies and preferences for message validation, disposition, and reporting, that a mail-receiving organization can use to improve mail handling."
+
+#: src/types/base/index.js:239
+msgid "Domain-based Message Authentication, Reporting, and Conformance (DMARC) scan results."
+msgstr "Domain-based Message Authentication, Reporting, and Conformance (DMARC) scan results."
+
+#: src/types/base/index.js:211
+msgid "DomainKeys Identified Mail (DKIM) Signatures scan results."
+msgstr "DomainKeys Identified Mail (DKIM) Signatures scan results."
+
+#: src/types/base/index.js:331
+msgid "DomainKeys Identified Mail (DKIM) permits a person, role, or organization that owns the signing domain to claim some responsibility for a message by associating the domain with the message.  This can be an author's organization, an operational relay, or one of their agents."
+msgstr "DomainKeys Identified Mail (DKIM) permits a person, role, or organization that owns the signing domain to claim some responsibility for a message by associating the domain with the message.  This can be an author's organization, an operational relay, or one of their agents."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:31
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:25
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:25
+msgid "Domains used for DKIM validation"
+msgstr "Domains used for DKIM validation"
+
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:62
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:55
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:57
+msgid "Domains used for SPF validation."
+msgstr "Domains used for SPF validation."
 
 #: src/mutations/user/sign-up.js:22
 msgid "Email address that the user will use to authenticate with."
 msgstr "Email address that the user will use to authenticate with."
 
+#: src/types/base/index.js:519
+msgid "Email on the Internet can be forged in a number of ways.  In particular, existing protocols place no restriction on what a sending host can use as the \"MAIL FROM\" of a message or the domain given on the SMTP HELO/EHLO commands.  Version 1 of the Sender Policy Framework (SPF) protocol is where ADministrative Management Domains (ADMDs) can explicitly authorize the hosts that are allowed to use their domain names, and a receiving host can check such authorization."
+msgstr "Email on the Internet can be forged in a number of ways.  In particular, existing protocols place no restriction on what a sending host can use as the \"MAIL FROM\" of a message or the domain given on the SMTP HELO/EHLO commands.  Version 1 of the Sender Policy Framework (SPF) protocol is where ADministrative Management Domains (ADMDs) can explicitly authorize the hosts that are allowed to use their domain names, and a receiving host can check such authorization."
+
 #: src/queries/summaries/email-summary.js:7
 msgid "Email summary computed values, used to build summary cards."
 msgstr "Email summary computed values, used to build summary cards."
+
+#: src/types/base/index.js:206
+#: src/types/base/index.js:234
+#: src/types/base/index.js:262
+#: src/types/base/index.js:557
+#: src/types/base/index.js:585
+msgid "End date for date filter."
+msgstr "End date for date filter."
+
+#: src/types/base/dmarc-report/period.js:22
+msgid "End date of data collection."
+msgstr "End date of data collection."
 
 #: src/enums/scan-types.js:22
 msgid "Enum used when requesting a manual scan to determine what type of scan is to be ran."
@@ -169,6 +288,35 @@ msgstr "Error when retrieving dmarc report information. Please try again."
 msgid "Float cannot represent non numeric value: {0}"
 msgstr "Float cannot represent non numeric value: {0}"
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:59
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:36
+msgid "Guidance for any issues that were found from the report."
+msgstr "Guidance for any issues that were found from the report."
+
+#: src/types/base/index.js:82
+msgid "HTTPS, and SSL scan results."
+msgstr "HTTPS, and SSL scan results."
+
+#: src/types/base/index.js:852
+msgid "Has the user completed two factor authentication."
+msgstr "Has the user completed two factor authentication."
+
+#: src/types/base/index.js:858
+msgid "Has the user email verified their account."
+msgstr "Has the user email verified their account."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:48
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:42
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:35
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:25
+msgid "Host from reverse DNS of source IP address."
+msgstr "Host from reverse DNS of source IP address."
+
+#: src/types/base/index.js:562
+#: src/types/base/index.js:672
+msgid "Hyper Text Transfer Protocol Secure scan results."
+msgstr "Hyper Text Transfer Protocol Secure scan results."
+
 #: src/scalars/translated-id.js:7
 msgid "ID cannot represent a non string value: {0}"
 msgstr "ID cannot represent a non string value: {0}"
@@ -177,6 +325,13 @@ msgstr "ID cannot represent a non string value: {0}"
 msgid "ID cannot represent a non-string and non-integer value:  {0}"
 msgstr "ID cannot represent a non-string and non-integer value:  {0}"
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:70
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:57
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:50
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:47
+msgid "IP address of sending server."
+msgstr "IP address of sending server."
+
 #: src/mutations/user/send-password-reset.js:76
 msgid "If an account with this username is found, a password reset link will be found in your inbox."
 msgstr "If an account with this username is found, a password reset link will be found in your inbox."
@@ -184,6 +339,14 @@ msgstr "If an account with this username is found, a password reset link will be
 #: src/mutations/user/send-email-verification.js:78
 msgid "If an account with this username is found, an email verification link will be found in your inbox."
 msgstr "If an account with this username is found, an email verification link will be found in your inbox."
+
+#: src/types/base/index.js:315
+msgid "Individual scans results for each dkim selector."
+msgstr "Individual scans results for each dkim selector."
+
+#: src/types/base/index.js:386
+msgid "Individual scans results for the given dkim selector."
+msgstr "Individual scans results for the given dkim selector."
 
 #: src/mutations/user/send-email-verification.js:24
 msgid "Informs the user if the email was sent successfully."
@@ -217,6 +380,10 @@ msgstr "Informs the user if the user role update was successful."
 msgid "Informs user if account was successfully verified."
 msgstr "Informs user if account was successfully verified."
 
+#: src/types/base/index.js:508
+msgid "Instruction of what a recipient should do if there is not a match to your SPF record."
+msgstr "Instruction of what a recipient should do if there is not a match to your SPF record."
+
 #: src/scalars/translated-int.js:13
 msgid "Int cannot represent non 32-bit signed integer value: {value}"
 msgstr "Int cannot represent non 32-bit signed integer value: {value}"
@@ -230,13 +397,48 @@ msgstr "Int cannot represent non-integer value: {0}"
 msgid "Invalid token, please request a new one."
 msgstr "Invalid token, please request a new one."
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:26
+msgid "Is DKIM aligned."
+msgstr "Is DKIM aligned."
+
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:52
+msgid "Is SPF aligned."
+msgstr "Is SPF aligned."
+
 #: src/types/auth-result.js:12
 msgid "JWT used for accessing controlled content."
 msgstr "JWT used for accessing controlled content."
 
+#: src/types/base/index.js:451
+msgid "Key tags found during DMARC Scan."
+msgstr "Key tags found during DMARC Scan."
+
+#: src/types/base/index.js:380
+#: src/types/base/index.js:514
+#: src/types/base/index.js:667
+#: src/types/base/index.js:707
+msgid "Key tags found during scan."
+msgstr "Key tags found during scan."
+
 #: src/types/categorized-summary/index.js:11
 msgid "List of SummaryCategory objects with data for different computed categories."
 msgstr "List of SummaryCategory objects with data for different computed categories."
+
+#: src/types/base/dmarc-report/detail-tables/index.js:16
+msgid "List of senders that are failing DKIM checks."
+msgstr "List of senders that are failing DKIM checks."
+
+#: src/types/base/dmarc-report/detail-tables/index.js:22
+msgid "List of senders that are failing DMARC checks."
+msgstr "List of senders that are failing DMARC checks."
+
+#: src/types/base/dmarc-report/detail-tables/index.js:34
+msgid "List of senders that are failing SPF checks."
+msgstr "List of senders that are failing SPF checks."
+
+#: src/types/base/dmarc-report/detail-tables/index.js:28
+msgid "List of senders that are passing all checks."
+msgstr "List of senders that are passing all checks."
 
 #: src/mutations/domain/update-domain.js:10
 msgid "Mutation allows the modification of domains if domain is updated through out its life-cycle"
@@ -250,6 +452,10 @@ msgstr "Mutation allows the modification of organizations if any changes to the 
 msgid "Mutation used to create a new domain for an organization."
 msgstr "Mutation used to create a new domain for an organization."
 
+#: src/types/base/index.js:841
+msgid "Name displayed to other users."
+msgstr "Name displayed to other users."
+
 #: src/mutations/user/reset-password.js:94
 msgid "New passwords do not match. Please try again."
 msgstr "New passwords do not match. Please try again."
@@ -261,6 +467,18 @@ msgstr "No domain with the provided domain could be found."
 #: src/queries/organizations/find-organization-by-slug.js:41
 msgid "No organization with the provided slug could be found."
 msgstr "No organization with the provided slug could be found."
+
+#: src/types/base/dmarc-report/period.js:12
+msgid "Object that contains information for each data collection period."
+msgstr "Object that contains information for each data collection period."
+
+#: src/types/base/dmarc-report/detail-tables/index.js:13
+msgid "Object that contains the various senders and details for each category."
+msgstr "Object that contains the various senders and details for each category."
+
+#: src/types/base/index.js:819
+msgid "Organization object containing information for a given Organization."
+msgstr "Organization object containing information for a given Organization."
 
 #: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:45
 #: src/loaders/user-affiliations/load-user-affiliations-by-user-id.js:44
@@ -326,6 +544,32 @@ msgstr "Passwords do not match."
 msgid "Percentage compared to other categories."
 msgstr "Percentage compared to other categories."
 
+#: src/types/base/dmarc-report/category-percentages.js:15
+msgid "Percentage of messages that are failing all checks."
+msgstr "Percentage of messages that are failing all checks."
+
+#: src/types/base/dmarc-report/category-percentages.js:32
+msgid "Percentage of messages that are passing all checks."
+msgstr "Percentage of messages that are passing all checks."
+
+#: src/types/base/dmarc-report/category-percentages.js:49
+msgid "Percentage of messages that are passing only dkim."
+msgstr "Percentage of messages that are passing only dkim."
+
+#: src/types/base/dmarc-report/category-percentages.js:66
+msgid "Percentage of messages that are passing only spf."
+msgstr "Percentage of messages that are passing only spf."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:43
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:30
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:30
+msgid "Pointer to a DKIM public key record in DNS."
+msgstr "Pointer to a DKIM public key record in DNS."
+
+#: src/types/base/index.js:647
+msgid "Presence and completeness of HSTS implementation."
+msgstr "Presence and completeness of HSTS implementation."
+
 #: src/mutations/user/update-user-profile.js:99
 msgid "Profile successfully updated."
 msgstr "Profile successfully updated."
@@ -333,6 +577,11 @@ msgstr "Profile successfully updated."
 #: src/queries/user/is-user-admin.js:6
 msgid "Query used to check if the user has an admin role."
 msgstr "Query used to check if the user has an admin role."
+
+#: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:68
+#: src/loaders/user-affiliations/load-user-affiliations-by-user-id.js:67
+msgid "Requesting `{amount}` records on the `affiliations` exceeds the `{argSet}` limit of 100 records."
+msgstr "Requesting `{amount}` records on the `affiliations` exceeds the `{argSet}` limit of 100 records."
 
 #: src/loaders/domains/load-domain-connections-by-organizations-id.js:67
 #: src/loaders/domains/load-domain-connections-by-user-id.js:65
@@ -368,6 +617,14 @@ msgstr "Requesting {amount} records on the `spf` connection exceeds the `{argSet
 msgid "Requesting {amount} records on the `ssl` connection exceeds the `{argSet}` limit of 100 records."
 msgstr "Requesting {amount} records on the `ssl` connection exceeds the `{argSet}` limit of 100 records."
 
+#: src/types/base/index.js:281
+msgid "Results of DKIM, DMARC, and SPF scans on the given domain."
+msgstr "Results of DKIM, DMARC, and SPF scans on the given domain."
+
+#: src/types/base/index.js:603
+msgid "Results of HTTPS, and SSL scan on the given domain."
+msgstr "Results of HTTPS, and SSL scan on the given domain."
+
 #: src/queries/domains/find-domain-by-domain.js:8
 msgid "Retrieve a specific domain by providing a domain."
 msgstr "Retrieve a specific domain by providing a domain."
@@ -375,6 +632,15 @@ msgstr "Retrieve a specific domain by providing a domain."
 #: src/mutations/index.js:28
 msgid "Root Mutation Object"
 msgstr "Root Mutation Object"
+
+#: src/types/base/index.js:501
+msgid "SPF record retrieved during the scan of the given domain."
+msgstr "SPF record retrieved during the scan of the given domain."
+
+#: src/types/base/index.js:589
+#: src/types/base/index.js:712
+msgid "Secure Socket Layer scan results."
+msgstr "Secure Socket Layer scan results."
 
 #: src/mutations/user/authenticate.js:19
 msgid "Security code found in text msg, or email inbox."
@@ -391,6 +657,34 @@ msgstr "Select domains a user has access to."
 #: src/queries/organizations/find-my-organizations.js:7
 msgid "Select organizations a user has access to."
 msgstr "Select organizations a user has access to."
+
+#: src/types/base/index.js:266
+msgid "Sender Policy Framework (SPF) scan results."
+msgstr "Sender Policy Framework (SPF) scan results."
+
+#: src/types/base/index.js:375
+msgid "Size of the Public Key in bits"
+msgstr "Size of the Public Key in bits"
+
+#: src/types/base/index.js:740
+msgid "Slugified name of the organization."
+msgstr "Slugified name of the organization."
+
+#: src/types/base/index.js:202
+#: src/types/base/index.js:230
+#: src/types/base/index.js:258
+#: src/types/base/index.js:553
+#: src/types/base/index.js:581
+msgid "Start date for date filter."
+msgstr "Start date for date filter."
+
+#: src/types/base/dmarc-report/period.js:16
+msgid "Start date of data collection."
+msgstr "Start date of data collection."
+
+#: src/types/base/index.js:633
+msgid "State of the HTTPS implementation on the server and any issues therein."
+msgstr "State of the HTTPS implementation on the server and any issues therein."
 
 #: src/mutations/domain/remove-domain.js:26
 msgid "Status string to inform the user if the domain was successfully removed."
@@ -432,6 +726,14 @@ msgstr "Successfully two factor authenticated."
 #: src/mutations/user/verify-account.js:106
 msgid "Successfully verified account."
 msgstr "Successfully verified account."
+
+#: src/types/base/index.js:88
+msgid "Summarized DMARC aggregate reports."
+msgstr "Summarized DMARC aggregate reports."
+
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:36
+msgid "The DMARC enforcement action that the receiver took, either none, quarantine, or reject."
+msgstr "The DMARC enforcement action that the receiver took, either none, quarantine, or reject."
 
 #: src/mutations/organizations/create-organization.js:16
 #: src/mutations/organizations/update-organization.js:18
@@ -500,6 +802,16 @@ msgstr "The French translation of the province the organization resides in."
 msgid "The French translation of the sector the organization belongs to."
 msgstr "The French translation of the sector the organization belongs to."
 
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:20
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:20
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:20
+msgid "The ID of the object"
+msgstr "The ID of the object"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:21
+msgid "The ID of the object."
+msgstr "The ID of the object."
+
 #: src/mutations/user/reset-password.js:26
 msgid "The JWT found in the url, redirected from the email they received."
 msgstr "The JWT found in the url, redirected from the email they received."
@@ -528,22 +840,71 @@ msgstr "The `Int` scalar type represents non-fractional signed whole numeric val
 msgid "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
 msgstr "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:65
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:52
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:45
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:42
+msgid "The address/domain used in the \"From\" field."
+msgstr "The address/domain used in the \"From\" field."
+
+#: src/types/base/index.js:919
+msgid "The affiliated organizations information."
+msgstr "The affiliated organizations information."
+
+#: src/types/base/index.js:907
+msgid "The affiliated users information."
+msgstr "The affiliated users information."
+
+#: src/types/base/index.js:495
+msgid "The amount of DNS lookups."
+msgstr "The amount of DNS lookups."
+
 #: src/mutations/user/authenticate.js:32
 #: src/mutations/user/sign-up.js:49
 msgid "The authenticated users information, and JWT."
 msgstr "The authenticated users information, and JWT."
 
+#: src/types/base/index.js:765
+msgid "The city in which the organization resides."
+msgstr "The city in which the organization resides."
+
+#: src/types/base/index.js:755
+msgid "The country in which the organization resides."
+msgstr "The country in which the organization resides."
+
+#: src/types/base/index.js:352
+msgid "The dkim scan information that this result belongs to."
+msgstr "The dkim scan information that this result belongs to."
+
 #: src/mutations/scans/request-scan.js:15
 msgid "The domain that the scan will be ran on."
 msgstr "The domain that the scan will be ran on."
+
+#: src/types/base/index.js:190
+#: src/types/base/index.js:292
+#: src/types/base/index.js:403
+#: src/types/base/index.js:476
+#: src/types/base/index.js:541
+#: src/types/base/index.js:613
+#: src/types/base/index.js:688
+msgid "The domain the scan was ran on."
+msgstr "The domain the scan was ran on."
 
 #: src/queries/domains/find-domain-by-domain.js:12
 msgid "The domain you wish to retrieve information for."
 msgstr "The domain you wish to retrieve information for."
 
+#: src/types/base/index.js:785
+msgid "The domains which are associated with this organization."
+msgstr "The domains which are associated with this organization."
+
 #: src/mutations/user/sign-in.js:17
 msgid "The email the user signed up with."
 msgstr "The email the user signed up with."
+
+#: src/types/base/index.js:735
+msgid "The full name of the organization."
+msgstr "The full name of the organization."
 
 #: src/mutations/domain/update-domain.js:19
 msgid "The global ID of the organization used for permission checks."
@@ -576,6 +937,14 @@ msgstr "The language in which the email will be sent in."
 #: src/enums/period.js:58
 msgid "The last 30 days."
 msgstr "The last 30 days."
+
+#: src/types/base/index.js:46
+msgid "The last time that a scan was ran on this domain."
+msgstr "The last time that a scan was ran on this domain."
+
+#: src/types/base/index.js:93
+msgid "The month in which the returned data is relevant to."
+msgstr "The month in which the returned data is relevant to."
 
 #: src/enums/period.js:22
 msgid "The month of April."
@@ -645,9 +1014,17 @@ msgstr "The newly created domain."
 msgid "The newly created organization."
 msgstr "The newly created organization."
 
+#: src/types/base/index.js:778
+msgid "The number of domains associated with this organization."
+msgstr "The number of domains associated with this organization."
+
 #: src/mutations/user-affiliations/update-user-role.js:27
 msgid "The organization that the admin, and the user both belong to."
 msgstr "The organization that the admin, and the user both belong to."
+
+#: src/types/base/index.js:60
+msgid "The organization that this domain belongs to."
+msgstr "The organization that this domain belongs to."
 
 #: src/mutations/user-affiliations/invite-user-to-org.js:29
 msgid "The organization you wish to invite the user to."
@@ -657,6 +1034,10 @@ msgstr "The organization you wish to invite the user to."
 msgid "The organization you wish to remove the domain from."
 msgstr "The organization you wish to remove the domain from."
 
+#: src/types/base/index.js:730
+msgid "The organizations acronym."
+msgstr "The organizations acronym."
+
 #: src/mutations/user/sign-in.js:21
 msgid "The password the user signed up with"
 msgstr "The password the user signed up with"
@@ -665,9 +1046,29 @@ msgstr "The password the user signed up with"
 msgid "The password the user will authenticate with."
 msgstr "The password the user will authenticate with."
 
+#: src/types/base/index.js:445
+msgid "The percentage of messages to which the DMARC policy is to be applied."
+msgstr "The percentage of messages to which the DMARC policy is to be applied."
+
 #: src/mutations/user/send-phone-code.js:16
 msgid "The phone number that the text message will be sent to."
 msgstr "The phone number that the text message will be sent to."
+
+#: src/types/base/index.js:760
+msgid "The province in which the organization resides."
+msgstr "The province in which the organization resides."
+
+#: src/types/base/index.js:432
+msgid "The requested policy you wish mailbox providers to apply when your email fails DMARC authentication and alignment checks."
+msgstr "The requested policy you wish mailbox providers to apply when your email fails DMARC authentication and alignment checks."
+
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:63
+msgid "The results of DKIM verification of the message. Can be pass, fail, neutral, soft-fail, temp-error, or perm-error."
+msgstr "The results of DKIM verification of the message. Can be pass, fail, neutral, soft-fail, temp-error, or perm-error."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:37
+msgid "The results of DKIM verification of the message. Can be pass, fail, neutral, temp-error, or perm-error."
+msgstr "The results of DKIM verification of the message. Can be pass, fail, neutral, temp-error, or perm-error."
 
 #: src/mutations/user-affiliations/update-user-role.js:33
 msgid "The role that the admin wants to give to the selected user."
@@ -676,6 +1077,14 @@ msgstr "The role that the admin wants to give to the selected user."
 #: src/mutations/user-affiliations/invite-user-to-org.js:23
 msgid "The role which you would like this user to have."
 msgstr "The role which you would like this user to have."
+
+#: src/types/base/index.js:750
+msgid "The sector which the organization belongs to."
+msgstr "The sector which the organization belongs to."
+
+#: src/types/base/index.js:363
+msgid "The selector the scan was ran on."
+msgstr "The selector the scan was ran on."
 
 #: src/queries/organizations/find-organization-by-slug.js:15
 msgid "The slugified organization name you want to retrieve data for."
@@ -689,6 +1098,21 @@ msgstr "The status if the user profile update was successful."
 #: src/mutations/user/verify-phone-number.js:24
 msgid "The status of verifying the two factor authentication."
 msgstr "The status of verifying the two factor authentication."
+
+#: src/types/base/index.js:490
+#: src/types/base/index.js:627
+msgid "The time the scan was initiated."
+msgstr "The time the scan was initiated."
+
+#: src/types/base/index.js:306
+#: src/types/base/index.js:417
+#: src/types/base/index.js:702
+msgid "The time when the scan was initiated."
+msgstr "The time when the scan was initiated."
+
+#: src/types/base/dmarc-report/category-percentages.js:83
+msgid "The total amount of messages sent by this domain."
+msgstr "The total amount of messages sent by this domain."
 
 #: src/mutations/user/verify-phone-number.js:16
 msgid "The two factor code that was received via text message."
@@ -729,6 +1153,14 @@ msgstr "The users new password."
 #: src/mutations/user/sign-up.js:37
 msgid "The users preferred language."
 msgstr "The users preferred language."
+
+#: src/types/base/index.js:99
+msgid "The year in which the returned data is relevant to."
+msgstr "The year in which the returned data is relevant to."
+
+#: src/types/base/index.js:745
+msgid "The zone which the organization belongs to."
+msgstr "The zone which the organization belongs to."
 
 #: src/mutations/user/send-password-reset.js:10
 msgid "This mutation allows a user to provide their username and request that a password reset email be sent to their account with a reset token in a url."
@@ -798,6 +1230,10 @@ msgstr "This mutation is used for sending a text message with a random six digit
 msgid "This mutation is used to run a manual scan on a requested domain."
 msgstr "This mutation is used to run a manual scan on a requested domain."
 
+#: src/types/base/index.js:879
+msgid "This object can be queried to retrieve the current logged in users information or if the user is an org or super admin they can query a user by their user name"
+msgstr "This object can be queried to retrieve the current logged in users information or if the user is an org or super admin they can query a user by their user name"
+
 #: src/types/categorized-summary/summary-category.js:35
 msgid "This object contains the information for each type of summary that has been pre-computed"
 msgstr "This object contains the information for each type of summary that has been pre-computed"
@@ -805,6 +1241,34 @@ msgstr "This object contains the information for each type of summary that has b
 #: src/types/categorized-summary/index.js:20
 msgid "This object contains the list of different categories for pre-computed summary data with the computed total for how many domains in total are being compared."
 msgstr "This object contains the list of different categories for pre-computed summary data with the computed total for how many domains in total are being compared."
+
+#: src/types/base/dmarc-report/category-percentages.js:9
+msgid "This object displays the percentages of the category totals."
+msgstr "This object displays the percentages of the category totals."
+
+#: src/types/base/dmarc-report/category-totals.js:9
+msgid "This object displays the total amount of messages that fit into each category."
+msgstr "This object displays the total amount of messages that fit into each category."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:16
+msgid "This table contains the data fields for senders who are in the DKIM fail category."
+msgstr "This table contains the data fields for senders who are in the DKIM fail category."
+
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:15
+msgid "This table contains the data fields for senders who are in the DMARC failure category."
+msgstr "This table contains the data fields for senders who are in the DMARC failure category."
+
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:15
+msgid "This table contains the data fields for senders who are in the Full Pass category."
+msgstr "This table contains the data fields for senders who are in the Full Pass category."
+
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:15
+msgid "This table contains the data fields for senders who are in the SPF fail category."
+msgstr "This table contains the data fields for senders who are in the SPF fail category."
+
+#: src/types/base/index.js:438
+msgid "This tag is used to indicate a requested policy for all subdomains where mail is failing the DMARC authentication and alignment checks."
+msgstr "This tag is used to indicate a requested policy for all subdomains where mail is failing the DMARC authentication and alignment checks."
 
 #: src/mutations/user/verify-account.js:15
 msgid "Token sent via email, and located in url."
@@ -825,6 +1289,13 @@ msgstr "Total count of domains that fall into this category."
 #: src/types/categorized-summary/index.js:16
 msgid "Total domains that were check under this summary."
 msgstr "Total domains that were check under this summary."
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:75
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:67
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:60
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:69
+msgid "Total messages from this sender."
+msgstr "Total messages from this sender."
 
 #: src/mutations/user/send-phone-code.js:111
 msgid "Two factor code has been successfully sent, you will receive a text message shortly."
@@ -908,8 +1379,8 @@ msgstr "Unable to find spf scan. Please try again."
 msgid "Unable to find ssl scan. Please try again."
 msgstr "Unable to find ssl scan. Please try again."
 
-#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:19
-#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:33
+#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:21
+#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:35
 msgid "Unable to find user affiliation(s). Please try again."
 msgstr "Unable to find user affiliation(s). Please try again."
 
@@ -1020,6 +1491,11 @@ msgstr "Unable to remove organization. Please try again."
 #: src/mutations/user/reset-password.js:120
 msgid "Unable to reset password. Please try again."
 msgstr "Unable to reset password. Please try again."
+
+#: src/types/base/index.js:125
+#: src/types/base/index.js:160
+msgid "Unable to retrieve dmarc report information for: {domain}"
+msgstr "Unable to retrieve dmarc report information for: {domain}"
 
 #: src/loaders/dmarc-report/load-dmarc-report.js:39
 msgid "Unable to retrieve {0} for domain: {domain}."
@@ -1163,6 +1639,10 @@ msgstr "Used for defining if French is the preferred language."
 msgid "Used for defining if HTTPS and SSL scans should be preformed."
 msgstr "Used for defining if HTTPS and SSL scans should be preformed."
 
+#: src/types/base/index.js:928
+msgid "User Affiliations containing the permission level for the given organization, the users information, and the organizations information."
+msgstr "User Affiliations containing the permission level for the given organization, the users information, and the organizations information."
+
 #: src/mutations/user/send-password-reset.js:16
 msgid "User name for the account you would like to receive a password reset link for."
 msgstr "User name for the account you would like to receive a password reset link for."
@@ -1175,13 +1655,29 @@ msgstr "User role was updated successfully."
 msgid "User that has just been created or signed in."
 msgstr "User that has just been created or signed in."
 
+#: src/types/base/index.js:902
+msgid "User's level of access to a given organization."
+msgstr "User's level of access to a given organization."
+
 #: src/mutations/user/sign-up.js:95
 msgid "Username already in use."
 msgstr "Username already in use."
 
+#: src/types/base/index.js:863
+msgid "Users affiliations to various organizations."
+msgstr "Users affiliations to various organizations."
+
+#: src/types/base/index.js:836
+msgid "Users email address."
+msgstr "Users email address."
+
 #: src/mutations/user-affiliations/invite-user-to-org.js:17
 msgid "Users email that you would like to invite to your org."
 msgstr "Users email that you would like to invite to your org."
+
+#: src/types/base/index.js:846
+msgid "Users preferred language."
+msgstr "Users preferred language."
 
 #: src/scalars/domain.js:7
 #: src/scalars/selector.js:7
@@ -1227,6 +1723,10 @@ msgstr "Value is not of type string: {0}"
 msgid "Value is not string: {0}"
 msgstr "Value is not string: {0}"
 
+#: src/types/base/dmarc-report/period.js:37
+msgid "Various senders for each category."
+msgstr "Various senders for each category."
+
 #: src/mutations/user/sign-in.js:125
 msgid "We've sent you a text message with an authentication code to sign into Pulse."
 msgstr "We've sent you a text message with an authentication code to sign into Pulse."
@@ -1242,6 +1742,15 @@ msgstr "Web summary computed values, used to build summary cards."
 #: src/mutations/user/sign-in.js:35
 msgid "Wether the authentication code was sent through text, or email."
 msgstr "Wether the authentication code was sent through text, or email."
+
+#: src/types/base/index.js:771
+msgid "Wether the organization is a verified organization."
+msgstr "Wether the organization is a verified organization."
+
+#: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:36
+#: src/loaders/user-affiliations/load-user-affiliations-by-user-id.js:35
+msgid "You must provide a `first` or `last` value to properly paginate the `affiliation`."
+msgstr "You must provide a `first` or `last` value to properly paginate the `affiliation`."
 
 #: src/loaders/email-scan/load-dkim-results-connections-by-dkim-id.js:30
 msgid "You must provide a `first` or `last` value to properly paginate the `dkimResults` connection."

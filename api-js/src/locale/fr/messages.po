@@ -63,6 +63,26 @@ msgstr "todo"
 msgid "A user who has the same access as an admin, but can define new admins."
 msgstr "todo"
 
+#: src/types/base/index.js:897
+msgid "Affiliated user's ID"
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-totals.js:22
+msgid "Amount of messages that are passing DKIM, but failing SPF."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-totals.js:29
+msgid "Amount of messages that are passing SPF and DKIM."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-totals.js:15
+msgid "Amount of messages that are passing SPF, but failing DKIM."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-totals.js:35
+msgid "Amount of messages that fail both SPF and DKIM."
+msgstr "todo"
+
 #: src/enums/roles.js:27
 msgid "An enum used to assign, and test users roles."
 msgstr "todo"
@@ -77,7 +97,7 @@ msgstr "todo"
 
 #: src/types/auth-result.js:8
 msgid "An object used to return information when users sign up or authenticate."
-msgstr ""
+msgstr "todo"
 
 #: src/mutations/user/send-phone-code.js:50
 #: src/mutations/user/update-user-password.js:60
@@ -133,7 +153,15 @@ msgstr "todo"
 
 #: src/types/categorized-summary/summary-category.js:17
 msgid "Category of computed summary which the other fields relate to."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/dmarc-report/period.js:27
+msgid "Category percentages based on the category totals."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/period.js:32
+msgid "Category totals for quick viewing."
+msgstr "todo"
 
 #: src/queries/domains/find-domain-by-domain.js:46
 msgid "Could not retrieve specified domain."
@@ -143,17 +171,108 @@ msgstr "todo"
 msgid "Could not retrieve specified organization."
 msgstr "todo"
 
+#: src/types/base/index.js:369
+msgid "DKIM record retrieved during the scan of the domain."
+msgstr "todo"
+
 #: src/mutations/domain/create-domain.js:22
 msgid "DKIM selector strings corresponding to this domain."
+msgstr "todo"
+
+#: src/types/base/index.js:75
+msgid "DKIM, DMARC, and SPF scan results."
+msgstr "todo"
+
+#: src/types/base/index.js:422
+msgid "DMARC phase found during scan."
+msgstr "todo"
+
+#: src/types/base/index.js:427
+msgid "DMARC record retrieved during scan."
+msgstr "todo"
+
+#: src/types/base/index.js:640
+msgid "Degree to which HTTPS is enforced on the server based on behaviour."
+msgstr "todo"
+
+#: src/types/base/index.js:654
+msgid "Denotes how long the domain should only be accessed using HTTPS"
+msgstr "todo"
+
+#: src/types/base/index.js:661
+msgid "Denotes whether the domain has been submitted and included within HSTS preload list."
+msgstr "todo"
+
+#: src/types/base/index.js:53
+msgid "Domain Keys Identified Mail (DKIM) selector strings associated with domain."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:53
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:47
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:40
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:30
+msgid "Domain from SMTP banner message."
+msgstr "todo"
+
+#: src/types/base/index.js:174
+msgid "Domain object containing information for a given domain."
+msgstr "todo"
+
+#: src/types/base/index.js:40
+msgid "Domain that scans will be ran on."
+msgstr "todo"
+
+#: src/types/base/index.js:456
+msgid "Domain-based Message Authentication, Reporting, and Conformance (DMARC) is a scalable mechanism by which a mail-originating organization can express domain-level policies and preferences for message validation, disposition, and reporting, that a mail-receiving organization can use to improve mail handling."
+msgstr "todo"
+
+#: src/types/base/index.js:239
+msgid "Domain-based Message Authentication, Reporting, and Conformance (DMARC) scan results."
+msgstr "todo"
+
+#: src/types/base/index.js:211
+msgid "DomainKeys Identified Mail (DKIM) Signatures scan results."
+msgstr "todo"
+
+#: src/types/base/index.js:331
+msgid "DomainKeys Identified Mail (DKIM) permits a person, role, or organization that owns the signing domain to claim some responsibility for a message by associating the domain with the message.  This can be an author's organization, an operational relay, or one of their agents."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:31
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:25
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:25
+msgid "Domains used for DKIM validation"
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:62
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:55
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:57
+msgid "Domains used for SPF validation."
 msgstr "todo"
 
 #: src/mutations/user/sign-up.js:22
 msgid "Email address that the user will use to authenticate with."
 msgstr "todo"
 
+#: src/types/base/index.js:519
+msgid "Email on the Internet can be forged in a number of ways.  In particular, existing protocols place no restriction on what a sending host can use as the \"MAIL FROM\" of a message or the domain given on the SMTP HELO/EHLO commands.  Version 1 of the Sender Policy Framework (SPF) protocol is where ADministrative Management Domains (ADMDs) can explicitly authorize the hosts that are allowed to use their domain names, and a receiving host can check such authorization."
+msgstr "todo"
+
 #: src/queries/summaries/email-summary.js:7
 msgid "Email summary computed values, used to build summary cards."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/index.js:206
+#: src/types/base/index.js:234
+#: src/types/base/index.js:262
+#: src/types/base/index.js:557
+#: src/types/base/index.js:585
+msgid "End date for date filter."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/period.js:22
+msgid "End date of data collection."
+msgstr "todo"
 
 #: src/enums/scan-types.js:22
 msgid "Enum used when requesting a manual scan to determine what type of scan is to be ran."
@@ -169,6 +288,35 @@ msgstr "todo"
 msgid "Float cannot represent non numeric value: {0}"
 msgstr "todo"
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:59
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:36
+msgid "Guidance for any issues that were found from the report."
+msgstr "todo"
+
+#: src/types/base/index.js:82
+msgid "HTTPS, and SSL scan results."
+msgstr "todo"
+
+#: src/types/base/index.js:852
+msgid "Has the user completed two factor authentication."
+msgstr "todo"
+
+#: src/types/base/index.js:858
+msgid "Has the user email verified their account."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:48
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:42
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:35
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:25
+msgid "Host from reverse DNS of source IP address."
+msgstr "todo"
+
+#: src/types/base/index.js:562
+#: src/types/base/index.js:672
+msgid "Hyper Text Transfer Protocol Secure scan results."
+msgstr "todo"
+
 #: src/scalars/translated-id.js:7
 msgid "ID cannot represent a non string value: {0}"
 msgstr "todo"
@@ -177,12 +325,27 @@ msgstr "todo"
 msgid "ID cannot represent a non-string and non-integer value:  {0}"
 msgstr "todo"
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:70
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:57
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:50
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:47
+msgid "IP address of sending server."
+msgstr "todo"
+
 #: src/mutations/user/send-password-reset.js:76
 msgid "If an account with this username is found, a password reset link will be found in your inbox."
 msgstr "todo"
 
 #: src/mutations/user/send-email-verification.js:78
 msgid "If an account with this username is found, an email verification link will be found in your inbox."
+msgstr "todo"
+
+#: src/types/base/index.js:315
+msgid "Individual scans results for each dkim selector."
+msgstr "todo"
+
+#: src/types/base/index.js:386
+msgid "Individual scans results for the given dkim selector."
 msgstr "todo"
 
 #: src/mutations/user/send-email-verification.js:24
@@ -217,6 +380,10 @@ msgstr "todo"
 msgid "Informs user if account was successfully verified."
 msgstr "todo"
 
+#: src/types/base/index.js:508
+msgid "Instruction of what a recipient should do if there is not a match to your SPF record."
+msgstr "todo"
+
 #: src/scalars/translated-int.js:13
 msgid "Int cannot represent non 32-bit signed integer value: {value}"
 msgstr "todo"
@@ -230,13 +397,48 @@ msgstr "todo"
 msgid "Invalid token, please request a new one."
 msgstr "todo"
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:26
+msgid "Is DKIM aligned."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:52
+msgid "Is SPF aligned."
+msgstr "todo"
+
 #: src/types/auth-result.js:12
 msgid "JWT used for accessing controlled content."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/index.js:451
+msgid "Key tags found during DMARC Scan."
+msgstr "todo"
+
+#: src/types/base/index.js:380
+#: src/types/base/index.js:514
+#: src/types/base/index.js:667
+#: src/types/base/index.js:707
+msgid "Key tags found during scan."
+msgstr "todo"
 
 #: src/types/categorized-summary/index.js:11
 msgid "List of SummaryCategory objects with data for different computed categories."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/index.js:16
+msgid "List of senders that are failing DKIM checks."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/index.js:22
+msgid "List of senders that are failing DMARC checks."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/index.js:34
+msgid "List of senders that are failing SPF checks."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/index.js:28
+msgid "List of senders that are passing all checks."
+msgstr "todo"
 
 #: src/mutations/domain/update-domain.js:10
 msgid "Mutation allows the modification of domains if domain is updated through out its life-cycle"
@@ -250,6 +452,10 @@ msgstr "todo"
 msgid "Mutation used to create a new domain for an organization."
 msgstr "todo"
 
+#: src/types/base/index.js:841
+msgid "Name displayed to other users."
+msgstr "todo"
+
 #: src/mutations/user/reset-password.js:94
 msgid "New passwords do not match. Please try again."
 msgstr "todo"
@@ -260,6 +466,18 @@ msgstr "todo"
 
 #: src/queries/organizations/find-organization-by-slug.js:41
 msgid "No organization with the provided slug could be found."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/period.js:12
+msgid "Object that contains information for each data collection period."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/index.js:13
+msgid "Object that contains the various senders and details for each category."
+msgstr "todo"
+
+#: src/types/base/index.js:819
+msgid "Organization object containing information for a given Organization."
 msgstr "todo"
 
 #: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:45
@@ -324,7 +542,33 @@ msgstr "todo"
 
 #: src/types/categorized-summary/summary-category.js:30
 msgid "Percentage compared to other categories."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-percentages.js:15
+msgid "Percentage of messages that are failing all checks."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-percentages.js:32
+msgid "Percentage of messages that are passing all checks."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-percentages.js:49
+msgid "Percentage of messages that are passing only dkim."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-percentages.js:66
+msgid "Percentage of messages that are passing only spf."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:43
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:30
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:30
+msgid "Pointer to a DKIM public key record in DNS."
+msgstr "todo"
+
+#: src/types/base/index.js:647
+msgid "Presence and completeness of HSTS implementation."
+msgstr "todo"
 
 #: src/mutations/user/update-user-profile.js:99
 msgid "Profile successfully updated."
@@ -332,6 +576,11 @@ msgstr "todo"
 
 #: src/queries/user/is-user-admin.js:6
 msgid "Query used to check if the user has an admin role."
+msgstr "todo"
+
+#: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:68
+#: src/loaders/user-affiliations/load-user-affiliations-by-user-id.js:67
+msgid "Requesting `{amount}` records on the `affiliations` exceeds the `{argSet}` limit of 100 records."
 msgstr "todo"
 
 #: src/loaders/domains/load-domain-connections-by-organizations-id.js:67
@@ -368,12 +617,29 @@ msgstr "todo"
 msgid "Requesting {amount} records on the `ssl` connection exceeds the `{argSet}` limit of 100 records."
 msgstr "todo"
 
+#: src/types/base/index.js:281
+msgid "Results of DKIM, DMARC, and SPF scans on the given domain."
+msgstr "todo"
+
+#: src/types/base/index.js:603
+msgid "Results of HTTPS, and SSL scan on the given domain."
+msgstr "todo"
+
 #: src/queries/domains/find-domain-by-domain.js:8
 msgid "Retrieve a specific domain by providing a domain."
 msgstr "todo"
 
 #: src/mutations/index.js:28
 msgid "Root Mutation Object"
+msgstr "todo"
+
+#: src/types/base/index.js:501
+msgid "SPF record retrieved during the scan of the given domain."
+msgstr "todo"
+
+#: src/types/base/index.js:589
+#: src/types/base/index.js:712
+msgid "Secure Socket Layer scan results."
 msgstr "todo"
 
 #: src/mutations/user/authenticate.js:19
@@ -390,6 +656,34 @@ msgstr "todo"
 
 #: src/queries/organizations/find-my-organizations.js:7
 msgid "Select organizations a user has access to."
+msgstr "todo"
+
+#: src/types/base/index.js:266
+msgid "Sender Policy Framework (SPF) scan results."
+msgstr "todo"
+
+#: src/types/base/index.js:375
+msgid "Size of the Public Key in bits"
+msgstr "todo"
+
+#: src/types/base/index.js:740
+msgid "Slugified name of the organization."
+msgstr "todo"
+
+#: src/types/base/index.js:202
+#: src/types/base/index.js:230
+#: src/types/base/index.js:258
+#: src/types/base/index.js:553
+#: src/types/base/index.js:581
+msgid "Start date for date filter."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/period.js:16
+msgid "Start date of data collection."
+msgstr "todo"
+
+#: src/types/base/index.js:633
+msgid "State of the HTTPS implementation on the server and any issues therein."
 msgstr "todo"
 
 #: src/mutations/domain/remove-domain.js:26
@@ -431,6 +725,14 @@ msgstr "todo"
 
 #: src/mutations/user/verify-account.js:106
 msgid "Successfully verified account."
+msgstr "todo"
+
+#: src/types/base/index.js:88
+msgid "Summarized DMARC aggregate reports."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:36
+msgid "The DMARC enforcement action that the receiver took, either none, quarantine, or reject."
 msgstr "todo"
 
 #: src/mutations/organizations/create-organization.js:16
@@ -500,6 +802,16 @@ msgstr "todo"
 msgid "The French translation of the sector the organization belongs to."
 msgstr "todo"
 
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:20
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:20
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:20
+msgid "The ID of the object"
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:21
+msgid "The ID of the object."
+msgstr "todo"
+
 #: src/mutations/user/reset-password.js:26
 msgid "The JWT found in the url, redirected from the email they received."
 msgstr "todo"
@@ -528,21 +840,70 @@ msgstr "todo"
 msgid "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
 msgstr "todo"
 
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:65
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:52
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:45
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:42
+msgid "The address/domain used in the \"From\" field."
+msgstr "todo"
+
+#: src/types/base/index.js:919
+msgid "The affiliated organizations information."
+msgstr "todo"
+
+#: src/types/base/index.js:907
+msgid "The affiliated users information."
+msgstr "todo"
+
+#: src/types/base/index.js:495
+msgid "The amount of DNS lookups."
+msgstr "todo"
+
 #: src/mutations/user/authenticate.js:32
 #: src/mutations/user/sign-up.js:49
 msgid "The authenticated users information, and JWT."
+msgstr "todo"
+
+#: src/types/base/index.js:765
+msgid "The city in which the organization resides."
+msgstr "todo"
+
+#: src/types/base/index.js:755
+msgid "The country in which the organization resides."
+msgstr "todo"
+
+#: src/types/base/index.js:352
+msgid "The dkim scan information that this result belongs to."
 msgstr "todo"
 
 #: src/mutations/scans/request-scan.js:15
 msgid "The domain that the scan will be ran on."
 msgstr "todo"
 
+#: src/types/base/index.js:190
+#: src/types/base/index.js:292
+#: src/types/base/index.js:403
+#: src/types/base/index.js:476
+#: src/types/base/index.js:541
+#: src/types/base/index.js:613
+#: src/types/base/index.js:688
+msgid "The domain the scan was ran on."
+msgstr "todo"
+
 #: src/queries/domains/find-domain-by-domain.js:12
 msgid "The domain you wish to retrieve information for."
 msgstr "todo"
 
+#: src/types/base/index.js:785
+msgid "The domains which are associated with this organization."
+msgstr "todo"
+
 #: src/mutations/user/sign-in.js:17
 msgid "The email the user signed up with."
+msgstr "todo"
+
+#: src/types/base/index.js:735
+msgid "The full name of the organization."
 msgstr "todo"
 
 #: src/mutations/domain/update-domain.js:19
@@ -575,6 +936,14 @@ msgstr "todo"
 
 #: src/enums/period.js:58
 msgid "The last 30 days."
+msgstr "todo"
+
+#: src/types/base/index.js:46
+msgid "The last time that a scan was ran on this domain."
+msgstr "todo"
+
+#: src/types/base/index.js:93
+msgid "The month in which the returned data is relevant to."
 msgstr "todo"
 
 #: src/enums/period.js:22
@@ -645,8 +1014,16 @@ msgstr "todo"
 msgid "The newly created organization."
 msgstr "todo"
 
+#: src/types/base/index.js:778
+msgid "The number of domains associated with this organization."
+msgstr "todo"
+
 #: src/mutations/user-affiliations/update-user-role.js:27
 msgid "The organization that the admin, and the user both belong to."
+msgstr "todo"
+
+#: src/types/base/index.js:60
+msgid "The organization that this domain belongs to."
 msgstr "todo"
 
 #: src/mutations/user-affiliations/invite-user-to-org.js:29
@@ -657,6 +1034,10 @@ msgstr "todo"
 msgid "The organization you wish to remove the domain from."
 msgstr "todo"
 
+#: src/types/base/index.js:730
+msgid "The organizations acronym."
+msgstr "todo"
+
 #: src/mutations/user/sign-in.js:21
 msgid "The password the user signed up with"
 msgstr "todo"
@@ -665,8 +1046,28 @@ msgstr "todo"
 msgid "The password the user will authenticate with."
 msgstr "todo"
 
+#: src/types/base/index.js:445
+msgid "The percentage of messages to which the DMARC policy is to be applied."
+msgstr "todo"
+
 #: src/mutations/user/send-phone-code.js:16
 msgid "The phone number that the text message will be sent to."
+msgstr "todo"
+
+#: src/types/base/index.js:760
+msgid "The province in which the organization resides."
+msgstr "todo"
+
+#: src/types/base/index.js:432
+msgid "The requested policy you wish mailbox providers to apply when your email fails DMARC authentication and alignment checks."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:63
+msgid "The results of DKIM verification of the message. Can be pass, fail, neutral, soft-fail, temp-error, or perm-error."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:37
+msgid "The results of DKIM verification of the message. Can be pass, fail, neutral, temp-error, or perm-error."
 msgstr "todo"
 
 #: src/mutations/user-affiliations/update-user-role.js:33
@@ -675,6 +1076,14 @@ msgstr "todo"
 
 #: src/mutations/user-affiliations/invite-user-to-org.js:23
 msgid "The role which you would like this user to have."
+msgstr "todo"
+
+#: src/types/base/index.js:750
+msgid "The sector which the organization belongs to."
+msgstr "todo"
+
+#: src/types/base/index.js:363
+msgid "The selector the scan was ran on."
 msgstr "todo"
 
 #: src/queries/organizations/find-organization-by-slug.js:15
@@ -688,6 +1097,21 @@ msgstr "todo"
 
 #: src/mutations/user/verify-phone-number.js:24
 msgid "The status of verifying the two factor authentication."
+msgstr "todo"
+
+#: src/types/base/index.js:490
+#: src/types/base/index.js:627
+msgid "The time the scan was initiated."
+msgstr "todo"
+
+#: src/types/base/index.js:306
+#: src/types/base/index.js:417
+#: src/types/base/index.js:702
+msgid "The time when the scan was initiated."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-percentages.js:83
+msgid "The total amount of messages sent by this domain."
 msgstr "todo"
 
 #: src/mutations/user/verify-phone-number.js:16
@@ -728,6 +1152,14 @@ msgstr "todo"
 
 #: src/mutations/user/sign-up.js:37
 msgid "The users preferred language."
+msgstr "todo"
+
+#: src/types/base/index.js:99
+msgid "The year in which the returned data is relevant to."
+msgstr "todo"
+
+#: src/types/base/index.js:745
+msgid "The zone which the organization belongs to."
 msgstr "todo"
 
 #: src/mutations/user/send-password-reset.js:10
@@ -798,13 +1230,45 @@ msgstr "todo"
 msgid "This mutation is used to run a manual scan on a requested domain."
 msgstr "todo"
 
+#: src/types/base/index.js:879
+msgid "This object can be queried to retrieve the current logged in users information or if the user is an org or super admin they can query a user by their user name"
+msgstr "todo"
+
 #: src/types/categorized-summary/summary-category.js:35
 msgid "This object contains the information for each type of summary that has been pre-computed"
-msgstr ""
+msgstr "todo"
 
 #: src/types/categorized-summary/index.js:20
 msgid "This object contains the list of different categories for pre-computed summary data with the computed total for how many domains in total are being compared."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-percentages.js:9
+msgid "This object displays the percentages of the category totals."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/category-totals.js:9
+msgid "This object displays the total amount of messages that fit into each category."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:16
+msgid "This table contains the data fields for senders who are in the DKIM fail category."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:15
+msgid "This table contains the data fields for senders who are in the DMARC failure category."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:15
+msgid "This table contains the data fields for senders who are in the Full Pass category."
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:15
+msgid "This table contains the data fields for senders who are in the SPF fail category."
+msgstr "todo"
+
+#: src/types/base/index.js:438
+msgid "This tag is used to indicate a requested policy for all subdomains where mail is failing the DMARC authentication and alignment checks."
+msgstr "todo"
 
 #: src/mutations/user/verify-account.js:15
 msgid "Token sent via email, and located in url."
@@ -820,11 +1284,18 @@ msgstr "todo"
 
 #: src/types/categorized-summary/summary-category.js:24
 msgid "Total count of domains that fall into this category."
-msgstr ""
+msgstr "todo"
 
 #: src/types/categorized-summary/index.js:16
 msgid "Total domains that were check under this summary."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/dmarc-report/detail-tables/dkim-failure-table.js:75
+#: src/types/base/dmarc-report/detail-tables/dmarc-failure-table.js:67
+#: src/types/base/dmarc-report/detail-tables/full-pass-table.js:60
+#: src/types/base/dmarc-report/detail-tables/spf-failure-table.js:69
+msgid "Total messages from this sender."
+msgstr "todo"
 
 #: src/mutations/user/send-phone-code.js:111
 msgid "Two factor code has been successfully sent, you will receive a text message shortly."
@@ -908,8 +1379,8 @@ msgstr "todo"
 msgid "Unable to find ssl scan. Please try again."
 msgstr "todo"
 
-#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:19
-#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:33
+#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:21
+#: src/loaders/user-affiliations/load-user-affiliations-by-key.js:35
 msgid "Unable to find user affiliation(s). Please try again."
 msgstr "todo"
 
@@ -1019,6 +1490,11 @@ msgstr "todo"
 #: src/mutations/user/reset-password.js:85
 #: src/mutations/user/reset-password.js:120
 msgid "Unable to reset password. Please try again."
+msgstr "todo"
+
+#: src/types/base/index.js:125
+#: src/types/base/index.js:160
+msgid "Unable to retrieve dmarc report information for: {domain}"
 msgstr "todo"
 
 #: src/loaders/dmarc-report/load-dmarc-report.js:39
@@ -1163,6 +1639,10 @@ msgstr "todo"
 msgid "Used for defining if HTTPS and SSL scans should be preformed."
 msgstr "todo"
 
+#: src/types/base/index.js:928
+msgid "User Affiliations containing the permission level for the given organization, the users information, and the organizations information."
+msgstr "todo"
+
 #: src/mutations/user/send-password-reset.js:16
 msgid "User name for the account you would like to receive a password reset link for."
 msgstr "todo"
@@ -1173,14 +1653,30 @@ msgstr "todo"
 
 #: src/types/auth-result.js:19
 msgid "User that has just been created or signed in."
-msgstr ""
+msgstr "todo"
+
+#: src/types/base/index.js:902
+msgid "User's level of access to a given organization."
+msgstr "todo"
 
 #: src/mutations/user/sign-up.js:95
 msgid "Username already in use."
 msgstr "todo"
 
+#: src/types/base/index.js:863
+msgid "Users affiliations to various organizations."
+msgstr "todo"
+
+#: src/types/base/index.js:836
+msgid "Users email address."
+msgstr "todo"
+
 #: src/mutations/user-affiliations/invite-user-to-org.js:17
 msgid "Users email that you would like to invite to your org."
+msgstr "todo"
+
+#: src/types/base/index.js:846
+msgid "Users preferred language."
 msgstr "todo"
 
 #: src/scalars/domain.js:7
@@ -1227,6 +1723,10 @@ msgstr "todo"
 msgid "Value is not string: {0}"
 msgstr "todo"
 
+#: src/types/base/dmarc-report/period.js:37
+msgid "Various senders for each category."
+msgstr "todo"
+
 #: src/mutations/user/sign-in.js:125
 msgid "We've sent you a text message with an authentication code to sign into Pulse."
 msgstr "todo"
@@ -1237,10 +1737,19 @@ msgstr "todo"
 
 #: src/queries/summaries/web-summary.js:7
 msgid "Web summary computed values, used to build summary cards."
-msgstr ""
+msgstr "todo"
 
 #: src/mutations/user/sign-in.js:35
 msgid "Wether the authentication code was sent through text, or email."
+msgstr "todo"
+
+#: src/types/base/index.js:771
+msgid "Wether the organization is a verified organization."
+msgstr "todo"
+
+#: src/loaders/user-affiliations/load-user-affiliations-by-org-id.js:36
+#: src/loaders/user-affiliations/load-user-affiliations-by-user-id.js:35
+msgid "You must provide a `first` or `last` value to properly paginate the `affiliation`."
 msgstr "todo"
 
 #: src/loaders/email-scan/load-dkim-results-connections-by-dkim-id.js:30
