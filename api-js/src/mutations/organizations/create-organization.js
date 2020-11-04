@@ -90,7 +90,7 @@ const createOrganization = (i18n) =>
     }),
     outputFields: () => ({
       organization: {
-        type: organizationType,
+        type: organizationType(i18n),
         description: i18n._(t`The newly created organization.`),
         resolve: async (payload) => {
           return payload.organization

@@ -45,7 +45,7 @@ const signUp = (i18n) =>
     }),
     outputFields: () => ({
       authResult: {
-        type: authResultType,
+        type: authResultType(i18n),
         description: i18n._(t`The authenticated users information, and JWT.`),
         resolve: async ({ authResult }) => {
           return authResult

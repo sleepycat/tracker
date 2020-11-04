@@ -24,7 +24,7 @@ const createDomain = (i18n) => new mutationWithClientMutationId({
   }),
   outputFields: () => ({
     domain: {
-      type: domainType,
+      type: domainType(i18n),
       description: i18n._(t`The newly created domain.`),
       resolve: async (payload) => {
         return payload.domain

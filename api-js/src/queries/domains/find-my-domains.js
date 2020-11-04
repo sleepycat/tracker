@@ -3,7 +3,7 @@ const { t } = require('@lingui/macro')
 const { domainConnection } = require('../../types')
 
 const findMyDomains = (i18n) => ({
-  type: domainConnection.connectionType,
+  type: domainConnection(i18n).connectionType,
   description: i18n._(t`Select domains a user has access to.`),
   args: {
     ...connectionArgs,

@@ -28,7 +28,7 @@ const authenticate = (i18n) =>
     }),
     outputFields: () => ({
       authResult: {
-        type: authResultType,
+        type: authResultType(i18n),
         description: i18n._(t`The authenticated users information, and JWT.`),
         resolve: async (payload) => {
           return payload.authResult

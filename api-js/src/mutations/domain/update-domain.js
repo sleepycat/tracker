@@ -30,7 +30,7 @@ const updateDomain = (i18n) => new mutationWithClientMutationId({
   }),
   outputFields: () => ({
     domain: {
-      type: domainType,
+      type: domainType(i18n),
       description: 'The updated domain.',
       resolve: async (payload) => {
         return payload.domain

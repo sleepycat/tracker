@@ -4,7 +4,7 @@ const { Slug } = require('../../scalars')
 const { organizationType } = require('../../types')
 
 const findOrganizationBySlug = (i18n) => ({
-  type: organizationType,
+  type: organizationType(i18n),
   description: i18n._(
     t`Select all information on a selected organization that a user has access to.`,
   ),

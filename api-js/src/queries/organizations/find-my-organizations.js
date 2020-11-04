@@ -3,7 +3,7 @@ const { t } = require('@lingui/macro')
 const { organizationConnection } = require('../../types')
 
 const findMyOrganizations = (i18n) => ({
-  type: organizationConnection.connectionType,
+  type: organizationConnection(i18n).connectionType,
   description: i18n._(t`Select organizations a user has access to.`),
   args: {
     ...connectionArgs,

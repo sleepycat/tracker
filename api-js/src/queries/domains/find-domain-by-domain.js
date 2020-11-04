@@ -4,7 +4,7 @@ const { Domain } = require('../../scalars')
 const { domainType } = require('../../types')
 
 const findDomainByDomain = (i18n) => ({
-  type: domainType,
+  type: domainType(i18n),
   description: i18n._(t`Retrieve a specific domain by providing a domain.`),
   args: {
     domain: {
