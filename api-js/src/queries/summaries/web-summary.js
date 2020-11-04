@@ -1,18 +1,14 @@
+const { t } = require('@lingui/macro')
 const { categorizedSummaryType } = require('../../types')
 
-const webSummary = {
-  type: categorizedSummaryType,
-  description: 'Web summary computed values, used to build summary cards.',
+const webSummary = (i18n) => ({
+  type: categorizedSummaryType(i18n),
+  description: i18n._(
+    t`Web summary computed values, used to build summary cards.`,
+  ),
   resolve: async () => {},
-}
-
-const demoWebSummary = {
-  type: categorizedSummaryType,
-  description: 'Demo web summary computed values, used to build summary cards.',
-  resolve: async () => {},
-}
+})
 
 module.exports = {
   webSummary,
-  demoWebSummary,
 }

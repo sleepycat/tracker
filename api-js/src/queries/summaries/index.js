@@ -1,9 +1,7 @@
-const { emailSummary, demoEmailSummary } = require('./email-summary')
-const { webSummary, demoWebSummary } = require('./web-summary')
+const { emailSummary } = require('./email-summary')
+const { webSummary } = require('./web-summary')
 
 module.exports = {
   emailSummary,
-  demoEmailSummary,
   webSummary,
-  demoWebSummary,
 }

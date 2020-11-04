@@ -6,7 +6,7 @@ const {
   findOrganizationBySlug,
 } = require('./organizations')
 const { isUserAdmin, user } = require('./user')
-const summaryQueries = require('./summaries')
+const { emailSummary, webSummary } = require('./summaries')
 
 const createQuerySchema = (i18n) => {
   return new GraphQLObjectType({
@@ -21,7 +21,8 @@ const createQuerySchema = (i18n) => {
       findMyOrganizations: findMyOrganizations(i18n),
       findOrganizationBySlug: findOrganizationBySlug(i18n),
       // Summary Queries
-      ...summaryQueries,
+      emailSummary: emailSummary(i18n),
+      webSummary: webSummary(i18n),
       // User Queries
       isUserAdmin: isUserAdmin(i18n),
       user,
