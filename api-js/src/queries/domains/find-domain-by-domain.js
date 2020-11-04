@@ -3,13 +3,13 @@ const { t } = require('@lingui/macro')
 const { Domain } = require('../../scalars')
 const { domainType } = require('../../types')
 
-const findDomainByDomain = {
+const findDomainByDomain = (i18n) => ({
   type: domainType,
-  description: 'Retrieve a specific domain by providing a domain.',
+  description: i18n._(t`Retrieve a specific domain by providing a domain.`),
   args: {
     domain: {
-      type: GraphQLNonNull(Domain),
-      description: 'The domain you wish to retrieve information for.',
+      type: GraphQLNonNull(Domain(i18n)),
+      description: i18n._(t`The domain you wish to retrieve information for.`),
     },
   },
   resolve: async (
@@ -52,7 +52,7 @@ const findDomainByDomain = {
     domain.id = domain._key
     return domain
   },
-}
+})
 
 module.exports = {
   findDomainByDomain,

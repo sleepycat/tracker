@@ -1,9 +1,9 @@
-const { GraphQLBoolean } = require('graphql')
 const { t } = require('@lingui/macro')
+const { TranslatedBoolean } = require('../../scalars')
 
-const isUserAdmin = {
-  type: GraphQLBoolean,
-  description: 'Query used to check if the user has an admin role.',
+const isUserAdmin = (i18n) => ({
+  type: TranslatedBoolean(i18n),
+  description: i18n._(t`Query used to check if the user has an admin role.`),
   resolve: async (_, __, { i18n, query, userId, auth: { userRequired } }) => {
     const user = await userRequired()
 
@@ -30,7 +30,7 @@ const isUserAdmin = {
 
     return false
   },
-}
+})
 
 module.exports = {
   isUserAdmin,

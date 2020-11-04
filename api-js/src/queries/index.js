@@ -1,8 +1,11 @@
 const { GraphQLObjectType } = require('graphql')
 const { nodeField } = require('../types')
-const domainQueries = require('./domains')
-const userQueries = require('./user')
-const organizationQueries = require('./organizations')
+const { findDomainByDomain, findMyDomains } = require('./domains')
+const {
+  findMyOrganizations,
+  findOrganizationBySlug,
+} = require('./organizations')
+const { isUserAdmin, user } = require('./user')
 const summaryQueries = require('./summaries')
 
 const createQuerySchema = (i18n) => {
@@ -12,13 +15,16 @@ const createQuerySchema = (i18n) => {
       // Node Query
       node: nodeField,
       // Domain Queries
-      ...domainQueries,
+      findDomainByDomain: findDomainByDomain(i18n),
+      findMyDomains: findMyDomains(i18n),
       // Organization Queries
-      ...organizationQueries,
+      findMyOrganizations: findMyOrganizations(i18n),
+      findOrganizationBySlug: findOrganizationBySlug(i18n),
       // Summary Queries
       ...summaryQueries,
       // User Queries
-      ...userQueries,
+      isUserAdmin: isUserAdmin(i18n),
+      user,
     }),
   })
 }

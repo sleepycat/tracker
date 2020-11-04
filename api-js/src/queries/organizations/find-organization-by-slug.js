@@ -3,15 +3,17 @@ const { t } = require('@lingui/macro')
 const { Slug } = require('../../scalars')
 const { organizationType } = require('../../types')
 
-const findOrganizationBySlug = {
+const findOrganizationBySlug = (i18n) => ({
   type: organizationType,
-  description:
-    'Select all information on a selected organization that a user has access to.',
+  description: i18n._(
+    t`Select all information on a selected organization that a user has access to.`,
+  ),
   args: {
     orgSlug: {
-      type: GraphQLNonNull(Slug),
-      description:
-        'The slugified organization name you want to retrieve data for.',
+      type: GraphQLNonNull(Slug(i18n)),
+      description: i18n._(
+        t`The slugified organization name you want to retrieve data for.`,
+      ),
     },
   },
   resolve: async (
@@ -54,7 +56,7 @@ const findOrganizationBySlug = {
     org.id = org._key
     return org
   },
-}
+})
 
 module.exports = {
   findOrganizationBySlug,

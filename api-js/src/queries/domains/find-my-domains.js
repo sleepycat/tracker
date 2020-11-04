@@ -2,9 +2,9 @@ const { connectionArgs } = require('graphql-relay')
 const { t } = require('@lingui/macro')
 const { domainConnection } = require('../../types')
 
-const findMyDomains = {
+const findMyDomains = (i18n) => ({
   type: domainConnection.connectionType,
-  description: 'Select domains a user has access to.',
+  description: i18n._(t`Select domains a user has access to.`),
   args: {
     ...connectionArgs,
   },
@@ -28,7 +28,7 @@ const findMyDomains = {
 
     return domainConnections
   },
-}
+})
 
 module.exports = {
   findMyDomains,
