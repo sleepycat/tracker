@@ -1,8 +1,8 @@
-const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
-const { GraphQLEmailAddress } = require('graphql-scalars')
 const { t } = require('@lingui/macro')
 const { LanguageEnums, RoleEnums } = require('../../enums')
+const { EmailAddress, TranslatedID, TranslatedString } = require('../../scalars')
 
 const inviteUserToOrg = (i18n) =>
   new mutationWithClientMutationId({
@@ -12,25 +12,25 @@ const inviteUserToOrg = (i18n) =>
     able to sign-up and be assigned to that organization in one mutation.`),
     inputFields: () => ({
       userName: {
-        type: GraphQLNonNull(GraphQLEmailAddress),
+        type: GraphQLNonNull(EmailAddress(i18n)),
         description: i18n._(
           t`Users email that you would like to invite to your org.`,
         ),
       },
       requestedRole: {
-        type: GraphQLNonNull(RoleEnums),
+        type: GraphQLNonNull(RoleEnums(i18n)),
         description: i18n._(
           t`The role which you would like this user to have.`,
         ),
       },
       orgId: {
-        type: GraphQLNonNull(GraphQLID),
+        type: GraphQLNonNull(TranslatedID(i18n)),
         description: i18n._(
           t`The organization you wish to invite the user to.`,
         ),
       },
       preferredLang: {
-        type: GraphQLNonNull(LanguageEnums),
+        type: GraphQLNonNull(LanguageEnums(i18n)),
         description: i18n._(
           t`The language in which the email will be sent in.`,
         ),
@@ -38,7 +38,7 @@ const inviteUserToOrg = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Informs the user if the invite or invite email was successfully sent.`,
         ),

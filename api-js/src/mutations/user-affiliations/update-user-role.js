@@ -1,8 +1,12 @@
-const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql')
+const { GraphQLNonNull } = require('graphql')
 const { mutationWithClientMutationId, fromGlobalId } = require('graphql-relay')
-const { GraphQLEmailAddress } = require('graphql-scalars')
 const { t } = require('@lingui/macro')
 const { RoleEnums } = require('../../enums')
+const {
+  EmailAddress,
+  TranslatedString,
+  TranslatedID,
+} = require('../../scalars')
 
 const updateUserRole = (i18n) =>
   new mutationWithClientMutationId({
@@ -12,19 +16,19 @@ const updateUserRole = (i18n) =>
     given organization.`),
     inputFields: () => ({
       userName: {
-        type: GraphQLNonNull(GraphQLEmailAddress),
+        type: GraphQLNonNull(EmailAddress(i18n)),
         description: i18n._(
           t`The username of the user you wish to update their role to.`,
         ),
       },
       orgId: {
-        type: GraphQLNonNull(GraphQLID),
+        type: GraphQLNonNull(TranslatedID(i18n)),
         description: i18n._(
           t`The organization that the admin, and the user both belong to.`,
         ),
       },
       role: {
-        type: GraphQLNonNull(RoleEnums),
+        type: GraphQLNonNull(RoleEnums(i18n)),
         description: i18n._(
           t`The role that the admin wants to give to the selected user.`,
         ),
@@ -32,7 +36,7 @@ const updateUserRole = (i18n) =>
     }),
     outputFields: () => ({
       status: {
-        type: GraphQLString,
+        type: TranslatedString(i18n),
         description: i18n._(
           t`Informs the user if the user role update was successful.`,
         ),
