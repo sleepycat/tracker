@@ -15,36 +15,38 @@ const {
   connectionArgs,
 } = require('graphql-relay')
 const { GraphQLDateTime, GraphQLEmailAddress } = require('graphql-scalars')
+const { t } = require('@lingui/macro')
+
 const { RoleEnums, LanguageEnums, PeriodEnums } = require('../../enums')
-const { Acronym, Domain, Slug, Selectors, Year } = require('../../scalars')
+const { Acronym, Domain, Slug, Selectors, Year, TranslatedString, TranslatedInt, TranslatedBoolean } = require('../../scalars')
 const { nodeInterface } = require('../node')
 const { periodType } = require('./dmarc-report')
 
 /* Domain related objects */
-const domainType = new GraphQLObjectType({
+const domainType = (i18n) => new GraphQLObjectType({
   name: 'Domain',
   fields: () => ({
     id: globalIdField('domains'),
     domain: {
-      type: Domain,
-      description: 'Domain that scans will be ran on.',
-      resolve: async ({ domain }) => domain,
+      type: Domain(i18n),
+      description: i18n._(t`Domain that scans will be ran on.`),
+      resolve: ({ domain }) => domain,
     },
     lastRan: {
       type: GraphQLDateTime,
-      description: 'The last time that a scan was ran on this domain.',
-      resolve: async ({ lastRan }) => lastRan,
+      description: i18n._(t`The last time that a scan was ran on this domain.`),
+      resolve: ({ lastRan }) => lastRan,
     },
     selectors: {
-      type: new GraphQLList(Selectors),
+      type: new GraphQLList(Selectors(i18n)),
       description:
-        'Domain Keys Identified Mail (DKIM) selector strings associated with domain.',
-      resolve: async ({ selectors }) => selectors,
+        i18n._(t`Domain Keys Identified Mail (DKIM) selector strings associated with domain.`),
+      resolve: ({ selectors }) => selectors,
     },
     organizations: {
-      type: organizationConnection.connectionType,
+      type: organizationConnection(i18n).connectionType,
       args: connectionArgs,
-      description: 'The organization that this domain belongs to.',
+      description: i18n._(t`The organization that this domain belongs to.`),
       resolve: async (
         { _id },
         args,
@@ -58,32 +60,32 @@ const domainType = new GraphQLObjectType({
       },
     },
     email: {
-      type: emailScanType,
-      description: 'DKIM, DMARC, and SPF scan results.',
-      resolve: async ({ _id, _key }) => {
+      type: emailScanType(i18n),
+      description: i18n._(t`DKIM, DMARC, and SPF scan results.`),
+      resolve: ({ _id, _key }) => {
         return { _id, _key }
       },
     },
     web: {
-      type: webScanType,
-      description: 'HTTPS, and SSL scan results.',
-      resolve: async ({ _id, _key }) => {
+      type: webScanType(i18n),
+      description: i18n._(t`HTTPS, and SSL scan results.`),
+      resolve: ({ _id, _key }) => {
         return { _id, _key }
       },
     },
     dmarcSummaryByPeriod: {
-      description: 'Summarized DMARC aggregate reports.',
+      description: i18n._(t`Summarized DMARC aggregate reports.`),
       args: {
         month: {
-          type: GraphQLNonNull(PeriodEnums),
-          description: 'The month in which the returned data is relevant to.',
+          type: GraphQLNonNull(PeriodEnums(i18n)),
+          description: i18n._(t`The month in which the returned data is relevant to.`),
         },
         year: {
-          type: GraphQLNonNull(Year),
-          description: 'The year in which the returned data is relevant to.',
+          type: GraphQLNonNull(Year(i18n)),
+          description: i18n._(t`The year in which the returned data is relevant to.`),
         },
       },
-      type: periodType,
+      type: periodType(i18n),
       resolve: async (
         { _id, _key, domain },
         __,
@@ -104,7 +106,7 @@ const domainType = new GraphQLObjectType({
             `User: ${userId} attempted to access dmarc report period data for ${_key}, but does not belong to an org with ownership.`,
           )
           throw new Error(
-            `Unable to retrieve dmarc report information for: ${domain}`,
+            i18n._(t`Unable to retrieve dmarc report information for: ${domain}`),
           )
         }
 
@@ -116,7 +118,7 @@ const domainType = new GraphQLObjectType({
     },
     yearlyDmarcSummaries: {
       description: 'Yearly summarized DMARC aggregate reports.',
-      type: new GraphQLList(periodType),
+      type: new GraphQLList(periodType(i18n)),
       resolve: async (
         { _id, _key, domain },
         __,
@@ -137,7 +139,7 @@ const domainType = new GraphQLObjectType({
             `User: ${userId} attempted to access dmarc report period data for ${_key}, but does not belong to an org with ownership.`,
           )
           throw new Error(
-            `Unable to retrieve dmarc report information for: ${domain}`,
+            i18n._(t`Unable to retrieve dmarc report information for: ${domain}`),
           )
         }
 
@@ -149,20 +151,20 @@ const domainType = new GraphQLObjectType({
     },
   }),
   interfaces: [nodeInterface],
-  description: 'Domain object containing information for a given domain.',
+  description: i18n._(t`Domain object containing information for a given domain.`),
 })
 
-const domainConnection = connectionDefinitions({
+const domainConnection = (i18n) => connectionDefinitions({
   name: 'Domain',
-  nodeType: domainType,
+  nodeType: domainType(i18n),
 })
 
-const emailScanType = new GraphQLObjectType({
+const emailScanType = (i18n) => new GraphQLObjectType({
   name: 'EmailScan',
   fields: () => ({
     domain: {
       type: domainType,
-      description: `The domain the scan was ran on.`,
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ _key }, _, { loaders: { domainLoaderByKey } }) => {
         const domain = await domainLoaderByKey.load(_key)
         domain.id = domain._key
@@ -170,19 +172,19 @@ const emailScanType = new GraphQLObjectType({
       },
     },
     dkim: {
-      type: dkimConnection.connectionType,
+      type: dkimConnection(i18n).connectionType,
       args: {
         starDate: {
           type: GraphQLDateTime,
-          description: 'Start date for date filter.',
+          description: i18n._(t`Start date for date filter.`),
         },
         endDate: {
           type: GraphQLDateTime,
-          description: 'End date for date filter.',
+          description: i18n._(t`End date for date filter.`),
         },
         ...connectionArgs,
       },
-      description: `DomainKeys Identified Mail (DKIM) Signatures scan results.`,
+      description: i18n._(t`DomainKeys Identified Mail (DKIM) Signatures scan results.`),
       resolve: async (
         { _id },
         args,
@@ -196,19 +198,19 @@ const emailScanType = new GraphQLObjectType({
       },
     },
     dmarc: {
-      type: dmarcConnection.connectionType,
+      type: dmarcConnection(i18n).connectionType,
       args: {
         starDate: {
           type: GraphQLDateTime,
-          description: 'Start date for date filter.',
+          description: i18n._(t`Start date for date filter.`),
         },
         endDate: {
           type: GraphQLDateTime,
-          description: 'End date for date filter.',
+          description: i18n._(t`End date for date filter.`),
         },
         ...connectionArgs,
       },
-      description: `Domain-based Message Authentication, Reporting, and Conformance (DMARC) scan results.`,
+      description: i18n._(t`Domain-based Message Authentication, Reporting, and Conformance (DMARC) scan results.`),
       resolve: async (
         { _id },
         args,
@@ -222,19 +224,19 @@ const emailScanType = new GraphQLObjectType({
       },
     },
     spf: {
-      type: spfConnection.connectionType,
+      type: spfConnection(i18n).connectionType,
       args: {
         starDate: {
           type: GraphQLDateTime,
-          description: 'Start date for date filter.',
+          description: i18n._(t`Start date for date filter.`),
         },
         endDate: {
           type: GraphQLDateTime,
-          description: 'End date for date filter.',
+          description: i18n._(t`End date for date filter.`),
         },
         ...connectionArgs,
       },
-      description: `Sender Policy Framework (SPF) scan results.`,
+      description: i18n._(t`Sender Policy Framework (SPF) scan results.`),
       resolve: async (
         { _id },
         args,
@@ -248,16 +250,16 @@ const emailScanType = new GraphQLObjectType({
       },
     },
   }),
-  description: `Results of DKIM, DMARC, and SPF scans on the given domain.`,
+  description: i18n._(t`Results of DKIM, DMARC, and SPF scans on the given domain.`),
 })
 
-const dkimType = new GraphQLObjectType({
+const dkimType = (i18n) => new GraphQLObjectType({
   name: 'DKIM',
   fields: () => ({
     id: globalIdField('dkim'),
     domain: {
-      type: domainType,
-      description: `The domain the scan was ran on.`,
+      type: domainType(i18n),
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ domainId }, _, { loaders: { domainLoaderByKey } }) => {
         const domainKey = domainId.split('/')[1]
         const domain = await domainLoaderByKey.load(domainKey)
@@ -267,15 +269,15 @@ const dkimType = new GraphQLObjectType({
     },
     timestamp: {
       type: GraphQLDateTime,
-      description: `The time when the scan was initiated.`,
-      resolve: async ({ timestamp }) => timestamp,
+      description: i18n._(t`The time when the scan was initiated.`),
+      resolve: ({ timestamp }) => timestamp,
     },
     results: {
-      type: dkimResultsConnection.connectionType,
+      type: dkimResultsConnection(i18n).connectionType,
       args: {
         ...connectionArgs,
       },
-      description: 'Individual scans results for each dkim selector.',
+      description: i18n._(t`Individual scans results for each dkim selector.`),
       resolve: async (
         { _id },
         args,
@@ -290,25 +292,25 @@ const dkimType = new GraphQLObjectType({
     },
   }),
   interfaces: [nodeInterface],
-  description: `DomainKeys Identified Mail (DKIM) permits a person, role, or
+  description: i18n._(t`DomainKeys Identified Mail (DKIM) permits a person, role, or
     organization that owns the signing domain to claim some
     responsibility for a message by associating the domain with the
     message.  This can be an author's organization, an operational relay,
-    or one of their agents.`,
+    or one of their agents.`),
 })
 
-const dkimConnection = connectionDefinitions({
+const dkimConnection = (i18n) => connectionDefinitions({
   name: 'DKIM',
-  nodeType: dkimType,
+  nodeType: dkimType(i18n),
 })
 
-const dkimResultsType = new GraphQLObjectType({
+const dkimResultsType = (i18n) => new GraphQLObjectType({
   name: 'DKIMResult',
   fields: () => ({
     id: globalIdField('dkimResult'),
     dkim: {
-      type: dkimType,
-      description: 'The dkim scan information that this result belongs to.',
+      type: dkimType(i18n),
+      description: i18n._(t`The dkim scan information that this result belongs to.`),
       resolve: async ({ dkimId }, _, { loaders: { dkimLoaderByKey } }) => {
         const dkimKey = dkimId.split('/')[1]
         const dkim = await dkimLoaderByKey.load(dkimKey)
@@ -317,42 +319,42 @@ const dkimResultsType = new GraphQLObjectType({
       },
     },
     selector: {
-      type: GraphQLString,
-      description: 'The selector the scan was ran on.',
-      resolve: async ({ selector }) => selector,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The selector the scan was ran on.`),
+      resolve: ({ selector }) => selector,
     },
     record: {
-      type: GraphQLString,
-      description: 'DKIM record retrieved during the scan of the domain.',
-      resolve: async ({ record }) => record,
+      type: TranslatedString(i18n),
+      description: i18n._(t`DKIM record retrieved during the scan of the domain.`),
+      resolve: ({ record }) => record,
     },
     keyLength: {
-      type: GraphQLString,
-      description: 'Size of the Public Key in bits',
-      resolve: async ({ keyLength }) => keyLength,
+      type: TranslatedString(i18n),
+      description: i18n._(t`Size of the Public Key in bits`),
+      resolve: ({ keyLength }) => keyLength,
     },
     dkimGuidanceTags: {
-      type: new GraphQLList(GraphQLString),
-      description: 'Key tags found during scan.',
-      resolve: async ({ dkimGuidanceTags }) => dkimGuidanceTags,
+      type: new GraphQLList(TranslatedString(i18n)),
+      description: i18n._(t`Key tags found during scan.`),
+      resolve: ({ dkimGuidanceTags }) => dkimGuidanceTags,
     },
   }),
   interfaces: [nodeInterface],
-  description: 'Individual scans results for the given dkim selector.',
+  description: i18n._(t`Individual scans results for the given dkim selector.`),
 })
 
-const dkimResultsConnection = connectionDefinitions({
+const dkimResultsConnection = (i18n) => connectionDefinitions({
   name: 'DKIMResult',
-  nodeType: dkimResultsType,
+  nodeType: dkimResultsType(i18n),
 })
 
-const dmarcType = new GraphQLObjectType({
+const dmarcType = (i18n) => new GraphQLObjectType({
   name: 'DMARC',
   fields: () => ({
     id: globalIdField('dmarc'),
     domain: {
-      type: domainType,
-      description: `The domain the scan was ran on.`,
+      type: domainType(i18n),
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ domainId }, _, { loaders: { domainLoaderByKey } }) => {
         const domainKey = domainId.split('/')[1]
         const domain = await domainLoaderByKey.load(domainKey)
@@ -362,62 +364,62 @@ const dmarcType = new GraphQLObjectType({
     },
     timestamp: {
       type: GraphQLDateTime,
-      description: `The time when the scan was initiated.`,
-      resolve: async ({ timestamp }) => timestamp,
+      description: i18n._(t`The time when the scan was initiated.`),
+      resolve: ({ timestamp }) => timestamp,
     },
     dmarcPhase: {
-      type: GraphQLInt,
-      description: `DMARC phase found during scan.`,
-      resolve: async ({ dmarcPhase }) => dmarcPhase,
+      type: TranslatedInt(i18n),
+      description: i18n._(t`DMARC phase found during scan.`),
+      resolve: ({ dmarcPhase }) => dmarcPhase,
     },
     record: {
-      type: GraphQLString,
-      description: `DMARC record retrieved during scan.`,
-      resolve: async ({ record }) => record,
+      type: TranslatedString(i18n),
+      description: i18n._(t`DMARC record retrieved during scan.`),
+      resolve: ({ record }) => record,
     },
     pPolicy: {
-      type: GraphQLString,
-      description: `The requested policy you wish mailbox providers to apply
-            when your email fails DMARC authentication and alignment checks. `,
-      resolve: async ({ pPolicy }) => pPolicy,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The requested policy you wish mailbox providers to apply
+            when your email fails DMARC authentication and alignment checks.`),
+      resolve: ({ pPolicy }) => pPolicy,
     },
     spPolicy: {
-      type: GraphQLString,
-      description: `This tag is used to indicate a requested policy for all
-            subdomains where mail is failing the DMARC authentication and alignment checks.`,
-      resolve: async ({ spPolicy }) => spPolicy,
+      type: TranslatedString(i18n),
+      description: i18n._(t`This tag is used to indicate a requested policy for all
+            subdomains where mail is failing the DMARC authentication and alignment checks.`),
+      resolve: ({ spPolicy }) => spPolicy,
     },
     pct: {
-      type: GraphQLInt,
-      description: `The percentage of messages to which the DMARC policy is to be applied.`,
-      resolve: async ({ pct }) => pct,
+      type: TranslatedInt(i18n),
+      description: i18n._(t`The percentage of messages to which the DMARC policy is to be applied.`),
+      resolve: ({ pct }) => pct,
     },
     dmarcGuidanceTags: {
-      type: GraphQLList(GraphQLString),
-      description: `Key tags found during DMARC Scan.`,
-      resolve: async ({ dmarcGuidanceTags }) => dmarcGuidanceTags,
+      type: GraphQLList(TranslatedString(i18n)),
+      description: i18n._(t`Key tags found during DMARC Scan.`),
+      resolve: ({ dmarcGuidanceTags }) => dmarcGuidanceTags,
     },
   }),
   interfaces: [nodeInterface],
-  description: `Domain-based Message Authentication, Reporting, and Conformance
+  description: i18n._(t`Domain-based Message Authentication, Reporting, and Conformance
     (DMARC) is a scalable mechanism by which a mail-originating
     organization can express domain-level policies and preferences for
     message validation, disposition, and reporting, that a mail-receiving
-    organization can use to improve mail handling.`,
+    organization can use to improve mail handling.`),
 })
 
-const dmarcConnection = connectionDefinitions({
+const dmarcConnection = (i18n) => connectionDefinitions({
   name: 'DMARC',
-  nodeType: dmarcType,
+  nodeType: dmarcType(i18n),
 })
 
-const spfType = new GraphQLObjectType({
+const spfType = (i18n) => new GraphQLObjectType({
   name: 'SPF',
   fields: () => ({
     id: globalIdField('spf'),
     domain: {
-      type: domainType,
-      description: `The domain the scan was ran on.`,
+      type: domainType(i18n),
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ domainId }, _, { loaders: { domainLoaderByKey } }) => {
         const domainKey = domainId.split('/')[1]
         const domain = await domainLoaderByKey.load(domainKey)
@@ -427,52 +429,52 @@ const spfType = new GraphQLObjectType({
     },
     timestamp: {
       type: GraphQLDateTime,
-      description: `The time the scan was initiated.`,
-      resolve: async ({ timestamp }) => timestamp,
+      description: i18n._(t`The time the scan was initiated.`),
+      resolve: ({ timestamp }) => timestamp,
     },
     lookups: {
-      type: GraphQLInt,
-      description: `The amount of DNS lookups.`,
-      resolve: async ({ lookups }) => lookups,
+      type: TranslatedInt(i18n),
+      description: i18n._(t`The amount of DNS lookups.`),
+      resolve: ({ lookups }) => lookups,
     },
     record: {
-      type: GraphQLString,
-      description: `SPF record retrieved during the scan of the given domain.`,
-      resolve: async ({ record }) => record,
+      type: TranslatedString(i18n),
+      description: i18n._(t`SPF record retrieved during the scan of the given domain.`),
+      resolve: ({ record }) => record,
     },
     spfDefault: {
-      type: GraphQLString,
-      description: `Instruction of what a recipient should do if there is not a match to your SPF record.`,
-      resolve: async ({ spfDefault }) => spfDefault,
+      type: TranslatedString(i18n),
+      description: i18n._(t`Instruction of what a recipient should do if there is not a match to your SPF record.`),
+      resolve: ({ spfDefault }) => spfDefault,
     },
     spfGuidanceTags: {
-      type: GraphQLList(GraphQLString),
-      description: `Key tags found during scan.`,
-      resolve: async ({ spfGuidanceTags }) => spfGuidanceTags,
+      type: GraphQLList(TranslatedString(i18n)),
+      description: i18n._(t`Key tags found during scan.`),
+      resolve: ({ spfGuidanceTags }) => spfGuidanceTags,
     },
   }),
   interfaces: [nodeInterface],
-  description: `Email on the Internet can be forged in a number of ways.  In
+  description: i18n._(t`Email on the Internet can be forged in a number of ways.  In
   particular, existing protocols place no restriction on what a sending
   host can use as the "MAIL FROM" of a message or the domain given on
   the SMTP HELO/EHLO commands.  Version 1 of the Sender Policy Framework (SPF)
   protocol is where ADministrative Management Domains (ADMDs) can explicitly
   authorize the hosts that are allowed to use their domain names, and a
-  receiving host can check such authorization.`,
+  receiving host can check such authorization.`),
 })
 
-const spfConnection = connectionDefinitions({
+const spfConnection = (i18n) => connectionDefinitions({
   name: 'SPF',
-  nodeType: spfType,
+  nodeType: spfType(i18n),
 })
 
-const webScanType = new GraphQLObjectType({
+const webScanType = (i18n) => new GraphQLObjectType({
   name: 'WebScan',
   fields: () => ({
     id: globalIdField('web-scan'),
     domain: {
-      type: domainType,
-      description: `The domain the scan was ran on.`,
+      type: domainType(i18n),
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ _key }, _, { loaders: { domainLoaderByKey } }) => {
         const domain = await domainLoaderByKey.load(_key)
         domain.id = domain._key
@@ -480,19 +482,19 @@ const webScanType = new GraphQLObjectType({
       },
     },
     https: {
-      type: httpsConnection.connectionType,
+      type: httpsConnection(i18n).connectionType,
       args: {
         starDate: {
           type: GraphQLDateTime,
-          description: 'Start date for date filter.',
+          description: i18n._(t`Start date for date filter.`),
         },
         endDate: {
           type: GraphQLDateTime,
-          description: 'End date for date filter.',
+          description: i18n._(t`End date for date filter.`),
         },
         ...connectionArgs,
       },
-      description: `Hyper Text Transfer Protocol Secure scan results.`,
+      description: i18n._(t`Hyper Text Transfer Protocol Secure scan results.`),
       resolve: async (
         { _id },
         args,
@@ -506,19 +508,19 @@ const webScanType = new GraphQLObjectType({
       },
     },
     ssl: {
-      type: sslConnection.connectionType,
+      type: sslConnection(i18n).connectionType,
       args: {
         starDate: {
           type: GraphQLDateTime,
-          description: 'Start date for date filter.',
+          description: i18n._(t`Start date for date filter.`),
         },
         endDate: {
           type: GraphQLDateTime,
-          description: 'End date for date filter.',
+          description: i18n._(t`End date for date filter.`),
         },
         ...connectionArgs,
       },
-      description: `Secure Socket Layer scan results.`,
+      description: i18n._(t`Secure Socket Layer scan results.`),
       resolve: async (
         { _id },
         args,
@@ -532,16 +534,16 @@ const webScanType = new GraphQLObjectType({
       },
     },
   }),
-  description: `Results of HTTPS, and SSL scan on the given domain.`,
+  description: i18n._(t`Results of HTTPS, and SSL scan on the given domain.`),
 })
 
-const httpsType = new GraphQLObjectType({
+const httpsType = (i18n) => new GraphQLObjectType({
   name: 'HTTPS',
   fields: () => ({
     id: globalIdField('https'),
     domain: {
-      type: domainType,
-      description: `The domain the scan was ran on.`,
+      type: domainType(i18n),
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ domainId }, _, { loaders: { domainLoaderByKey } }) => {
         const domainKey = domainId.split('/')[1]
         const domain = await domainLoaderByKey.load(domainKey)
@@ -551,56 +553,56 @@ const httpsType = new GraphQLObjectType({
     },
     timestamp: {
       type: GraphQLDateTime,
-      description: `The time the scan was initiated.`,
-      resolve: async ({ timestamp }) => timestamp,
+      description: i18n._(t`The time the scan was initiated.`),
+      resolve: ({ timestamp }) => timestamp,
     },
     implementation: {
-      type: GraphQLString,
-      description: `State of the HTTPS implementation on the server and any issues therein.`,
-      resolve: async ({ implementation }) => implementation,
+      type: TranslatedString(i18n),
+      description: i18n._(t`State of the HTTPS implementation on the server and any issues therein.`),
+      resolve: ({ implementation }) => implementation,
     },
     enforced: {
-      type: GraphQLString,
-      description: `Degree to which HTTPS is enforced on the server based on behaviour.`,
-      resolve: async ({ enforced }) => enforced,
+      type: TranslatedString(i18n),
+      description: i18n._(t`Degree to which HTTPS is enforced on the server based on behaviour.`),
+      resolve: ({ enforced }) => enforced,
     },
     hsts: {
-      type: GraphQLString,
-      description: `Presence and completeness of HSTS implementation.`,
-      resolve: async ({ hsts }) => hsts,
+      type: TranslatedString(i18n),
+      description: i18n._(t`Presence and completeness of HSTS implementation.`),
+      resolve: ({ hsts }) => hsts,
     },
     hstsAge: {
-      type: GraphQLString,
-      description: `Denotes how long the domain should only be accessed using HTTPS`,
-      resolve: async ({ hstsAge }) => hstsAge,
+      type: TranslatedString(i18n),
+      description: i18n._(t`Denotes how long the domain should only be accessed using HTTPS`),
+      resolve: ({ hstsAge }) => hstsAge,
     },
     preloaded: {
-      type: GraphQLString,
-      description: `Denotes whether the domain has been submitted and included within HSTS preload list.`,
-      resolve: async ({ preloaded }) => preloaded,
+      type: TranslatedString(i18n),
+      description: i18n._(t`Denotes whether the domain has been submitted and included within HSTS preload list.`),
+      resolve: ({ preloaded }) => preloaded,
     },
     httpsGuidanceTags: {
-      type: GraphQLList(GraphQLString),
-      description: `Key tags found during scan.`,
-      resolve: async ({ httpsGuidanceTags }) => httpsGuidanceTags,
+      type: GraphQLList(TranslatedString(i18n)),
+      description: i18n._(t`Key tags found during scan.`),
+      resolve: ({ httpsGuidanceTags }) => httpsGuidanceTags,
     },
   }),
   interfaces: [nodeInterface],
-  description: `Hyper Text Transfer Protocol Secure scan results.`,
+  description: i18n._(t`Hyper Text Transfer Protocol Secure scan results.`),
 })
 
-const httpsConnection = connectionDefinitions({
+const httpsConnection = (i18n) => connectionDefinitions({
   name: 'HTTPS',
-  nodeType: httpsType,
+  nodeType: httpsType(i18n),
 })
 
-const sslType = new GraphQLObjectType({
+const sslType = (i18n) => new GraphQLObjectType({
   name: 'SSL',
   fields: () => ({
     id: globalIdField('ssl'),
     domain: {
-      type: domainType,
-      description: `The domain the scan was ran on.`,
+      type: domainType(i18n),
+      description: i18n._(t`The domain the scan was ran on.`),
       resolve: async ({ domainId }, _, { loaders: { domainLoaderByKey } }) => {
         const domainKey = domainId.split('/')[1]
         const domain = await domainLoaderByKey.load(domainKey)
@@ -610,83 +612,83 @@ const sslType = new GraphQLObjectType({
     },
     timestamp: {
       type: GraphQLDateTime,
-      description: `The time when the scan was initiated.`,
-      resolve: async ({ timestamp }) => timestamp,
+      description: i18n._(t`The time when the scan was initiated.`),
+      resolve: ({ timestamp }) => timestamp,
     },
     sslGuidanceTags: {
-      type: GraphQLList(GraphQLString),
-      description: `Key tags found during scan.`,
-      resolve: async ({ sslGuidanceTags }) => sslGuidanceTags,
+      type: GraphQLList(TranslatedString(i18n)),
+      description: i18n._(t`Key tags found during scan.`),
+      resolve: ({ sslGuidanceTags }) => sslGuidanceTags,
     },
   }),
   interfaces: [nodeInterface],
-  description: `Secure Socket Layer scan results.`,
+  description: i18n._(t`Secure Socket Layer scan results.`),
 })
 
-const sslConnection = connectionDefinitions({
+const sslConnection = (i18n) => connectionDefinitions({
   name: 'SSL',
-  nodeType: sslType,
+  nodeType: sslType(i18n),
 })
 
 /* End domain related objects */
 
-const organizationType = new GraphQLObjectType({
+const organizationType = (i18n) => new GraphQLObjectType({
   name: 'Organization',
   fields: () => ({
     id: globalIdField('organizations'),
     acronym: {
-      type: Acronym,
-      description: 'The organizations acronym.',
-      resolve: async ({ acronym }) => acronym,
+      type: Acronym(i18n),
+      description: i18n._(t`The organizations acronym.`),
+      resolve: ({ acronym }) => acronym,
     },
     name: {
-      type: GraphQLString,
-      description: 'The full name of the organization.',
-      resolve: async ({ name }) => name,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The full name of the organization.`),
+      resolve: ({ name }) => name,
     },
     slug: {
-      type: Slug,
-      description: 'Slugified name of the organization.',
-      resolve: async ({ slug }) => slug,
+      type: Slug(i18n),
+      description: i18n._(t`Slugified name of the organization.`),
+      resolve: ({ slug }) => slug,
     },
     zone: {
-      type: GraphQLString,
-      description: 'The zone which the organization belongs to.',
-      resolve: async ({ zone }) => zone,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The zone which the organization belongs to.`),
+      resolve: ({ zone }) => zone,
     },
     sector: {
-      type: GraphQLString,
-      description: 'The sector which the organization belongs to.',
-      resolve: async ({ sector }) => sector,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The sector which the organization belongs to.`),
+      resolve: ({ sector }) => sector,
     },
     country: {
-      type: GraphQLString,
-      description: 'The country in which the organization resides.',
-      resolve: async ({ country }) => country,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The country in which the organization resides.`),
+      resolve: ({ country }) => country,
     },
     province: {
-      type: GraphQLString,
-      description: 'The province in which the organization resides.',
-      resolve: async ({ province }) => province,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The province in which the organization resides.`),
+      resolve: ({ province }) => province,
     },
     city: {
-      type: GraphQLString,
-      description: 'The city in which the organization resides.',
-      resolve: async ({ city }) => city,
+      type: TranslatedString(i18n),
+      description: i18n._(t`The city in which the organization resides.`),
+      resolve: ({ city }) => city,
     },
     blueCheck: {
-      type: GraphQLBoolean,
-      description: 'Wether the organization is a verified organization.',
-      resolve: async ({ blueCheck }) => blueCheck,
+      type: TranslatedBoolean(i18n),
+      description: i18n._(t`Wether the organization is a verified organization.`),
+      resolve: ({ blueCheck }) => blueCheck,
     },
     domainCount: {
-      type: GraphQLInt,
-      description: 'The number of domains associated with this organization.',
-      resolve: async ({ domainCount }) => domainCount,
+      type: TranslatedInt(i18n),
+      description: i18n._(t`The number of domains associated with this organization.`),
+      resolve: ({ domainCount }) => domainCount,
     },
     domains: {
-      type: domainConnection.connectionType,
-      description: 'The domains which are associated with this organization.',
+      type: domainConnection(i18n).connectionType,
+      description: i18n._(t`The domains which are associated with this organization.`),
       args: connectionArgs,
       resolve: async (
         { _id },
@@ -719,12 +721,12 @@ const organizationType = new GraphQLObjectType({
   }),
   interfaces: [nodeInterface],
   description:
-    'Organization object containing information for a given Organization.',
+    i18n._(t`Organization object containing information for a given Organization.`),
 })
 
-const organizationConnection = connectionDefinitions({
+const organizationConnection = (i18n) => connectionDefinitions({
   name: 'Organization',
-  nodeType: organizationType,
+  nodeType: organizationType(i18n),
 })
 
 const userType = new GraphQLObjectType({
@@ -734,35 +736,35 @@ const userType = new GraphQLObjectType({
     userName: {
       type: GraphQLEmailAddress,
       description: 'Users email address.',
-      resolve: async ({ userName }) => {
+      resolve: ({ userName }) => {
         return userName
       },
     },
     displayName: {
       type: GraphQLString,
       description: 'Name displayed to other users.',
-      resolve: async ({ displayName }) => {
+      resolve: ({ displayName }) => {
         return displayName
       },
     },
     preferredLang: {
       type: LanguageEnums,
       description: 'Users preferred language.',
-      resolve: async ({ preferredLang }) => {
+      resolve: ({ preferredLang }) => {
         return preferredLang
       },
     },
     tfaValidated: {
       type: GraphQLBoolean,
       description: 'Has the user completed two factor authentication.',
-      resolve: async ({ tfaValidated }) => {
+      resolve: ({ tfaValidated }) => {
         return tfaValidated
       },
     },
     emailValidated: {
       type: GraphQLBoolean,
       description: 'Has the user email verified their account.',
-      resolve: async ({ emailValidated }) => {
+      resolve: ({ emailValidated }) => {
         return emailValidated
       },
     },

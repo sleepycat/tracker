@@ -1,23 +1,25 @@
-const { GraphQLObjectType, GraphQLList, GraphQLInt } = require('graphql')
+const { GraphQLObjectType, GraphQLList } = require('graphql')
+const { t } = require('@lingui/macro')
+const { TranslatedInt } = require('../../scalars')
 const { summaryCategoryType } = require('./summary-category')
 
-const categorizedSummaryType = new GraphQLObjectType({
+const categorizedSummaryType = (i18n) => new GraphQLObjectType({
   name: 'CategorizedSummary',
   fields: () => ({
     categories: {
-      type: GraphQLList(summaryCategoryType),
-      description: `List of SummaryCategory objects with data for different computed categories.`,
+      type: GraphQLList(summaryCategoryType(i18n)),
+      description: i18n._(t`List of SummaryCategory objects with data for different computed categories.`),
       resolve: async () => {},
     },
     total: {
-      type: GraphQLInt,
-      description: `Total domains that were check under this summary.`,
+      type: TranslatedInt(i18n),
+      description: i18n._(t`Total domains that were check under this summary.`),
       resolve: async () => {},
     },
   }),
-  description: `This object contains the list of different categories for pre-computed
+  description: i18n._(t`This object contains the list of different categories for pre-computed
     summary data with the computed total for how many domains in total are
-    being compared.`,
+    being compared.`),
 })
 
 module.exports = {

@@ -1,80 +1,88 @@
-const {
-  GraphQLInt,
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLBoolean,
-  GraphQLID,
-} = require('graphql')
+const { GraphQLObjectType } = require('graphql')
 const { connectionDefinitions } = require('graphql-relay')
+const { t } = require('@lingui/macro')
 
-const dkimFailureTableType = new GraphQLObjectType({
-  name: 'DkimFailureTable',
-  description:
-    'This table contains the data fields for senders who are in the DKIM fail category.',
-  fields: () => ({
-    id: {
-      type: GraphQLID,
-      description: 'The ID of the object.',
-      resolve: async ({ id }) => id,
-    },
-    dkimAligned: {
-      type: GraphQLBoolean,
-      description: 'Is DKIM aligned.',
-      resolve: async ({ dkimAligned }) => dkimAligned,
-    },
-    dkimDomains: {
-      type: GraphQLString,
-      description: 'Domains used for DKIM validation',
-      resolve: async ({ dkimDomains }) => dkimDomains,
-    },
-    dkimResults: {
-      type: GraphQLString,
-      description:
-        'The results of DKIM verification of the message. Can be pass, fail, neutral, temp-error, or perm-error.',
-      resolve: async ({ dkimResults }) => dkimResults,
-    },
-    dkimSelectors: {
-      type: GraphQLString,
-      description: 'Pointer to a DKIM public key record in DNS.',
-      resolve: async ({ dkimSelectors }) => dkimSelectors,
-    },
-    dnsHost: {
-      type: GraphQLString,
-      description: 'Host from reverse DNS of source IP address.',
-      resolve: async ({ dnsHost }) => dnsHost,
-    },
-    envelopeFrom: {
-      type: GraphQLString,
-      description: 'Domain from SMTP banner message.',
-      resolve: async ({ envelopeFrom }) => envelopeFrom,
-    },
-    guidance: {
-      type: GraphQLString,
-      description: 'Guidance for any issues that were found from the report.',
-      resolve: async ({ guidance }) => guidance,
-    },
-    headerFrom: {
-      type: GraphQLString,
-      description: 'The address/domain used in the "From" field.',
-      resolve: async ({ headerFrom }) => headerFrom,
-    },
-    sourceIpAddress: {
-      type: GraphQLString,
-      description: 'IP address of sending server.',
-      resolve: async ({ sourceIpAddress }) => sourceIpAddress,
-    },
-    totalMessages: {
-      type: GraphQLInt,
-      description: 'Total messages from this sender.',
-      resolve: async ({ totalMessages }) => totalMessages,
-    },
-  }),
-})
+const {
+  TranslatedID,
+  TranslatedBoolean,
+  TranslatedString,
+  TranslatedInt,
+} = require('../../../../scalars')
 
-const dkimFailureConnection = connectionDefinitions({
-  name: 'DkimFailureTable',
-  nodeType: dkimFailureTableType,
-})
+const dkimFailureTableType = (i18n) =>
+  new GraphQLObjectType({
+    name: 'DkimFailureTable',
+    description: i18n._(
+      t`This table contains the data fields for senders who are in the DKIM fail category.`,
+    ),
+    fields: () => ({
+      id: {
+        type: TranslatedID(i18n),
+        description: i18n._(t`The ID of the object.`),
+        resolve: ({ id }) => id,
+      },
+      dkimAligned: {
+        type: TranslatedBoolean(i18n),
+        description: i18n._(t`Is DKIM aligned.`),
+        resolve: ({ dkimAligned }) => dkimAligned,
+      },
+      dkimDomains: {
+        type: TranslatedString(i18n),
+        description: i18n._(t`Domains used for DKIM validation`),
+        resolve: ({ dkimDomains }) => dkimDomains,
+      },
+      dkimResults: {
+        type: TranslatedString(i18n),
+        description: i18n._(
+          t`The results of DKIM verification of the message. Can be pass, fail, neutral, temp-error, or perm-error.`,
+        ),
+        resolve: ({ dkimResults }) => dkimResults,
+      },
+      dkimSelectors: {
+        type: TranslatedString(i18n),
+        description: i18n._(t`Pointer to a DKIM public key record in DNS.`),
+        resolve: ({ dkimSelectors }) => dkimSelectors,
+      },
+      dnsHost: {
+        type: TranslatedString(i18n),
+        description: i18n._(t`Host from reverse DNS of source IP address.`),
+        resolve: ({ dnsHost }) => dnsHost,
+      },
+      envelopeFrom: {
+        type: TranslatedString(i18n),
+        description: i18n._(t`Domain from SMTP banner message.`),
+        resolve: ({ envelopeFrom }) => envelopeFrom,
+      },
+      guidance: {
+        type: TranslatedString(i18n),
+        description: i18n._(
+          t`Guidance for any issues that were found from the report.`,
+        ),
+        resolve: ({ guidance }) => guidance,
+      },
+      headerFrom: {
+        type: TranslatedString(i18n),
+        description: i18n._(t`The address/domain used in the "From" field.`),
+        resolve: ({ headerFrom }) => headerFrom,
+      },
+      sourceIpAddress: {
+        type: TranslatedString(i18n),
+        description: i18n._(t`IP address of sending server.`),
+        resolve: ({ sourceIpAddress }) => sourceIpAddress,
+      },
+      totalMessages: {
+        type: TranslatedInt(i18n),
+        description: i18n._(t`Total messages from this sender.`),
+        resolve: ({ totalMessages }) => totalMessages,
+      },
+    }),
+  })
+
+const dkimFailureConnection = (i18n) =>
+  connectionDefinitions({
+    name: 'DkimFailureTable',
+    nodeType: dkimFailureTableType(i18n),
+  })
 
 module.exports = {
   dkimFailureConnection,

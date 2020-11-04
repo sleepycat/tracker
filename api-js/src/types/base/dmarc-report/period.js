@@ -1,38 +1,41 @@
-const { GraphQLObjectType, GraphQLString } = require('graphql')
+const { GraphQLObjectType } = require('graphql')
+const { t } = require('@lingui/macro')
+
 const { categoryPercentagesType } = require('./category-percentages')
 const { categoryTotalsType } = require('./category-totals')
 const { detailTablesType } = require('./detail-tables')
+const { TranslatedString } = require('../../../scalars')
 
-const periodType = new GraphQLObjectType({
+const periodType = (i18n) => new GraphQLObjectType({
   name: 'Period',
   description:
-    'Object that contains information for each data collection period.',
+    i18n._(t`Object that contains information for each data collection period.`),
   fields: () => ({
     month: {
-      type: GraphQLString,
-      description: 'Start date of data collection.',
-      resolve: async ({ startDate }, _, { moment }) =>
+      type: TranslatedString(i18n),
+      description: i18n._(t`Start date of data collection.`),
+      resolve: ({ startDate }, _, { moment }) =>
         Number(moment(startDate).month()) + 1,
     },
     year: {
-      type: GraphQLString,
-      description: 'End date of data collection.',
-      resolve: async ({ startDate }, _, { moment }) => moment(startDate).year(),
+      type: TranslatedString(i18n),
+      description: i18n._(t`End date of data collection.`),
+      resolve: ({ startDate }, _, { moment }) => moment(startDate).year(),
     },
     categoryPercentages: {
-      type: categoryPercentagesType,
-      description: 'Category percentages based on the category totals.',
-      resolve: async ({ categoryTotals }) => categoryTotals,
+      type: categoryPercentagesType(i18n),
+      description: i18n._(t`Category percentages based on the category totals.`),
+      resolve: ({ categoryTotals }) => categoryTotals,
     },
     categoryTotals: {
-      type: categoryTotalsType,
-      description: 'Category totals for quick viewing.',
-      resolve: async ({ categoryTotals }) => categoryTotals,
+      type: categoryTotalsType(i18n),
+      description: i18n._(t`Category totals for quick viewing.`),
+      resolve: ({ categoryTotals }) => categoryTotals,
     },
     detailTables: {
-      type: detailTablesType,
-      description: 'Various senders for each category.',
-      resolve: async ({ detailTables }) => detailTables,
+      type: detailTablesType(i18n),
+      description: i18n._(t`Various senders for each category.`),
+      resolve: ({ detailTables }) => detailTables,
     },
   }),
 })
