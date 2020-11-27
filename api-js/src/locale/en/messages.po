@@ -30,6 +30,8 @@ msgid "Authentication error. Please sign in."
 msgstr "Authentication error. Please sign in."
 
 #: src/types/base.js:916
+#: src/types/base/index.js:875
+#: src/types/base/index.js:865
 msgid "Cannot query affiliations on organization without admin permission or higher."
 msgstr "Cannot query affiliations on organization without admin permission or higher."
 
