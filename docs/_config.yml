@@ -28,7 +28,7 @@ author2:
   url: https://www.cyber.gc.ca
 
 # Point the logo URL at a file in your repo or hosted elsewhere by your organization
-logourl: '/assets/img/tracker_v-03.png'
+logourl: '/docs/assets/img/tracker_v-03.png'
 logoalt: 'Tracker Logo'
 
 
