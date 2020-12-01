@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>
+      
+        Codes et référentiels - Track web security compliance
+      
+    </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102484926-8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-102484926-8', { 'anonymize_ip': true });
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <header role="banner">
+        <div class="wrap">
+          
+          <h1 class="site-title"><a class="title-link" href="/accueil/">Suivre la conformité en matière de sécurité Web</a></h1>
+          <h2 class="float-right"><a href="/code-and-repositories/">English</a></h2>
+        </div>
+      </header>
+
+      <div class="wrap content">
+
+        <aside>
+  <p class="intro">Rendre les sites Web du gouvernement plus sécurisés</p>
+  <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+      
+          <li><a href="/accueil/">Accueil</a></li>
+      
+          <li><a href="/renseignements-generaux/">Renseignements généraux</a></li>
+      
+          <li><a href="/fonctions/">Fonctions</a></li>
+      
+          <li><a href="/codes-et-referentiels">Codes et référentiels</a></li>
+      
+          <li><a href="/contribution/">Contribution et source ouverte</a></li>
+      
+          <li><a href="/coordonnees">Coordonnées</a></li>
+      
+    </ul>
+  </nav>
+</aside>
+
+        <section id="main" class="main-content" role="main">
+          <h2 class="page-title">Codes et référentiels</h2>
+
+<h2 id="comment-suivre-la-conformité-en-matière-de-sécurité-webfonctionne">Comment <em>Suivre la conformité en matière de sécurité Web</em> fonctionne</h2>
+
+<p><strong>Données</strong></p>
+
+<p><em>Suivre la conformité en matière de sécurité Web</em> évalue actuellement les sous-domaines <code class="language-plaintext highlighter-rouge">.gc.ca</code> et <code class="language-plaintext highlighter-rouge">.canada.ca</code> qui sont accessibles au public sur HTTP. Ces domaines et sous-domaines sont fournis par le Bureau de la transformation numérique du SCT.</p>
+
+<p><strong>Architecture</strong></p>
+
+<p>Ce produit comprend trois parties : un scanneur de domaine qui analyse une liste des domaines et analyse leur comportement (<em>tracker</em>), une instance Cosmos DB qui héberge les résultats de l’analyse, et une application Web qui affiche les résultats (<em>track-web</em>).</p>
+
+<p><strong>Pile</strong></p>
+
+<p><em>tracker</em> est rédigée pour Python 3.5 et versions suivantes.</p>
+
+<p><em>track-web</em> est une application Flask rédigée pour Python 3.6 et les versions suivantes.</p>
+
+<h2 id="référentiels">Référentiels</h2>
+
+<p>Il existe deux référentiels individuels qui composent <em>Suivre la conformité en matière de sécurité Web</em>.</p>
+
+<p><strong><a href="https://github.com/cds-snc/tracker">tracker</a></strong></p>
+
+<p>Ce référentiel détient l’outil d’analyse de domaine et produit les données qui remplissent le tableau. L’outil d’analyse évalue le comportement des quatre « points d’extrémité » de chaque domaine et sous-domaine : <code class="language-plaintext highlighter-rouge">http://</code>, <code class="language-plaintext highlighter-rouge">http://www</code>, <code class="language-plaintext highlighter-rouge">https://</code> et <code class="language-plaintext highlighter-rouge">https://www</code>. Les données provenant de ces points d’extrémité permettent de qualifier le comportement global d’un domaine ou sous-domaine. Ces mesures sont effectuées à l’aide de <a href="https://github.com/18F/domain-scan">domain-scan</a>, un outil de source libre fondé sur Python et tenu à jour par la General Services Administration des États-Unis. Domain-scan permet de coordonner et de mettre en parallèle efficacement <a href="https://github.com/dhs-ncats/pshtt">pshtt</a>, <a href="https://github.com/nabla-c0d3/sslyze">sslyze</a>, et d’autres outils pour les grandes analyses de lots.</p>
+
+<p>Le référentiel <em><a href="https://github.com/cds-snc/tracker/tree/master/docs">tracker</a></em> contient d’autres documents concernant :</p>
+<ul>
+  <li>les définitions des données d’entrée et de sortie;</li>
+  <li>la manière dont les domaines et les sous-domaines sont appariés aux propriétaires de domaine;</li>
+  <li>les principes de base pour configurer les scanneurs Lambda pour l’énorme analyse parallèle;</li>
+  <li>la manière de modifier les composantes existantes ou ajouter de nouvelles composantes au système d’analyse;</li>
+  <li>la manière d’effectuer un dépliement local.</li>
+</ul>
+
+<p><strong><a href="https://github.com/cds-snc/track-web">track-web</a></strong></p>
+
+<p>Ce référentiel comprend l’appli Flask. <em>Track-web</em> prend la sortie de l’outil d’analyse de domaine et affiche les résultats dans des tableaux et des graphiques dans <em>Suivre la conformité en matière de sécurité Web</em>.</p>
+
+<p>Le référentiel <em><a href="https://github.com/cds-snc/track-web/tree/master/docs">track-web</a></em> contient d’autres documents concernant :</p>
+
+<ul>
+  <li>la manière de créer d’autres pages Web, styles, graphiques et tables de données;</li>
+  <li>la manière d’ajouter Google Analytics et faire le suivi des événements (le téléchargement et le filtrage des événements sont intégrés);</li>
+  <li>la manière d’effectuer un dépliement local.</li>
+</ul>
+
+
+        </section>
+
+      </div><!-- /.wrap content -->
+
+      <footer role="contentinfo">
+        <div class="wrap">
+          <p>Ce projet a été élaboré par le <a href="https://numerique.canada.ca">Service numérique canadien</a> et est tenu à jour par le <a href="https://www.canada.ca/fr/secretariat-conseil-tresor.html">Secrétariat du Conseil du Trésor du Canada</a>.</p>
+          <p><a href="https://github.com/cds-snc/track-web-security-compliance">Contribuer à cette documentation.</a></p>
+          <p>Hébergé dans <a href="http://pages.github.com/">GitHub Pages</a>.</p>
+        </div><!--/.wrap -->
+      </footer>
+    </div> <!-- /.container -->
+    
+    </body>
+</html>

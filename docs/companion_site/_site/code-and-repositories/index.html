@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>
+      
+        Code and repositories - Track web security compliance
+      
+    </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102484926-8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-102484926-8', { 'anonymize_ip': true });
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <header role="banner">
+        <div class="wrap">
+          
+          <h1 class="site-title"><a class="title-link" href="/home/">Track web security compliance</a></h1>
+          <h2 class="float-right"><a href="/codes-et-referentiels/">Français</a></h2>
+        </div>
+      </header>
+
+      <div class="wrap content">
+
+        <aside>
+  <p class="intro">Making government websites more secure</p>
+  <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+      
+          <li><a href="/home/">Home</a></li>
+      
+          <li><a href="/background/">Background</a></li>
+      
+          <li><a href="/features/">Features</a></li>
+      
+          <li><a href="/code-and-repositories">Code and repositories</a></li>
+      
+          <li><a href="/contributing/">Contributing and open source</a></li>
+      
+          <li><a href="/contact">Contact</a></li>
+      
+    </ul>
+  </nav>
+</aside>
+
+        <section id="main" class="main-content" role="main">
+          <h2 class="page-title">Code and repositories</h2>
+
+<h2 id="how-tracker-works">How <em>Tracker</em> works</h2>
+
+<p><strong>Data</strong></p>
+
+<p><em>GC Tracker</em> currently measures <code class="language-plaintext highlighter-rouge">.gc.ca</code> and <code class="language-plaintext highlighter-rouge">.canada.ca</code> subdomains that are publicly accessible over HTTP. These domains and subdomains are provided by the Digital Transformation Office within the Treasury Board of Canada Secretariat.  In addition, <em>GC Tracker</em> also provides tailored implementation guidance based on the results of the domain scans.</p>
+
+<p><strong>Architecture</strong></p>
+
+<p><em>GC Tracker</em> is built in accordance to TBS OCIO’s architectural guidance outlined in their <a href="https://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=32602#claA.2.3.10">Directive on Service and Digital</a>.  As such, it is architected as a set of distributed, containerized microservices.</p>
+
+<p><strong>Stack</strong></p>
+
+<ul>
+  <li>Platform: The <em>Tracker</em> application is a cloud native application that is orchestrated using <a href="https://kubernetes.io">Kubernetes</a>.</li>
+  <li>API: The <em>Tracker</em> API is exclusively focused on serving data, rather than HTML. It is a <a href="https://graphql.org/">GraphQL API</a>, chosen because of its composability, legibility and for the way it <a href="https://www.youtube.com/watch?v=gqvyCdyp3Nw">enables both security and security automation</a>.  It is built with the <a href="https://expressjs.com/">Express webserver</a> using the <a href="https://github.com/graphql/express-graphql">express-graphql middleware</a>, and follows the <a href="https://relay.dev/graphql/connections.htm">Relay specifications for pagination</a>.</li>
+  <li>Frontend: This frontend is an example of a Single Page Application (SPA) on the <a href="https://platform.html5.org/">Web Platform</a>.  The frontend is written using the <a href="https://reactjs.org/">React framework</a> and is complimented by the <a href="https://chakra-ui.com/">Chakra-UI component library</a> to help ensure a modular and accessible UI.</li>
+  <li>Datastore: <em>Tracker</em> relies on the <a href="https://www.arangodb.com">ArangoDB</a> multi-model database.</li>
+  <li>Scanners: The domain scans rely on a series of containerized open source tools such as <a href="https://pypi.org/project/checkdmarc">checkdmarc</a>, <a href="https://pypi.org/project/dkimpy">dkimpy</a>, and <a href="https://github.com/nabla-c0de/sslyze">sslyze</a>.</li>
+</ul>
+
+<h2 id="repository">Repository</h2>
+
+<p><strong><a href="https://github.com/canada-ca/tracker">tracker</a></strong></p>
+
+<p>This repository holds the code for the entire <em>Tracker</em> deployment. The scanning tools measures the behaviour of four “endpoints” of every domain and subdomain: <code class="language-plaintext highlighter-rouge">http://</code>, <code class="language-plaintext highlighter-rouge">http://www</code>, <code class="language-plaintext highlighter-rouge">https://</code>, and <code class="language-plaintext highlighter-rouge">https://www</code>. Data from these endpoints is used to characterize the overall behaviour of a domain or subdomain.</p>
+
+<p>The <em><a href="https://github.com/canada-ca/tracker/tree/master/docs">tracker</a></em> repository contains further documentation on:</p>
+<ul>
+  <li>Platform overlays for deploying to Google Cloud Platform or locally to Minikube</li>
+  <li>Information on how to set up/configure the API dev environment</li>
+  <li>Documentation on the various components and links to additional resources</li>
+  <li>How to edit existing components or add new components to the scanning system</li>
+</ul>
+
+
+
+        </section>
+
+      </div><!-- /.wrap content -->
+
+      <footer role="contentinfo">
+        <div class="wrap">
+          <p>This project was built by the <a href="https://digital.canada.ca">Canadian Digital Service</a> and is maintained by the <a href="https://www.canada.ca/en/treasury-board-secretariat.html">Treasury Board of Canada Secretariat</a>.</p>
+          <p><a href="https://github.com/cds-snc/track-web-security-compliance">Contribute to this documentation.</a></p>
+          <p>Hosted on <a href="http://pages.github.com/">GitHub Pages</a>.</p>
+        </div><!--/.wrap -->
+      </footer>
+    </div> <!-- /.container -->
+    
+    </body>
+</html>

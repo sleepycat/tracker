@@ -1,0 +1,11 @@
+en:
+- name: tracker
+  description: Measure Compliance
+  url: https://github.com/canada-ca/tracker
+fr:
+- name: track-web
+  description: Rapport des résultats
+  url: https://github.com/cds-snc/track-web
+- name: tracker
+  description: Analyse des domaines
+  url: https://github.com/cds-snc/tracker

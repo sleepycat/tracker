@@ -1,0 +1,11 @@
+<aside>
+  <p class="intro">{{ site.data.translations[page.lang].homepage-tag-line }}</p>
+  <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+      {% for menu in site.data.menu[page.lang] %}
+          <li><a href="{{ site.baseurl }}{{ menu[1].url }}">{{ menu[1].name }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>

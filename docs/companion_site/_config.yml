@@ -1,0 +1,47 @@
+# Base configuration
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+markdown: kramdown
+highlighter: rouge
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+# Title
+name: GC Tracker
+subtitle: Making government websites more secure
+
+# When using this template with a project page set the baseurl to '/project-name'
+# For user/organization pages set this to an empty string
+# When working locally use jekyll serve --baseurl '' so that you can view everything at localhost:4000
+# See http://jekyllrb.com/docs/github-pages/ for more info
+#baseurl: ''
+baseurl: '/tracker'
+
+# Author/Organization info to be displayed in the templates
+author:
+  name: Treasury Board of Canada Secretariat
+  url: https://www.canada.ca/en/treasury-board-secretariat.html
+author2: 
+  name: Canadian Centre For Cybersecurity
+  url: https://www.cyber.gc.ca
+
+# Point the logo URL at a file in your repo or hosted elsewhere by your organization
+logourl: '/docs/companion_site/assets/img/tracker_v-03.png'
+logoalt: 'Tracker Logo'
+
+
+# Repo list
+# List repos that you would like to appear on the homepage here
+repos:
+- name: tracker
+  description: Tracker monorepo
+  url: https://github.com/canada-ca/tracker
+
+# Style Variables
+brand_color: "#FFCC3D"
+
+# Offline caching
+offline_cache: false
+cache_name: DOCter-v1.1
