@@ -28,8 +28,8 @@ author2:
   url: https://www.cyber.gc.ca
 
 # Point the logo URL at a file in your repo or hosted elsewhere by your organization
-logourl: https://github.com/canada-ca/tracker/blob/companion-documents/docs/assets/img/tracker_v-03.png
-logoalt: 'Tracker Logo'
+logourl: 
+logoalt: 
 
 
 # Repo list
