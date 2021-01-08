@@ -40,11 +40,11 @@ describe('given the guidanceTag gql object', () => {
       expect(demoType).toHaveProperty('refLinks')
       expect(demoType.refLinks.type).toMatchObject(GraphQLList(refLinksType))
     })
-    it('has a refLinksTech field', () => {
+    it('has a refLinksTechnical field', () => {
       const demoType = guidanceTagType.getFields()
 
-      expect(demoType).toHaveProperty('refLinksTech')
-      expect(demoType.refLinksTech.type).toMatchObject(
+      expect(demoType).toHaveProperty('refLinksTechnical')
+      expect(demoType.refLinksTechnical.type).toMatchObject(
         GraphQLList(refLinksType),
       )
     })
@@ -103,7 +103,7 @@ describe('given the guidanceTag gql object', () => {
         ])
       })
     })
-    describe('testing the refLinksTech resolver', () => {
+    describe('testing the refLinksTechnical resolver', () => {
       it('returns the resolved value', () => {
         const demoType = guidanceTagType.getFields()
 
@@ -114,7 +114,7 @@ describe('given the guidanceTag gql object', () => {
           },
         ]
 
-        expect(demoType.refLinksTech.resolve({ refLinksTechnical })).toEqual([
+        expect(demoType.refLinksTechnical.resolve({ refLinksTechnical })).toEqual([
           {
             description: 'description',
             refLink: 'refLink',
